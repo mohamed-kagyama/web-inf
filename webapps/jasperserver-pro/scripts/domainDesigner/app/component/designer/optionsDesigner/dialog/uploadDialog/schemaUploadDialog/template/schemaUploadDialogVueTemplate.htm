@@ -1,0 +1,40 @@
+<div v-bind:data-name="uploadDialog" class="jr-mDialog jr-uWidth-400px jr-isHidden jr">
+    <div class="jr-mDialog-header jr-jDialogDraggable jr">
+        <h1 class="jr-mDialog-header-title jr">{{ title }}</h1>
+    </div>
+
+    <div class="jr-mDialog-body jr">
+
+        <div class="jr-mDialog-body-wrapper jr-mDialog-body-wrapperFit jr">
+            <singleFileUpload
+                    @selectFile="selectFile"
+
+                    :file="singleFileUpload.file"
+                    :actionButtonLabel="singleFileUpload.actionButtonLabel"
+                    :fileInputLabel="singleFileUpload.fileInputLabel"
+                    :fileInputPlaceholder="singleFileUpload.fileInputPlaceholder"
+                    :accept="singleFileUpload.accept"
+                    :errorMessage="singleFileUpload.errorMessage"
+            ></singleFileUpload>
+        </div>
+    </div>
+
+    <div class="jr-mDialog-footer jr">
+        <actionButton
+                :class="'jr-mButtonPrimary'"
+                :label="primaryButtonLabel"
+                :disabled="isPrimaryButtonDisabled"
+                :data-name="primaryButton"
+                @click="onPrimaryButtonClick">
+        </actionButton>
+
+        <actionButton
+                :label="secondaryButtonLabel"
+                :class="'jr-mButtonSecondary'"
+                :data-name="secondaryButton"
+                @click="onSecondaryButtonClick">
+        </actionButton>
+
+        <div class="jr-mDialog-footer-sizer jr-jDialogResizer jr"></div>
+    </div>
+</div>

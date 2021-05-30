@@ -1,0 +1,11 @@
+<li class="jr-mTree-leaf jr-mTree-leaf-1 jr"
+    :class="{ 'jr-isSelected': schema.isSelected, 'jr-isMapped': schema.mappedWith }"
+    @click="onClickSchemaItem(schema)"
+    role="treeitem" aria-expanded="false">
+    <div class="jr-mTree-iconContainer jr">
+        <span class="jr-mTree-expander jr"></span>
+        <span class="jr-mTree-icon jr-mTree-iconSchema jr"></span>
+    </div>
+    <p class="jr-mTree-label jr">{{ schema.name }}</p>
+    <span v-if="schema.index" class="jr-mTree-leaf-key jr" >{{ schema.index }}</span>
+</li>

@@ -1,0 +1,141 @@
+<div :data-name="dialog" class="jr-mDialog jr-isHidden jr-uWidth-600px jr">
+    <div class="jr-mDialog-header jr jr-jDialogDraggable">
+        <h1 class="jr-mDialog-header-title jr">{{derivedTableDesignerTitleText}}</h1>
+    </div>
+
+    <div class="jr-mDialog-body jr">
+        <div class="jr-mDialog-body-wrapper jr-mDialog-body-wrapperFit jr">
+            <div class="jr-mForm jr-uFlexfit jr">
+                <div class="jr-mForm-section jr">
+                    <div class="jr-mInput jr">
+                        <label class="jr-mInput-label jr">{{ i18n["domain.designer.derivedTables.createDerivedTables.dialog.input.name"]}}:</label>
+                        <input :disabled="isQueryRunning"
+                               v-model="name"
+                               :data-name="createInput"
+                               class="jr-mInput-text jr" type="text">
+                        <div class="jr-mInput-validation jr">
+                            <div class="jr-mInput-validation-message jr" :style="tableNameErrorMessageStyle">
+                                <div class="jr-mValidation jr-mValidationError jr" >
+                                    <span class="jr-mValidation-icon jr-mIcon jr-mIconSmall jr-cancelRound jr"></span>
+                                    <span class="jr-mValidation-text jr">{{tableNameErrorMessage}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="jr-mInput jr">
+                        <label class="jr-mInput-label jr">{{ i18n["domain.designer.derivedTables.createDerivedTables.dialog.input.query"]}}:</label>
+                        <textarea :disabled="isQueryRunning"
+                                  v-model="query"
+                                  :data-name="createQueryInput"
+                                  class="jr-mInput-textarea jr"></textarea>
+                    </div>
+
+                    <div class="jr-mInput-validation jr">
+                        <div class="jr-mInput-validation-message jr" :style="queryErrorMessageStyle">
+                            <div class="jr-mValidation jr-mValidationError jr">
+                                <span class="jr-mValidation-icon jr-mIcon jr-mIconSmall jr-cancelRound jr"></span>
+                                <span class="jr-mValidation-text jr">{{queryErrorMessage}}</span>
+                            </div>
+                        </div>
+                        <div class="jr-mForm-validation-button jr">
+                            <div v-show="isRunQueryInProgress"
+                                 class="jr-mButton jr-mButtonCombo jr-mButtonMedium jr">
+                                <span class="jr-mButton-icon jr-mIcon jr-mIconMedium jr-loading jr"></span>
+                                <span class="jr-mButton-label jr-mButton-labelTheme jr">{{ i18n['domain.designer.derivedTables.createDerivedTables.dialog.running.query'] }}</span>
+                            </div>
+                            <button v-show="isRunQueryInProgress"
+                                    @click="onCancelQuery"
+                                    :data-name="runQueryCancelButton"
+                                    class="jr-mButton jr-mButtonText jr-mButtonSecondary jr-mButtonMedium jr">
+                                <span class="jr-mButton-label jr">{{ i18n["domain.designer.derivedTables.createDerivedTables.dialog.button.cancel.query"] }}</span>
+                            </button>
+                            <button @click="onRunQuery"
+                                    v-show="!isRunQueryInProgress"
+                                    :disabled="isRunQueryDisabled"
+                                    :data-name="runQueryButton"
+                                    class="jr-mButton jr-mButtonText jr-mButtonPrimary jr-mButtonMedium jr">
+                                <span class="jr-mButton-label jr">{{ i18n["domain.designer.derivedTables.createDerivedTables.dialog.button.run.query"] }}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jr-mForm-section jr-uFlexfit-row jr">
+
+
+                    <div class="jr-mInput jr-uFlexfit-row-item jr">
+                        <label class="jr-mInput-label jr">{{ i18n["domain.designer.derivedTables.createDerivedTables.dialog.input.query.result.list"]}}:</label>
+
+                        <div class="jr-mMultiselect jr-mMultiselectSimple jr-mMultiselectFit jr" :class="{'jr-isDisabled': isQueryRunning}">
+                            <div class="jr-mMultiselect-listContainer jr jr-jQueryResultSet">
+                                <virtualData class="jr-mMultiselect-list jr" :style="virtualDataStyleObject" :scrollPos="scrollPos" :top="top" :height="height">
+                                    <ul :data-name="fieldsItemTree" class="jr-mTree jr">
+                                        <li v-for="(field, index) in visibleFields"
+                                            class="jr-mTree-leaf jr"
+                                            :title="field.name"
+                                            :class="{'jr-isSelected': selectedFields[field.name]}"
+                                            role="treeitem"
+                                            aria-expanded="false"
+
+                                            @click="selectField(field, $event)"
+                                            @click.ctrl="toggleFieldSelection(field)"
+                                            @click.meta="toggleFieldSelection(field)"
+                                            @click.shift="addToRangeSelection(field)"
+                                        >
+
+                                            <div class="jr-mTree-iconContainer jr">
+                                                <span class="jr-mTree-expander jr"></span>
+                                                <span class="jr-mTree-icon jr-mTree-iconColumn jr"></span>
+                                            </div>
+                                            <p class="jr-mTree-label jr">{{ field.name }}</p>
+                                        </li>
+                                    </ul>
+                                </virtualData>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="jr-mDialog-footer jr">
+        <div v-show="isCreateOrUpdateTableInProgress" class="jr-mButton jr-mButtonCombo jr-mButtonMedium jr">
+            <span class="jr-mButton-icon jr-mIcon jr-mIconMedium jr-loading jr"></span>
+            <span class="jr-mButton-label jr-mButton-labelTheme jr">{{ isCreateOrUpdateTableInProgressLabel }}</span>
+        </div>
+
+        <button v-show="isCreateOrUpdateTableInProgress"
+                @click="onCancelQuery"
+                :data-name="cancelCreateOrUpdateButton"
+                class="jr-mButton jr-mButtonText jr-mButtonSecondary jr">
+            <span class="jr-mButton-label jr">{{ cancelCreateOrUpdateButtonLabel }}</span>
+        </button>
+
+        <button @click="onCreateDerivedTable"
+                v-show="!id && !isCreateOrUpdateTableInProgress"
+                :data-name="createButton"
+                :disabled="isCreateOrUpdateButtonDisabled"
+                class="jr-mButton jr-mButtonText jr-mButtonPrimary jr">
+            <span class="jr-mButton-label jr">{{ i18n["domain.designer.derivedTables.createDerivedTables.dialog.yes.create"] }}</span>
+        </button>
+
+        <button @click="onUpdateDerivedTable"
+                v-show="id && !isCreateOrUpdateTableInProgress"
+                :data-name="updateButton"
+                :disabled="isCreateOrUpdateButtonDisabled"
+                class="jr-mButton jr-mButtonText jr-mButtonPrimary jr">
+            <span class="jr-mButton-label jr">{{ i18n["domain.designer.derivedTables.createDerivedTables.dialog.yes.update"] }}</span>
+        </button>
+
+        <button v-show="!isCreateOrUpdateTableInProgress"
+                :data-name="cancelButton"
+                @click="onCancel"
+                class="jr-mButton jr-mButtonText jr-mButtonSecondary jr-jDialogClose jr">
+            <span class="jr-mButton-label jr">{{ i18n["domain.designer.derivedTables.createDerivedTables.dialog.no"]}}</span>
+        </button>
+
+        <div class="jr-mDialog-footer-sizer jr jr-jDialogResizer"></div>
+    </div>
+</div>

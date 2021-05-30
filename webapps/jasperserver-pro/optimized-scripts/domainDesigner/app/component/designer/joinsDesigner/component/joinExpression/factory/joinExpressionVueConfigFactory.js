@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","text!../template/joinExpressionVueTemplate.htm","../../../../../../model/enum/joinsEnum"],function(e,n,o){var i=e("underscore"),r=e("text!../template/joinExpressionVueTemplate.htm"),t=e("../../../../../../model/enum/joinsEnum");o.exports={create:function(e){var n=e.joinsDesignerEventBus;return{template:r,props:["joinExpression"],computed:{operatorOptions:function(){return i.map(t.joinOperators,function(e){return{label:e.label,value:e.name}})}},methods:{selectOperator:function(e){n.trigger("update:joinExpression",{id:this.joinExpression.id,joinId:this.joinExpression.joinId,joinTreeId:this.joinExpression.joinTreeId},{operator:e})},remove:function(){n.trigger("remove:joinExpression",{id:this.joinExpression.id,joinId:this.joinExpression.joinId,joinTreeId:this.joinExpression.joinTreeId})},isOperatorSelected:function(e){return this.joinExpression.operator===e}}}}}});

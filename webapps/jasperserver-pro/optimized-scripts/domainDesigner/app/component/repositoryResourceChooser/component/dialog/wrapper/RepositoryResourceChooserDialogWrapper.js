@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","runtime_dependencies/js-sdk/src/components/dialog/Dialog"],function(o,e,i){var r=o("underscore"),t=o("runtime_dependencies/js-sdk/src/components/dialog/Dialog");i.exports=t.extend({constructor:function(o){this.repositoryResourceChooserDialog=o.repositoryResourceChooserDialog,t.prototype.constructor.call(this,{el:this.repositoryResourceChooserDialog.$mount().$el})},initialize:function(o){r.bindAll(this,"_onConfirm","_onReject"),this._initEvents(),t.prototype.initialize.apply(this,arguments)},open:function(o){var e=this;this.repositoryResourceChooserDialog.open(o).then(function(){t.prototype.open.apply(e,arguments)})},_initEvents:function(){this.repositoryResourceChooserDialog.$on("confirm",this._onConfirm),this.repositoryResourceChooserDialog.$on("reject",this._onReject)},_onConfirm:function(o){this.trigger("dialog:resource:confirm",o)},_onReject:function(){this.trigger("dialog:resource:reject")}})});

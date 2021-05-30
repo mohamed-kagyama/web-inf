@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../model/AdvancedPropertyModel","backbone"],function(i,e,t){var n=i("underscore"),d=i("../model/AdvancedPropertyModel"),o=i("backbone"),s=o.Collection.extend({model:d,validationMessages:{DUPLICATE_MODEL_ADD:"DUPLICATE_MODEL_ADD",DUPLICATE_MODEL_EDIT:"DUPLICATE_MODEL_EDIT"},add:function(i,e){if(this._validateSingleModelAddition(i,e))return o.Collection.prototype.add.apply(this,arguments)},_validateSingleModelAddition:function(i,e){var t=!0;if(!n.isArray(i)){var d=this.find(function(e){return e===i}),o=this.filter(function(e){return e.id===i.id});d||!(o.length>0)||e&&e.silent?!(d&&o.length>1)||e&&e.silent||(t=!1,this.trigger("validation:invalid",this,i,{message:this.validationMessages.DUPLICATE_MODEL_EDIT}),i.set(i.previousAttributes())):(t=!1,this.trigger("validation:invalid",this,i,{message:this.validationMessages.DUPLICATE_MODEL_ADD})),!t||e&&e.silent||this.trigger("validation:valid",this,i)}return t}});t.exports=s});

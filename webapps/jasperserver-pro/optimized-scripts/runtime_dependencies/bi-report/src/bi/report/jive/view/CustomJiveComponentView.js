@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","backbone","jquery","runtime_dependencies/js-sdk/src/common/logging/logger"],function(e,i,n){var r,s=e("backbone"),o=e("jquery"),t=e("runtime_dependencies/js-sdk/src/common/logging/logger"),u=t.register("CustomJiveComponentView");r="undefined"!=typeof __visualize__?__visualize__.requirejs:"undefined"!=typeof __jrio__?__jrio__.requirejs:requirejs,n.exports=s.View.extend({initialize:function(){var e=this.model,i={paths:{}},n=e.get("css"),o=e.get("script");this.modules=[],i.paths[o.name]=o.href,this.modules.push(o.name),n&&(i.paths[n.name]=n.href,this.modules.push("csslink!"+n.name)),r.config(i),s.View.prototype.initialize.apply(this,arguments)},render:function(){var e=new o.Deferred,i=this.model.get("instanceData");return r(this.modules,function(n){o("#"+i.id+" svg").remove(),n(i),e.resolve()},function(i){u.error(i),e.reject(i)}),e}})});

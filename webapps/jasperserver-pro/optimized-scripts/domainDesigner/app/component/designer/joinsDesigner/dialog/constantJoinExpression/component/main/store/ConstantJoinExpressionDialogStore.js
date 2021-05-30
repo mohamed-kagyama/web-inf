@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../../../../../model/util/SimpleModel","../../../../../../../../model/enum/clientExpressionsEnum","../../../../../util/constantJoinExpressionUtil"],function(e,i,t){var n=e("underscore"),s=e("../../../../../../../../../model/util/SimpleModel"),o=e("../../../../../../../../model/enum/clientExpressionsEnum"),l=e("../../../../../util/constantJoinExpressionUtil");t.exports=s.extend({defaults:function(){return{id:null,joinId:null,field:null,fieldType:null,fieldOptions:[],availableOperators:[],operator:o.operators.equals.name,value:"",expressionValidationInProgress:!1,constantJoinValidationInProgress:!1,successMessage:"",errorMessage:"",warningMessage:""}},reset:function(){this.set(this.defaults())},toJSON:function(){var e=this.get("field"),i=l.parseField(e),t=n.extend({joinId:this.get("joinId"),operator:this.get("operator"),value:this.get("value"),fieldType:this.get("fieldType")},i);return this.get("id")&&n.extend(t,{id:this.get("id")}),t}})});

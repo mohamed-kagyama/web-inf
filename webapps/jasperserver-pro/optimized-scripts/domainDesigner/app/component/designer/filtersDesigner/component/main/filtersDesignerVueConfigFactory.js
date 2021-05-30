@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../common/vue/computed/i18nComputed","text!./template/filtersDesignerTemplate.htm","../../../../../../model/schema/enum/schemaEntitiesEnum","../../../../../common/vue/directive/lazyDroppableDirective"],function(e,t,r){var i=e("underscore"),n=e("../../../../../common/vue/computed/i18nComputed"),a=e("text!./template/filtersDesignerTemplate.htm"),o=e("../../../../../../model/schema/enum/schemaEntitiesEnum"),s=e("../../../../../common/vue/directive/lazyDroppableDirective");r.exports={create:function(e){return e=e||{},{template:a,components:{canvasDroppableArea:e.canvasDroppableArea,complexFilter:e.complexFilter,draftFilter:e.draftFilter,filterExpression:e.filterExpression,virtualData:e.virtualData,filtersDesignerSearch:e.filtersDesignerSearch},mixins:e.mixins||[],directives:{droppable:s},data:function(){return e.data},computed:i.extend({isHidden:function(){return this.currentDesigner!==this.ownDesigner},isCanvasDroppableAreaShouldBeVisible:function(){return!this.filters.length&&!this.searchKeyword}},n),methods:{isComplex:function(e){return e.type===o.COMPLEX_FILTER},isDraft:function(e){return e.isDraft}}}}}});

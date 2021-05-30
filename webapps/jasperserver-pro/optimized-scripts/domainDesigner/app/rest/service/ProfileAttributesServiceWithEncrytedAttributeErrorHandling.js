@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","jquery","underscore","../enum/encryptedProfileAttributeErrorEnum","../enum/encryptedProfileAttributeErrorParamKeyEnum"],function(e,r,t){var n=e("jquery"),u=e("underscore"),i=e("../enum/encryptedProfileAttributeErrorEnum"),o=e("../enum/encryptedProfileAttributeErrorParamKeyEnum"),c=function(e){this.initialize(e)};u.extend(c.prototype,{initialize:function(e){this.profileAttributesService=e.profileAttributesService},getProfileAttributes:function(e,r){var t=this;return this.profileAttributesService.getProfileAttributes(e,r).then(function(e){var r,u,i=t._getAnySecureAttributes(e);return i.length>0?(r=new n.Deferred,u=r.reject(t._getSecureProfileAttributesError(i))):u=e,u},function(e,r){var u,i;i=new n.Deferred;var o=t._getAnySecureAttributes(r);return u=o.length>0?t._getSecureProfileAttributesError(o):e,i.reject(u)})},_getSecureProfileAttributesError:function(e){return{responseJSON:u.map(e,function(e){return{errorCode:i.ENCRYPTED_PROFILE_ATTRIBUTE_ERROR,parameters:[{key:o.ATTRIBUTE_NAME,value:e.name}]}})}},_getAnySecureAttributes:function(e){return u.reduce(e,function(e,r){return r.secure&&(e=e.concat(r)),e},[])}}),t.exports=c});

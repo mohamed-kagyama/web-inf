@@ -1,0 +1,102 @@
+<div js-stdnav="false" class="jr">
+    <div class="jr-mGrid jr-mGridFlex jr">
+        <div class="jr-mGrid-row jr">
+            <div class="jr-mGrid-column jr-uWidth-80px jr">
+                <button @click="toggleSearchResultModeToTree"
+                        v-bind:data-name="toggleSearchResultModeToTreeButton"
+                        class="jr-mButton jr-mButtonAction jr-mButtonSecondary jr-mButtonToggle jr-mButtonMedium jr"
+                        :title="i18n['domain.designer.datasource.chooser.viewAsTree.button.title']"
+                        :class="{ 'jr-isDown': isTreeMode}"
+                        aria-label="">
+                    <span class="jr-mButton-icon jr-mIcon jr-treeVertical jr"></span>
+                </button>
+                <button @click="toggleSearchResultModeToList"
+                        v-bind:data-name="toggleSearchResultModeToListButton"
+                        class="jr-mButton jr-mButtonAction jr-mButtonSecondary jr-mButtonToggle jr-mButtonMedium jr"
+                        :title="i18n['domain.designer.datasource.chooser.viewAsList.button.title']"
+                        :class="{ 'jr-isDown': isListMode}"
+                        aria-label="">
+                    <span class="jr-mButton-icon jr-mIcon jr-list jr"></span>
+                </button>
+            </div>
+
+            <div class="jr-mGrid-column jr">
+                <div class="jr-mInput jr-uBottom-single jr">
+                    <div class="jr-mInput-searchContainer jr">
+                        <input @keyup.enter="submitSearchKeyword"
+                               @input="setSearchKeyword($event)"
+                               :value="searchKeyword"
+                               v-bind:data-name="searchContainerInput"
+                               class="jr-mInput-search jr"
+                               type="text"
+                               :placeholder="i18n['domain.designer.search.placeholder']">
+
+                        <button :class="{'jr-isVisible': searchKeyword}"
+                                v-bind:data-name="resetSearchKeywordButton"
+                                class="jr-mInput-search-clear jr"
+                                aria-label="clear search"
+                                @click="resetSearchKeyword"
+                        >
+                            <span class="jr-mIcon jr-cancel jr"></span>
+                        </button>
+                        <button @click="submitSearchKeyword"
+                                v-bind:data-name="submitSearchKeywordButton"
+                                class="jr-mInput-search-trigger jr"
+                                aria-label="search">
+                            <span class="jr-mIcon jr-search jr"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="jr-uFlexfit-row jr">
+        <div class="jr-mListbox jr-uFlexfit-row-item jr" v-show="isTreeMode">
+            <div v-popover="{
+                    title: popover.errorTitle,
+                    text: isTreeMode ? popover.errorMessage : '',
+                    placement: popover.placement,
+                    type: popover.type,
+                    inheritTargetWidth: popover.inheritTargetWidth,
+                    offset: popover.offset
+                 }"
+                 @popoverClose="onCloseErrorPopover"
+                 v-bind:data-name="treeModeList"
+                 class="jr-mListbox-list jr"
+                 :class="{ 'jr-isInvalid' : popover.errorMessage}"
+            >
+                <repositoryTree
+                        :nodes="repositoryTree.nodes"
+                        :selection="repositoryTree.selection"
+                        @select="onRepositoryTreeSelect"
+                        @toggle="onRepositoryTreeToggle"
+                        @doubleClick="onRepositoryTreeDoubleClick"
+                ></repositoryTree>
+            </div>>
+        </div>
+
+        <div class="jr-mListbox jr-uFlexfit-row-item jr" v-show="isListMode">
+            <div v-popover="{
+                    title: popover.errorTitle,
+                    text: isListMode ? popover.errorMessage : '',
+                    placement: popover.placement,
+                    type: popover.type,
+                    inheritTargetWidth: popover.inheritTargetWidth,
+                    offset: popover.offset
+                 }"
+                 @popoverClose="onCloseErrorPopover"
+                 v-bind:data-name="listModeList"
+                 v-scrollTo="resourcesList.scrollPos"
+                 class="jr-mListbox-list jr"
+                 :class="{ 'jr-isInvalid' : popover.errorMessage}"
+            >
+                <resourcesList
+                        :nodes="resourcesList.nodes"
+                        :selection="resourcesList.selection"
+                        @select="onResourcesListSelect"
+                        @doubleClick="onResourcesListDoubleClick"
+                ></resourcesList>
+            </div>
+        </div>
+    </div>
+</div>

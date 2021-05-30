@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","../../../../../../model/schema/enum/filterOperandTypesEnum","../../../../../../model/schema/enum/genericTypesEnum"],function(e,a,i){function n(e){e=e||{};var a={};return a[l.LITERAL]={},a[l.RANGE]={},a[l.LITERAL][t.INTEGER]=e.integerLiteralValidationRule,a[l.LITERAL][t.DECIMAL]=e.decimalLiteralValidationRule,a[l.LITERAL][t.DATE]=e.dateLiteralValidationRule,a[l.LITERAL][t.TIME]=e.timeLiteralValidationRule,a[l.LITERAL][t.TIMESTAMP]=e.timestampLiteralValidationRule,a[l.LITERAL][t.BOOLEAN]=e.booleanLiteralValidationRule,a[l.RANGE][t.INTEGER]=e.numberRangeValidationRule,a[l.RANGE][t.DECIMAL]=e.numberRangeValidationRule,a[l.RANGE][t.DATE]=e.dateRangeValidationRule,a[l.RANGE][t.TIME]=e.timeRangeValidationRule,a[l.RANGE][t.TIMESTAMP]=e.timestampRangeValidationRule,a}var l=e("../../../../../../model/schema/enum/filterOperandTypesEnum"),t=e("../../../../../../model/schema/enum/genericTypesEnum");i.exports={create:n}});

@@ -1,0 +1,8 @@
+<div class="jr-mButtonset jr-uRightAlign jr">
+    <button v-bind:data-name="okButton" :disabled="!isOkEnabled" @click="onOkClick" class="jr-mButton jr-mButtonText jr-mButtonPrimary jr">
+        <span class="jr-mButton-label jr">{{ i18n2['button.ok'] }}</span>
+    </button>
+    <button v-bind:data-name="cancelButton" @click="onCancelClick" class="jr-mButton jr-mButtonText jr-mButtonSecondary jr">
+        <span class="jr-mButton-label jr">{{ i18n2['button.cancel'] }}</span>
+    </button>
+</div>

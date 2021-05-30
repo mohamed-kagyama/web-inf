@@ -1,0 +1,9 @@
+<cell class="jr-mTable-cellToggle">
+    <p @click="onTogglePropertiesEditor"
+       :class="{'jr-isClosed': !item.isPropertiesEditorExpanded, 'jr-isOpen': item.isPropertiesEditorExpanded}"
+       v-bind:data-name="togglePropertiesEditor"
+       class="jr-mTable-cell-expander jr">
+
+        <span class="jr-mTable-cell-expander-icon jr"></span>
+    </p>
+</cell>

@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","./BaseDataSourceModel","../enum/connectionTypes","runtime_dependencies/bi-repository/src/bi/repository/enum/repositoryResourceTypes","bundle!jasperserver_messages"],function(e,r,o){var t=e("underscore"),n=e("./BaseDataSourceModel"),a=e("../enum/connectionTypes"),s=e("runtime_dependencies/bi-repository/src/bi/repository/enum/repositoryResourceTypes"),i=e("bundle!jasperserver_messages");o.exports=n.extend({type:s.BEAN_DATA_SOURCE,defaults:function(){var e={};return t.extend(e,n.prototype.defaults,{beanName:"",beanMethod:"",connectionType:a.BEAN}),e}(),validation:function(){var e={};return t.extend(e,n.prototype.validation,{beanName:[{required:!0,msg:i["ReportDataSourceValidator.error.not.empty.reportDataSource.beanName"]}],beanMethod:[{required:!0,msg:i["ReportDataSourceValidator.error.not.empty.reportDataSource.beanMethod"]}]}),e}()})});

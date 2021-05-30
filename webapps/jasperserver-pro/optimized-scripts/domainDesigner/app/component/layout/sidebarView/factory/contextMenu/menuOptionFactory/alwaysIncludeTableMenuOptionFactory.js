@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","bundle!DomainDesignerBundle","runtime_dependencies/js-sdk/src/common/util/i18nMessage","../../../../../../dispatcher/enum/applicationStateEventsEnum","../enum/menuOptionsEventsEnum"],function(e,n,i){var t=e("bundle!DomainDesignerBundle"),a=e("runtime_dependencies/js-sdk/src/common/util/i18nMessage"),s=e("../../../../../../dispatcher/enum/applicationStateEventsEnum"),r=e("../enum/menuOptionsEventsEnum"),u=a.create(t);i.exports={create:function(e){var n=e.clientDomainSchemaService,i=e.advancedJoinsMappingSpecification;return function(e){var t=n.getOptionsForAlwaysIncludedTableEnabledSpec({joinTreeId:e.resource.parentJoinTreeId,type:e.type});return{label:u("domain.designer.joinsDesigner.tree.contextMenu.alwaysIncludeTable"),action:r.ALWAYS_INCLUDE_TABLE.event,value:n.getAlwaysIncludeTableByJoinAliasId(e.resourceId),triggerEvent:s.JOINS_DESIGNER_UPDATE_JOIN_ALIAS,test:function(){return t&&i.isAlwaysIncludeTableEnabled(t.suppressCircularJoin,t.includeAllDataIslandJoins)}}}}}});

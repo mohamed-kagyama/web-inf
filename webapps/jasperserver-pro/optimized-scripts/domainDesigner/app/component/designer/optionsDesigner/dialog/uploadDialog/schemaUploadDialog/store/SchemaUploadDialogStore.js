@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../../../../model/util/SimpleModel","bundle!DomainDesignerBundle","bundle!CommonBundle"],function(e,l,n){var o=e("underscore"),t=e("../../../../../../../../model/util/SimpleModel"),i=e("bundle!DomainDesignerBundle"),d=e("bundle!CommonBundle");n.exports=t.extend({defaults:function(e){return{title:i["domain.designer.advanced.options.uploadSchemaDialog.title"],singleFileUpload:{file:null,fileInputLabel:e.fileInputLabel,fileInputPlaceholder:d["input.file.not.selected"],actionButtonLabel:d["button.browse"],accept:e.accept,errorMessage:""},primaryButtonLabel:d["button.upload"],secondaryButtonLabel:d["button.cancel"]}},reset:function(){var e=this.defaults(),l=this.get("singleFileUpload");o.extend(l,{file:e.singleFileUpload.file,errorMessage:e.singleFileUpload.errorMessage})}})});

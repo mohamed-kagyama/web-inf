@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../../common/vue/directive/lazyDroppableDirective","text!../template/droppableAreaVueTemplate.htm"],function(e,t,r){var o=e("underscore"),i=e("../../../../../../common/vue/directive/lazyDroppableDirective"),a=e("text!../template/droppableAreaVueTemplate.htm");r.exports={create:function(e){var t=e.mixins;return{template:a,mixins:t,props:["state"],directives:{droppable:i},data:function(){return{overLabel:""}},computed:{isPlaceholderVisible:function(){return!this.state.fieldId&&!this.overLabel},droppableConfig:function(){return{drop:this.drop,over:this.over,out:this.out,tolerance:"pointer",test:this.shouldBeDroppable}}},methods:{remove:function(){this.$emit("remove")},drop:function(e,t){var r=this.getDropAreaResource(t);this.overLabel="",this.$emit("drop",r)},over:function(e,t){var r=this.getDropAreaResource(t);this.overLabel=r.label,this.$emit("over",r)},out:function(e,t){var r=this.getDropAreaResource(t);this.overLabel="",this.$emit("out",r)},shouldBeDroppable:function(){return this.state.isDropAreaEnabled},getDropAreaResource:function(e){return o.extend({label:e.label},e.resource)}}}}}});

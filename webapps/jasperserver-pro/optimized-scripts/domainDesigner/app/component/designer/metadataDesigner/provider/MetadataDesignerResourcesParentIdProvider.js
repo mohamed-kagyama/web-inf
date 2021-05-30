@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../model/schema/util/entityUtil"],function(e,t,i){var a=e("underscore"),r=e("../../../../../model/schema/util/entityUtil"),c=function(e){this.initialize(e)};a.extend(c.prototype,{initialize:function(e){this.clientDomainSchemaService=e.clientDomainSchemaService,this.metadataDesignerViewStateModelService=e.metadataDesignerViewStateModelService,this.schemaLessDataSourceWithEmptyResolvedSchemaAttributeSpec=e.schemaLessDataSourceWithEmptyResolvedSchemaAttributeSpec},getParentId:function(){var e,t=this.metadataDesignerViewStateModelService.getCurrentSidebarResource(),i=this.schemaLessDataSourceWithEmptyResolvedSchemaAttributeSpec.isSatisfied();return r.isDataSource(t.type)&&i?(e=this.clientDomainSchemaService.getFirstDataSourceGroupByDataSourceId(t.resourceId),e.id):t.resourceId}}),i.exports=c});

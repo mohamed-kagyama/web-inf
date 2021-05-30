@@ -1,0 +1,66 @@
+<div js-stdnav="false" class="jr-mToolbar-toolset jr-uLeft jr">
+    <button :disabled="isSaveDisabled"
+            :title="labels.save"
+            v-hoverMenu="saveMenuOptions"
+            @click="onClick"
+            :data-name="saveMenuButton"
+            class="jr-mButton jr-mButtonAction jr-mButtonTool jr-mButtonDropdown jr"
+            aria-label="save">
+        <span class="jr-mButton-icon jr-mIcon jr-save jr"></span>
+    </button>
+    <button v-if="isJsonExportEnabled"
+            :data-name="exportSchemaButton"
+            :disabled="isExportSchemaDisabled"
+            class="jr-mButton jr-mButtonAction jr-mButtonTool jr-mButtonDropdown jr"
+            v-hoverMenu="exportSchemaMenuOptions"
+            @click="onClick"
+            :title="labels.export"
+            aria-label="export domain schema">
+        <span class="jr-mButton-icon jr-mIcon jr-export jr"></span>
+    </button>
+    <button v-else
+            @click="onExportXML"
+            :data-name="exportSchemaButton"
+            :disabled="isExportSchemaDisabled"
+            class="jr-mButton jr-mButtonAction jr-mButtonTool jr"
+            :title="labels.export"
+            aria-label="export domain schema">
+        <span class="jr-mButton-icon jr-mIcon jr-export jr"></span>
+    </button>
+    <button v-bind:data-name="importSchemaButton"
+            @click="onImport"
+            class="jr-mButton jr-mButtonAction jr-mButtonTool jr"
+            :title="labels.import"
+            aria-label="import domain schema">
+        <span class="jr-mButton-icon jr-mIcon jr-import jr"></span>
+    </button>
+
+    <div class="jr-mToolbar-divider jr"></div>
+
+    <button :disabled="isUndoDisabled"
+            :title="labels.undo"
+            @click="onUndo"
+            v-bind:data-name="undoButton"
+            class="jr-mButton jr-mButtonAction jr-mButtonTool jr"
+            aria-label="undo">
+        <span class="jr-mButton-icon jr-mIcon jr-undo jr"></span>
+    </button>
+    <button :disabled="isRedoDisabled"
+            :title="labels.redo"
+            @click="onRedo"
+            v-bind:data-name="redoButton"
+            class="jr-mButton jr-mButtonAction jr-mButtonTool jr"
+            aria-label="redo">
+        <span class="jr-mButton-icon jr-mIcon jr-redo jr"></span>
+    </button>
+    <button :disabled="isUndoDisabled"
+            :title="labels.undoAll"
+            @click="onUndoAll"
+            v-bind:data-name="undoAllButton"
+            class="jr-mButton jr-mButtonAction jr-mButtonTool jr"
+            aria-label="undo all">
+        <span class="jr-mButton-icon jr-mIcon jr-undoAll jr"></span>
+    </button>
+
+    <div class="jr-mToolbar-divider jr"></div>
+</div>

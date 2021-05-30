@@ -1,0 +1,17 @@
+<ul data-name="metadataDesignerAvailableSchemasTree" class="jr-mTree jr" role="tree" style="top: {{- top}}px; position: relative;" >
+    <js-templateNonce></js-templateNonce>
+    {{_.each(items, function(item) { }}
+    <li class="jr-mTree-leaf jr-mTree-leaf-1 jr {{if (item.isInvalid) print(' jr-isInvalid')}} {{ if (item.selected) print(' jr-isSelected'); }} {{ if (item.cssClass) print(item.cssClass) }}"
+        data-value="{{- item.value }}"
+        data-expanded="{{- item.expanded }}"
+        tabindex="-1"
+        data-index="{{- item.index }}"
+        role="treeitem"
+        aria-expanded="false">
+        <div class="jr-mTree-iconContainer jr-jTooltipTarget jr">
+            <span class="jr-mTree-icon {{- item.iconName }} jr"></span>
+        </div>
+        <p class="jr-mTree-label jr {{- item.labelClass}}" data-tooltip="{{- item.label}}">{{- item.label }}</p>
+    </li>
+    {{ }); }}
+</ul>

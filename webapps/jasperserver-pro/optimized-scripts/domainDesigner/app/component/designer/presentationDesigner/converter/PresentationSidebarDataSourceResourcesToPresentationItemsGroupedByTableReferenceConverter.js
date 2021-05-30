@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../model/schema/enum/schemaEntitiesEnum","./enum/childrenPropertyEnum"],function(e,r,t){var n=e("underscore"),o=e("../../../../../model/schema/enum/schemaEntitiesEnum"),i=e("./enum/childrenPropertyEnum"),a=function(e){this.initialize(e)};n.extend(a.prototype,{initialize:function(e){this.clientDomainSchemaService=e.clientDomainSchemaService,this.dataSourceResourcesConverter=e.dataSourceResourcesConverter,this.presentationItemDTONameGenerator=e.presentationItemDTONameGenerator,this.comparator=e.comparator},convert:function(e){var r=this.clientDomainSchemaService.getDataStore();this.presentationItemDTONameGenerator.reset();var t=this.dataSourceResourcesConverter.convert(n.extend({schema:r,comparator:this.comparator,childrenProperty:i.CHILDREN_PROPERTY},e)).reduce(function(e,r){return e[r.sourceId]||(e[r.sourceId]=[]),e[r.sourceId].push(r),e},{});return n.map(t,function(e,r){return{sourceId:parseInt(r,10),sourceType:o.TABLE_REFERENCE,presentationItems:e}})}}),t.exports=a});

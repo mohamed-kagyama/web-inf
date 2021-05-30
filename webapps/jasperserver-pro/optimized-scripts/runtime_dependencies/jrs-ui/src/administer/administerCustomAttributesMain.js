@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","requirejs-domready","jquery","../administer/administer.logging","../administer/administer.base","runtime_dependencies/js-sdk/src/jrs.configs","../attributes/factory/attributesDesignerFactory","../attributes/factory/attributesViewOptionsFactory","../attributes/trait/attributesViewScrollEventTrait","../attributes/enum/attributesTypesEnum"],function(t,e,i){var r=t("requirejs-domready"),s=t("jquery"),a=t("../administer/administer.logging"),n=t("../administer/administer.base"),u=t("runtime_dependencies/js-sdk/src/jrs.configs"),o=t("../attributes/factory/attributesDesignerFactory"),d=t("../attributes/factory/attributesViewOptionsFactory"),c=t("../attributes/trait/attributesViewScrollEventTrait"),b=t("../attributes/enum/attributesTypesEnum");r(function(){n.urlContext=u.urlContext,a.initialize();var t=o(b.SERVER,d({type:b.SERVER,el:s(".attributes")}));t.setContext().done(t.render).then(function(){c.initScrollEvent(t)})})});

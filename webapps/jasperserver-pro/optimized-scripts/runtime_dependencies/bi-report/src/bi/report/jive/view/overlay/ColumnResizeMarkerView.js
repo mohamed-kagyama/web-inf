@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","jquery","backbone","text!./template/columnResizeMarkerTemplate.htm","jquery-ui/ui/widgets/draggable"],function(e,t,i){var r=e("jquery"),n=e("backbone"),a=e("text!./template/columnResizeMarkerTemplate.htm");e("jquery-ui/ui/widgets/draggable"),i.exports=n.View.extend({el:a,constructor:function(e){e=e||{},this.$parentElement=r(e.parentElement?e.parentElement:"body"),n.View.apply(this,arguments)},initialize:function(){var e=this;n.View.prototype.initialize.apply(this,arguments),this.$el.draggable({axis:"x",start:function(t,i){e.trigger("marker:dragStart",t,i)},drag:function(t,i){e.trigger("marker:drag",t,i)},stop:function(t,i){e.trigger("marker:dragStop",t,i)}}),this.render()},render:function(){this.$parentElement.append(this.$el)},css:function(e){return this.$el.css(e),this},setPosition:function(e){return this.$el.position(e),this},show:function(){return this.$el.show(),this},hide:function(){return this.$el.hide(),this}})});

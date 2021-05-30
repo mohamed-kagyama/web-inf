@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","backbone","underscore","bundle!DashboardBundle","runtime_dependencies/js-sdk/src/common/util/i18nMessage","runtime_dependencies/js-sdk/src/common/extension/backboneValidationExtension"],function(e,n,i){var r=e("backbone"),d=e("underscore"),o=e("bundle!DashboardBundle"),a=e("runtime_dependencies/js-sdk/src/common/util/i18nMessage");e("runtime_dependencies/js-sdk/src/common/extension/backboneValidationExtension");var t=a.extend({bundle:o});i.exports=r.Model.extend(d.extend({},r.Validation.mixin,{idAttribute:void 0,defaults:{id:void 0,name:void 0,parameter:void 0,parameterLabel:void 0},validation:{id:[{required:!0,msg:new t("dashboard.filterManager.error.component.required")}],parameter:[{required:!0,msg:new t("dashboard.filterManager.error.parameter.required")}]},initialize:function(e,n){n||(n={}),this.component=n.component,this.on("change:id",function(){this.set({parameter:void 0,parameterLabel:void 0})},this)}}))});

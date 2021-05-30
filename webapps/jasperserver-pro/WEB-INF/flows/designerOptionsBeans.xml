@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+  ~ Licensed pursuant to commercial TIBCO End User License Agreement.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+
+    <!-- Backing action for edit designer properties flow -->
+    <bean id="editDesignerOptionsAction" class="com.jaspersoft.ji.adhoc.action.EditDesignerOptionsAction">
+      <property name="auditContext" ref="${bean.auditContext}"/>
+      <property name="propertiesManagementService" ref="propertiesManagementService"/>
+    </bean>
+
+
+</beans>

@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../enum/resourcePropertiesEnum","../enum/resourceTypeEnum","../enum/dataSourceLevelEnum","../enum/serverToDataSourceLevelEnum"],function(e,r,u){var n=e("underscore"),o=e("../enum/resourcePropertiesEnum"),s=e("../enum/resourceTypeEnum"),t=e("../enum/dataSourceLevelEnum"),c=e("../enum/serverToDataSourceLevelEnum");u.exports={getMetadataResourceType:function(e){var r=e.group,u=r[o.type];return t[c[u]]},isJoinAlias:function(e){return e===s.resources.joinGroups.REFERENCE},isQueryGroup:function(e){return e===s.resources.groups.QUERY_GROUP},isResourceGroup:function(e){return e===s.resources.groups.GROUP},isResourceElement:function(e){return e===s.resources.groups.ELEMENT},isConstantGroup:function(e){return e===s.resources.constantsGroups.GROUP},isJoinGroup:function(e){return e===s.resources.joinGroups.GROUP},isPresentationElement:function(e){return e===s.presentation.ELEMENT},isPresentationGroup:function(e){return e===s.presentation.GROUP},getResourceType:function(e){return n.keys(e)[0]},getResourceValue:function(e,r){return e[r]}}});

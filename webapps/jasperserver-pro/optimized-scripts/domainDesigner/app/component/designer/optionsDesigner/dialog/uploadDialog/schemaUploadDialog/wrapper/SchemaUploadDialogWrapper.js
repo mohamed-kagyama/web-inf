@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","runtime_dependencies/js-sdk/src/components/dialog/Dialog"],function(e,o,i){var s=e("underscore"),t=e("runtime_dependencies/js-sdk/src/components/dialog/Dialog");i.exports=t.extend({constructor:function(e){this.schemaUploadDialog=e.schemaUploadDialog,t.prototype.constructor.call(this,{el:this.schemaUploadDialog.$mount().$el})},initialize:function(e){s.bindAll(this,"_onUploadSchema","_resetAndCloseDialog"),this._initEvents(),t.prototype.initialize.apply(this,arguments)},_initEvents:function(){this.schemaUploadDialog.$on("uploadSchema",this._onUploadSchema),this.schemaUploadDialog.$on("close",this._resetAndCloseDialog)},_onUploadSchema:function(e,o){this.trigger("uploadSchema",e,o),this._resetAndCloseDialog()},_resetAndCloseDialog:function(){this.schemaUploadDialog.reset(),this.close()}})});

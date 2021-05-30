@@ -1,0 +1,23 @@
+<div class="jr-mPanel jr">
+    <div class="jr-mPanel-header jr">
+        <h2 class="jr-mPanel-header-title jr">{{ i18n['domain.designer.sidebar.title'] }}</h2>
+        <div class="jr-mPanel-header-toolset jr-uRight jr">
+            <button v-clickMenu="dataSourceMenuOptions" v-bind:data-name="menuOptionsButton" class="jr-mButton jr-mButtonAction jr-mButtonTool jr-mButtonToolPlain jr" aria-label="data source">
+                <span class="jr-mButton-icon jr-mIcon jr-kebab jr"></span>
+            </button>
+        </div>
+    </div>
+    <div class="jr-mPanel-search jr">
+        <metadataDesignerSidebarSearch></metadataDesignerSidebarSearch>
+        <joinsDesignerSidebarSearch></joinsDesignerSidebarSearch>
+        <presentationDesignerSidebarSearch></presentationDesignerSidebarSearch>
+        <filtersDesignerSidebarSearch></filtersDesignerSidebarSearch>
+    </div>
+
+    <metadataDesignerSidebar></metadataDesignerSidebar>
+    <joinsDesignerResourcesForEmptyJoinTreesSidebar></joinsDesignerResourcesForEmptyJoinTreesSidebar>
+    <joinsDesignerResourcesForNotEmptyJoinTreesSidebar></joinsDesignerResourcesForNotEmptyJoinTreesSidebar>
+    <joinsDesignerJoinTreesTreeSidebar></joinsDesignerJoinTreesTreeSidebar>
+    <presentationDesignerSidebar></presentationDesignerSidebar>
+    <filtersDesignerSidebar></filtersDesignerSidebar>
+</div>

@@ -1,0 +1,37 @@
+<div class="jr-mGrid jr-mGridFlex jr">
+    <div class="jr-mGrid-row jr">
+        <div class="jr-mInput jr">
+            <label class="jr-mInput-label jr">{{- label }}</label>
+            <input class="jr-mInput-text jr" name="label" type="text">
+
+            <div class="jr-mInput-validation jr-isInvisible jr-jLabelValidation jr">
+                <div class="jr-mInput-validation-message jr">
+                    <div class="jr-mValidation jr-mValidationError jr">
+                        <span class="jr-mValidation-icon jr-mIcon jr-mIconSmall jr-cancelRound jr"></span>
+                        <span class="jr-mValidation-text jr-jLabelValidationText jr"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="jr-mInput jr">
+            <label class="jr-mInput-label jr">{{- description }}</label>
+            <textarea name="description" class="jr-mInput-textarea jr"></textarea>
+
+            <div class="jr-mInput-validation jr-isInvisible jr-jDescriptionValidation jr">
+                <div class="jr-mInput-validation-message jr">
+                    <div class="jr-mValidation jr-mValidationError jr">
+                        <span class="jr-mValidation-icon jr-mIcon jr-mIconSmall jr-cancelRound jr"></span>
+                        <span class="jr-mValidation-text jr-jDescriptionValidationText jr"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="jr-uFlexfit-row jr">
+    <div class="jr-mListbox jr-uFlexfit-row-item jr">
+        <div class="jr-mListbox-list jr jr-jTree"></div>
+    </div>
+</div>

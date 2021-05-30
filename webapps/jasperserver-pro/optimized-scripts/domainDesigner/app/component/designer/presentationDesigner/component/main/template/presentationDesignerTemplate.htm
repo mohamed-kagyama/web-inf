@@ -1,0 +1,26 @@
+<div class="jr-mDomain-mode-wrapper jr">
+    <controls
+            :moveButtonsStatus="moveButtonsStatus"
+            :searchKeyword="searchKeyword"
+            :isAddSetButtonActive="isAddSetButtonActive">
+    </controls>
+
+    <div class="jr-mDomain-mode-presentationtable jr">
+
+        <presentationDesignerTable
+                :models="models"
+                :searchKeyword="searchKeyword"
+                :scrollBarWidth="scrollBarWidth"
+                :isScrollBarPresent="isScrollBarPresent"
+                :columnSet="columnSet"
+                :column0Width="column0Width"
+                :column1Width="column1Width"
+                :scrollPos="scrollPos"
+                :top="top"
+                :height="height"
+                :editProperty="editProperty"
+                :isEmptyDataStructure="isEmptyDataStructure"
+                :emptyDataIslandsDropZone="emptyDataIslandsDropZone"
+        ></presentationDesignerTable>
+    </div>
+</div>

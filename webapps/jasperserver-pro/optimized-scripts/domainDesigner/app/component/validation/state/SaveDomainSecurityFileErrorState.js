@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","backbone"],function(i,t,e){var r=i("underscore"),o=i("backbone"),n=function(i){this.initialize(i)};r.extend(n.prototype,o.Events,{initialize:function(i){this.validationEventBus=i.validationEventBus,this.validationErrorDialogStore=i.validationErrorDialogStore,this.saveDomainSecurityFileErrorDialogStateFactory=i.saveDomainSecurityFileErrorDialogStateFactory,this.securityFileErrorsConverter=i.securityFileErrorsConverter},enter:function(i,t){var e=r.extend({},this._getDialogState(i),{show:!0});this.listenTo(this.validationEventBus,e.confirmEvent,r.bind(this._onConfirmOptionClicked,this,i,t)),this.validationErrorDialogStore.set(e)},_getDialogState:function(i){var t=this.securityFileErrorsConverter.convert(i.errors);return this.saveDomainSecurityFileErrorDialogStateFactory.create(t)},_cleanUpDialog:function(){this.stopListening(this.validationEventBus),this.validationErrorDialogStore.set("show",!1)},_onConfirmOptionClicked:function(i,t){this._cleanUpDialog()}}),e.exports=n});

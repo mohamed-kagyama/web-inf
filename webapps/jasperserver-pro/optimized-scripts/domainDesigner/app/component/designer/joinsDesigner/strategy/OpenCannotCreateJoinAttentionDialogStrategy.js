@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore"],function(e,t,a){var n=e("underscore"),i=function(e){this.initialize(e)};n.extend(i.prototype,{initialize:function(e){this.attentionDialog=e.attentionDialog,this.attentionDialogStore=e.attentionDialogStore,this.clientDomainSchemaService=e.clientDomainSchemaService,this.cannotCreateJoinAttentionDialogMessageFactory=e.cannotCreateJoinAttentionDialogMessageFactory},execute:function(e){var t=e.item,a=t.resource.parentTableReferenceId,n=this.cannotCreateJoinAttentionDialogMessageFactory.create({fieldName:t.label,dataIslandName:this._getDataIslandName(a),tableReferenceName:this._getTableReferenceName(a)});this.attentionDialogStore.set({validationMessage:n.message,validationMessageDetails:n.details}),this.attentionDialog.open()},_getTableReferenceName:function(e){return this.clientDomainSchemaService.getTableReferenceById(e).name},_getDataIslandName:function(e){var t=this.clientDomainSchemaService.getDataIslands();return n.find(t,function(t){return t.sourceId===e}).name}}),a.exports=i});

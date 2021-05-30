@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","backbone.epoxy","underscore"],function(e,t,o){var r=e("backbone.epoxy"),n=e("underscore");o.exports=r.Model.extend({defaults:{operator:null,value:""},computeds:{isMultiValueOperator:function(){var e=this.get("operator");return!(!e||-1===e.toLowerCase().indexOf("between"))},isNotNullCheckOperator:function(){var e=this.get("operator");return!!(!e||-1===e.toLowerCase().indexOf("null"))}},initialize:function(){this.on("change:operator",this._onOperatorChange),r.Model.prototype.initialize.apply(this,arguments)},reset:function(){return this.clear({silent:!1}).set(this.defaults),this},_onOperatorChange:function(){var e,t,o=this.get("value"),r=this.get("operator");e=r&&-1!==r.toLowerCase().indexOf("between"),t=r&&-1!==r.toLowerCase().indexOf("null"),!0===e?n.isArray(o)||this.set({value:[o]}):!1===e&&n.isArray(o)&&this.set({value:o[0]}),t&&this.set({value:""})},remove:function(){}})});

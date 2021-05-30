@@ -1,0 +1,36 @@
+<div class="jr-mInput jr-mInputControlMultiSelectCheckbox jr">
+    <js-templateNonce></js-templateNonce>
+    <fieldset class="jr" title="{{-description}}">
+        <legend class="jr-mInput-label {{ if (mandatory) { }} jr-mInput-labelRequired {{ } }} jr">{{-label}}
+        </legend>
+        <div class="jr-mInput-set jr">
+            <ul class="jr-mInput-checkContainer jr">
+            </ul>
+        </div>
+        <div class="jr-mInput-buttonContainer jr">
+            <ul class="jr-mItemselector jr">
+                <li  title="{{-selectAllMsg}}" class="jr-mItemselector-button jr-uWidth-30pc jr jr-jSelectAll">
+                    <span class="jr-mItemselector-button-icon jr-mIcon jr-mIconSmall jr-checkmark jr"></span>
+                    <a class="jr-mItemselector-button-label jr">
+                        <span class="jr">{{-selectAllMsg}}</span>
+                    </a>
+                </li>
+
+                <li  title="{{-selectNoneMsg}}" class="jr-mItemselector-button jr-uWidth-30pc jr jr-jSelectNone">
+                    <span class="jr-mItemselector-button-icon jr-mIcon jr-mIconSmall jr-cancel jr"></span>
+                    <a class="jr-mItemselector-button-label jr">
+                        <span class="jr">{{-selectNoneMsg}}</span>
+                    </a>
+                </li>
+
+                <li  title="{{-selectInverseMsg}}" class="jr-mItemselector-button jr-uWidth-40pc jr jr-jInvert">
+                    <span class="jr-mItemselector-button-icon jr-mIcon jr-mIconSmall jr-invert jr"></span>
+                    <a class="jr-mItemselector-button-label jr">
+                        <span class="jr">{{-selectInverseMsg}}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </fieldset>
+    <span class="jr-mInput-alert jr jr-isInvisible">{{-message}}</span>
+</div>

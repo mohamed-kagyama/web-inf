@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","jquery","../../../rest/enum/requestCanceledEnum","runtime_dependencies/js-sdk/src/components/singleSelect/view/SingleSelectNew"],function(e,t,n){var i=e("underscore"),s=e("jquery"),r=e("../../../rest/enum/requestCanceledEnum"),l=e("runtime_dependencies/js-sdk/src/components/singleSelect/view/SingleSelectNew");n.exports={create:function(e){e=e||{};var t=e.$||s,n=e.SingleSelect||l;return{template:"<div class='jr'></div>",props:["value","formatValue"],methods:{initEvents:function(){this.singleSelect.on("selection:change",i.bind(this.triggerSelectionChangeEvent,this)),this.singleSelect.on("listRenderError",i.bind(this.onListRenderError,this))},triggerSelectionChangeEvent:function(e){this.$emit("selection:change",e)},onListRenderError:function(e,t){e===r.CANCELED&&this.singleSelect.listView.reset()}},created:function(){var t=i.isUndefined(this.value)?e:i.defaults({},e,{value:this.value,formatValue:this.formatValue});this.singleSelect=new n(t),this.initEvents()},updated:function(){this.singleSelect.setValue(this.value)},mounted:function(){t(this.$el).append(this.singleSelect.$el)},destroyed:function(){this.singleSelect.remove()}}}}});

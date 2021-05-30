@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","jquery","runtime_dependencies/jrs-ui/src/components/components.dialogs"],function(e,n,o){function r(e,n){if(null==e)return{};var o,r,i=t(e,n);if(Object.getOwnPropertySymbols){var s=Object.getOwnPropertySymbols(e);for(r=0;r<s.length;r++)o=s[r],n.indexOf(o)>=0||Object.prototype.propertyIsEnumerable.call(e,o)&&(i[o]=e[o])}return i}function t(e,n){if(null==e)return{};var o,r,t={},i=Object.keys(e);for(r=0;r<i.length;r++)o=i[r],n.indexOf(o)>=0||(t[o]=e[o]);return t}function i(e){var n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{el:s("<div></div>")},o=n.el,t=n.showDimmer,i=void 0===t||t,p=n.delay,c=void 0===p?l:p,d=r(n,["el","showDimmer","delay"]),m=o[0];setTimeout(function(){"pending"===e.state()&&(u.popup.show(m,i,d),e.always(function(){u.popup.hide(m)}))},c)}var s=e("jquery"),u=e("runtime_dependencies/jrs-ui/src/components/components.dialogs"),l=300;o.exports=i});

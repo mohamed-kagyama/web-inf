@@ -1,0 +1,17 @@
+<div class="jr-mInputpair jr">
+    <div class="jr-mInput jr" v-dateAndTimePicker="rangeStartDateAndTimePickerOptions">
+        <input @input="onInputRangeStart" v-bind:data-name="rangeStartInput" class="jr-mInput-date jr jr-jDateTimeInput" type="text" :value="operand.start.value">
+        <button data-name="filtersDesignerDraftFilterValueEditorDateTimeRangeStartButton" class="jr-mInput-datetrigger jr jr-jDateTimePickerTrigger">
+            <span class="jr-mInput-datetrigger-icon jr-mIcon jr-calendar jr"></span>
+        </button>
+        <errorMessage :message="startErrorMessage" type="error"></errorMessage>
+    </div>
+    <div class="jr-mInputpair-text jr">{{ i18n['domain.designer.filters.draftState.valueEditor.range.andLabel'] }}</div>
+    <div class="jr-mInput jr" v-dateAndTimePicker="rangeEndDateAndTimePickerOptions">
+        <input @input="onInputRangeEnd" v-bind:data-name="rangeEndInput" class="jr-mInput-date jr jr-jDateTimeInput" type="text" :value="operand.end.value">
+        <button v-bind:data-name="rangeEndButton" class="jr-mInput-datetrigger jr jr-jDateTimePickerTrigger">
+            <span class="jr-mInput-datetrigger-icon jr-mIcon jr-calendar jr"></span>
+        </button>
+    </div>
+    <errorMessage :message="endErrorMessage" type="error"></errorMessage>
+</div>

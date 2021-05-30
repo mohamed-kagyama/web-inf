@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../../../model/schema/util/entityUtil","../../../../../../common/vue/computed/i18nComputed","text!../template/joinsDesignerVueTemplate.htm"],function(e,n,t){var i=e("underscore"),r=e("../../../../../../../model/schema/util/entityUtil"),o=e("../../../../../../common/vue/computed/i18nComputed"),a=e("text!../template/joinsDesignerVueTemplate.htm");t.exports={create:function(e){var n=e.JoinTree,t=e.DraftJoinTree,s=e.JoinTreePlaceholder,u=e.JoinsDesignerSearch,l=e.VirtualData,c=e.InitialDropZone;return{template:a,computed:i.extend({isVisible:function(){return this.currentDesigner===this.ownDesigner},isAnyModelsPresent:function(){return Boolean(this.models.length)}},o),data:function(){return e.data},components:{joinTree:n,draftJoinTree:t,joinTreePlaceholder:s,joinsDesignerSearch:u,virtualData:l,initialDropZone:c},methods:{isJoinTree:function(e){return r.isJoinTree(e)},isDraftJoinTree:function(e){return e.isDraftJoinTree},isJoinTreePlaceholder:function(e){return e.isJoinTreePlaceholder}}}}}});

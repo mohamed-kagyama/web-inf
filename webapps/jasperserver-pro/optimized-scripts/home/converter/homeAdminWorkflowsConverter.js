@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","../types/workflowNameToIconClassEnum","../types/workflowNameToPrimaryActionClassEnum","bundle!HomeBundle"],function(o,n,a){function e(o){return{name:o.name,title:o.label,description:o.description,iconClass:i[o.name],iconAriaLabel:"",primaryActionClass:s[o.name],primaryActionHasIcon:!1,secondaryActionLabel:"",secondaryActionAriaLabel:"",isSecondaryActionDisabled:!0,primaryActionUrl:o.controls.href,primaryActionLabel:o.controls.label,primaryActionAriaLabel:"".concat(o.controls.label," ").concat(o.label)}}var r=o("../types/workflowNameToIconClassEnum"),i=r.adminWorkflowNameToIconClassEnum,l=o("../types/workflowNameToPrimaryActionClassEnum"),s=l.adminWorkflowNameToPrimaryActionClass,t=o("bundle!HomeBundle"),c=function(o){return{title:t["category.admin"],categoryClass:"workflowsAdmin",items:o.map(e)}};n.adminWorkflowsConverter=c});

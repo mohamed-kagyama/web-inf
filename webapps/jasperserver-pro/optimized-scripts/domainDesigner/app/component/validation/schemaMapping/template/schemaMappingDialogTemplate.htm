@@ -1,0 +1,78 @@
+<div class="jr-mDialog jr-uHeight-400px jr" :class="{'jr-uWidth-400px': narrow, 'jr-uWidth-700px': !narrow, 'jr-isHidden': !isVisible }" v-bind:data-name="dialogName">
+    <div class="jr-mDialog-header jr jr-jDialogDraggable">
+        <h1 class="jr-mDialog-header-title jr">{{ i18n['domain.designer.schemaMapperDialog.title'] }}</h1>
+    </div>
+
+    <div class="jr-mDialog-body jr">
+        <div class="jr-mDialog-body-wrapper jr-mDialog-body-wrapperFit jr">
+
+            <p class="jr-mForm-instructions jr" v-if="isSelectingAvailableSchema">{{ i18n['domain.designer.schemaMapperDialog.isSelectingAvailableSchema.instruction'] }}</p>
+            <p class="jr-mForm-instructions jr" v-if="isSelectingExistingSchema">{{ i18n['domain.designer.schemaMapperDialog.isSelectingExistingSchema.instruction'] }}</p>
+            <p class="jr-mForm-instructions jr" v-if="!isSelectingAvailableSchema && !isSelectingExistingSchema">{{ i18n['domain.designer.schemaMapperDialog.instruction'] }}</p>
+
+            <div class="jr-uFlexfit-row jr"> <!-- START uFlexfit-row -->
+                <div class="jr-uFlexfit-row-item jr"> <!-- START uFlexfit-row-item -->
+
+                    <div v-if="!isSelectingAvailableSchema && !isSelectingExistingSchema" class="jr-mShuttle jr"> <!-- START jr-mShuttle -->
+
+                        <div class="jr-mShuttle-listbox jr">
+                            <div class="jr-mListbox jr">
+                                <div class="jr-mListbox-label jr">{{ i18n['domain.designer.schemaMapperDialog.current.list.title'] }}</div>
+                                <div v-bind:data-name="dialogExistingList" class="jr-mListbox-list jr">
+                                    <!--sample listbox content, tree module-->
+                                    <ul v-bind:data-name="dialogExistingSchemasTree" class="jr-mTree jr">
+                                        <schema-mapping-item  v-for="schema in existingSchemas" :schema="schema" v-on:schemaItemClicked="onSchemaItemClicked"></schema-mapping-item>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="jr-mShuttle-movers jr">
+                            <button @click="onLinkButtonClicked" :disabled="!allowLink" v-bind:data-name="linkButton" class="jr-mButton jr-mButtonAction jr-mButtonOutline jr-mButtonMedium jr " aria-label="">
+                                <span class="jr-mButton-icon jr-mIcon jr-link jr"></span>
+                            </button>
+                            <button @click="onUnlinkButtonClicked" :disabled="!allowUnlink" v-bind:data-name="unlinkButton" class="jr-mButton jr-mButtonAction jr-mButtonOutline jr-mButtonMedium jr" aria-label="">
+                                <span class="jr-mButton-icon jr-mIcon jr-unlink jr"></span>
+                            </button>
+                        </div>
+
+                        <div class="jr-mShuttle-listbox jr">
+                            <div class="jr-mListbox jr">
+                                <div class="jr-mListbox-label jr">{{ i18n['domain.designer.schemaMapperDialog.available.list.title'] }}</div>
+                                <div v-bind:data-name="availableList" class="jr-mListbox-list jr">
+                                    <!--sample listbox content, tree module-->
+                                    <ul v-bind:data-name="availableTree" class="jr-mTree jr">
+                                        <schema-mapping-item  v-for="schema in availableSchemas" :schema="schema" v-on:schemaItemClicked="onSchemaItemClicked"></schema-mapping-item>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- END jr-mShuttle -->
+
+                    <div v-else class="jr-mListbox jr">
+                        <div class="jr-mListbox-label jr" v-if="isSelectingExistingSchema">{{ i18n['domain.designer.schemaMapperDialog.current.list.title'] }}</div>
+                        <div class="jr-mListbox-label jr" v-if="isSelectingAvailableSchema">{{ i18n['domain.designer.schemaMapperDialog.available.list.title'] }}</div>
+                        <div v-bind:data-name="dialogList" class="jr-mListbox-list jr">
+                            <ul v-bind:data-name="dialogTree" class="jr-mTree jr">
+                                <schema-mapping-item v-if="isSelectingExistingSchema" v-for="schema in existingSchemas" :schema="schema" v-on:schemaItemClicked="onSchemaItemClicked"></schema-mapping-item>
+                                <schema-mapping-item v-if="isSelectingAvailableSchema" v-for="schema in availableSchemas" :schema="schema" v-on:schemaItemClicked="onSchemaItemClicked"></schema-mapping-item>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div> <!-- END uFlexfit-row-item -->
+            </div> <!-- END uFlexfit-row -->
+
+        </div>
+    </div>
+
+
+    <div class="jr-mDialog-footer jr">
+        <button @click="onConfirm" v-bind:data-name="confirmButton" class="jr-mButton jr-mButtonText jr-mButtonPrimary jr">
+            <span class="jr-mButton-label jr">{{ i18n['domain.designer.dialog.confirm'] }}</span>
+        </button>
+        <button @click="onReject" v-bind:data-name="rejectButton" class="jr-mButton jr-mButtonText jr-mButtonSecondary jr jr-jDialogClose">
+            <span class="jr-mButton-label jr">{{ i18n['domain.designer.dialog.cancel'] }}</span>
+        </button>
+        <div class="jr-mDialog-footer-sizer jr-jDialogResizer jr"></div>
+    </div></div>

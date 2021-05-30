@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","backbone"],function(e,i,n){var t=e("underscore"),o=e("backbone"),s=function(e){this.initialize(e)};t.extend(s.prototype,o.Events,{initialize:function(e){this.joinsDesignerEventBus=e.joinsDesignerEventBus,this.createDraftJoinTreeStrategy=e.createDraftJoinTreeStrategy,this.openCannotCreateJoinAttentionDialogStrategy=e.openCannotCreateJoinAttentionDialogStrategy,this.joinsDesignerIsFieldUsedInSingleTableDataIslandSpecification=e.joinsDesignerIsFieldUsedInSingleTableDataIslandSpecification,this._initEvents()},_initEvents:function(){this.listenTo(this.joinsDesignerEventBus,"initialDropZone:drop",this._onInitialDropZoneDrop)},_onInitialDropZoneDrop:function(e){this.joinsDesignerIsFieldUsedInSingleTableDataIslandSpecification.isSatisfiedBy(e)?this.openCannotCreateJoinAttentionDialogStrategy.execute({item:e}):this.createDraftJoinTreeStrategy.execute(e)}}),n.exports=s});

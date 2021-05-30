@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","./designer","./designer.ajax","./designer.contextmenu","./designer.field.actions","./designer.helpers","./designer.init","./designer.observers","./designer.report.actions","./designer.selection","./designer.tree.actions","./designer.label.actions","./designer.obsolete"],function(e,n,r){function i(){return i=Object.assign||function(e){for(var n=1;n<arguments.length;n++){var r=arguments[n];for(var i in r)Object.prototype.hasOwnProperty.call(r,i)&&(e[i]=r[i])}return e},i.apply(this,arguments)}var s=e("./designer"),t=e("./designer.ajax"),o=e("./designer.contextmenu"),d=e("./designer.field.actions"),g=e("./designer.helpers"),a=e("./designer.init"),c=e("./designer.observers"),l=e("./designer.report.actions"),p=e("./designer.selection"),u=e("./designer.tree.actions"),b=e("./designer.label.actions"),f=e("./designer.obsolete"),v=i(s,t,o,d,g,a,c,l,p,u,f,b);r.exports=v});

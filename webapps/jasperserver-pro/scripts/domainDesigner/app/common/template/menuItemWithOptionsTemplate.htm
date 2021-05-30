@@ -1,0 +1,5 @@
+<li class="leaf {{if (typeof value !== 'undefined' && value) { }} active {{ } }} {{if (typeof cssClass !== 'undefined') { }} {{- cssClass }} {{ } }}" {{ if (typeof groupId !== 'undefined') { }} data-groupId = {{- groupId }} {{ } }} >
+    {{ if(label) { }}
+        <p class="wrap button"><span class="icon"></span>{{- label }}</p>
+    {{ } }}
+</li>

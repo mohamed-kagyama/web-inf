@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore"],function(e,n,r){function i(e){var n,r=e._hoverMenu;r&&(r.index&&(n=t.map[r.index],n.remove(),delete t.map[r.index]),e.removeEventListener("mouseenter",r.onMouseEnter)),delete e._hoverMenu}var o=e("underscore"),t=null;r.exports={create:function(e,n){function r(e,r){e._hoverMenu={};var i=r&&!o.isEmpty(r),d=function(){if(!e._hoverMenu.index){var i=new u(o.extend({},n,{el:e,menuOptions:r}));i.show(),t.map[t.index]=i,e._hoverMenu.index=t.index,t.index=t.index+1}o.each(t.map,function(n){n!==t.map[e._hoverMenu.index]&&n.hide()})};i&&(e._hoverMenu.onMouseEnter=d,e.addEventListener("mouseenter",d))}n=n||{},t||(t=n.registry?n.registry:{index:1,map:{}}),n=o.omit(n,"registry");var u=e;return{bind:function(e,n){r(e,n.value)},componentUpdated:function(e,n){var o=n.value;i(e),r(e,o)},unbind:function(e){i(e)}}}}});

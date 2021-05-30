@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","../../../../../../model/schema/enum/schemaEntitiesEnum","../../enum/artificialTreeResourceTypesEnum","../baseEntityToDTOConverter"],function(e,r,n){var o=e("../../../../../../model/schema/enum/schemaEntitiesEnum"),t=e("../../enum/artificialTreeResourceTypesEnum"),c=e("../baseEntityToDTOConverter"),E={};E[t.CONSTANT_GROUP]=c.convertConstantGroup,E[o.DATA_SOURCE]=c.convertDataSource,E[o.DATA_SOURCE_GROUP]=c.convertDataSourceGroup,E[t.DERIVED_TABLE_GROUP]=c.convertDerivedTableGroup,E[o.DERIVED_TABLE]=c.convertDerivedTable,E[o.TABLE_REFERENCE]=c.convertTableReference,E[o.TABLE]=c.convertGenericTable,E[o.TABLE_GROUP]=c.convertTableGroup,E[o.FIELD]=c.convertGenericField,E[o.CALC_FIELD]=c.convertCalcField,E[o.JOIN_TREE]=c.convertJoinTree,E[o.JOIN_ALIAS]=c.convertJoinAlias,n.exports=E});

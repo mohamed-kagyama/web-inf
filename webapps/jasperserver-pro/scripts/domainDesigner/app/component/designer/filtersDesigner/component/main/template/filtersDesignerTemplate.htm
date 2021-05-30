@@ -1,0 +1,56 @@
+<div class="jr-mDomain-mode-wrapper jr">
+
+    <div class="jr-mDomain-mode-controls jr">
+        <div class="jr-mDomain-mode-controls-search jr">
+            <div class="jr-mInput jr-uWidth-300px jr">
+                <filtersDesignerSearch :searchKeyword="searchKeyword"></filtersDesignerSearch>
+            </div>
+        </div>
+    </div>
+
+    <div class="jr-mDomain-mode-prefiltertable jr">
+        <div v-bind:data-name="table" class="jr-mTable jr-mTableGrid jr-mTablePrefilters jr">
+            <!--START HEADER ROW-->
+            <div class="jr-mTable-head jr">
+                <div class="jr-mTable-row jr-mTable-rowHeader jr">
+                    <div class="jr-mTable-cell jr-mTable-cellField jr">
+                        <div class="jr-mTable-cell-wrapper jr">
+                            <p class="jr-mTable-cell-text jr">{{ i18n['domain.designer.filters.columnSet.field'] }}</p>
+                        </div>
+                    </div>
+                    <div class="jr-mTable-cell jr-mTable-cellOperator jr">
+                        <div class="jr-mTable-cell-wrapper jr">
+                            <p class="jr-mTable-cell-text jr">{{ i18n['domain.designer.filters.columnSet.operator'] }}</p>
+                        </div>
+                    </div>
+                    <div class="jr-mTable-cell jr-mTable-cellValue jr">
+                        <div class="jr-mTable-cell-wrapper jr">
+                            <p class="jr-mTable-cell-text jr">{{ i18n['domain.designer.filters.columnSet.value'] }}</p>
+                        </div>
+                    </div>
+
+                    <div class="jr-mTable-cell jr-mTable-cellActions jr">
+                        <div class="jr-mTable-cell-wrapper jr">
+                            <p class="jr-mTable-cell-actions jr"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--END HEADER ROW-->
+
+            <!-- START TABLE BODY -->
+            <virtualData v-if="!isHidden" class="jr-mTable-body jr" :scrollPos="scrollPos" v-droppable="droppableConfig" :top="top" :height="height">
+                <template v-for="filter in filters">
+                    <complexFilter v-if="isComplex(filter)" :filter="filter"></complexFilter>
+                    <draftFilter v-else-if="isDraft(filter)" :filter="filter"></draftFilter>
+                    <filterExpression v-else :filter="filter"></filterExpression>
+                </template>
+
+            </virtualData>
+            <canvasDroppableArea v-if="isCanvasDroppableAreaShouldBeVisible"
+                                 :isEmptyDataStructure="isEmptyDataStructure"
+                                 :isActive="isInitialDroppableZoneActive"></canvasDroppableArea>
+            <!-- END TABLE BODY -->
+        </div>
+    </div>
+</div>

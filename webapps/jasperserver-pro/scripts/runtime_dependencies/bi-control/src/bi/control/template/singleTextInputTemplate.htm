@@ -1,0 +1,6 @@
+<div class="jr-mInput jr-mInputControlSingleValueText jr">
+    <js-templateNonce></js-templateNonce>
+    <label class="jr-mInput-label {{ if (mandatory) { }} jr-mInput-labelRequired {{ } }} jr" for="{{-uuid}}">{{-label}}</label>
+    <input class="jr-mInput-text jr" id="{{-uuid}}" type="text" {{ if (readOnly) { }}disabled="disabled"{{ } }} />
+    <span class="jr-mInput-alert jr jr-isInvisible">{{-message}}</span>
+</div>

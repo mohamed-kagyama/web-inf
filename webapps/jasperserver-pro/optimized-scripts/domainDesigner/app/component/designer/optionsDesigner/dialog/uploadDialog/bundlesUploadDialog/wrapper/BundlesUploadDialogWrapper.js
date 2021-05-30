@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","runtime_dependencies/js-sdk/src/components/dialog/Dialog"],function(o,i,n){var e=o("underscore"),s=o("runtime_dependencies/js-sdk/src/components/dialog/Dialog");n.exports=s.extend({constructor:function(o){this.bundlesUploadDialog=o.bundlesUploadDialog,s.prototype.constructor.call(this,{el:this.bundlesUploadDialog.$mount().$el})},initialize:function(o){e.bindAll(this,"_onAddLocalFiles","_onAddFromRepository","_onClose"),this._initEvents(),s.prototype.initialize.apply(this,arguments)},open:function(){var o=this;this.bundlesUploadDialog.open().then(function(){s.prototype.open.apply(o,arguments)})},_initEvents:function(){this.bundlesUploadDialog.$on("addLocalFiles",this._onAddLocalFiles),this.bundlesUploadDialog.$on("addFromRepository",this._onAddFromRepository),this.bundlesUploadDialog.$on("close",this._onClose)},_onAddFromRepository:function(o){this.trigger("add:fromRepository",o),this.close()},_onAddLocalFiles:function(o){this.trigger("add:localFiles",o),this.close()},_onClose:function(){this.close()}})});

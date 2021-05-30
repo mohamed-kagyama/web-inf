@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","text!../template/dependenciesTreeVirtualDataTemplate.htm","../enum/dependenciesTreeAlignmentClassEnum"],function(e,t,n){var i=e("text!../template/dependenciesTreeVirtualDataTemplate.htm"),a=e("../enum/dependenciesTreeAlignmentClassEnum");n.exports={create:function(e){e=e||{};var t=e.virtualData,n=e.store,r=e.mixins;return{components:{virtualData:t},props:{alignment:{type:String},label:{type:String}},computed:{styleObject:function(){return{height:this.canvasHeight+"px",overflowY:"auto",width:"100%"}},wrapperStyleObject:function(){return{height:this.canvasHeight+"px",overflow:"hidden"}},alignmentClass:function(){return a[this.alignment]},widthClass:function(){return this.alignmentClass?"jr-uWidth-48pc":""}},data:function(){return n},methods:{onToggle:function(t){e.dependenciesTreeVirtualDataComponentEventBus.trigger("tree:toggle",t)}},mixins:r,template:i}}}});

@@ -1,0 +1,16 @@
+<ul class="jr-mTab jr-mTabHorizontal jr-mTabSecondary jr">
+    <li class="jr-mTab-item jr"
+        :class="{'jr-isActive': isRepositoryTab}"
+        @click="onRepositoryTabClick"
+    >
+        <span class="jr-mTab-item-label jr">{{ i18n['domain.designer.advanced.options.uploadDialog.tab.repository.label'] }}</span>
+        <span class="jr-mTab-item-icon jr"></span>
+    </li>
+    <li class="jr-mTab-item jr"
+        :class="{'jr-isActive': isLocalFileTab}"
+        @click="onLocalFileTabClick"
+    >
+        <span class="jr-mTab-item-label jr">{{ i18n['domain.designer.advanced.options.uploadDialog.tab.localFile.label'] }}</span>
+        <span class="jr-mTab-item-icon jr"></span>
+    </li>
+</ul>

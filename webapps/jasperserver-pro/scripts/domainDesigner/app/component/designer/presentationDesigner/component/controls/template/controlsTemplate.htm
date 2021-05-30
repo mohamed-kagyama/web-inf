@@ -1,0 +1,36 @@
+<div class="jr-mDomain-mode-controls jr">
+    <div class="jr-mDomain-mode-controls-buttons jr">
+        <div js-stdnav="false" class="jr-mButtongroup jr">
+            <button
+                    :disabled="!isAddSetButtonActive"
+                    @click="onAddSet"
+                    v-bind:data-name="addSetButton"
+                    class="jr-mButton jr-mButtonText jr-mButtonPrimary jr-mButtonMedium  jr">
+                <span class="jr-mButton-label jr">{{i18n['domain.designer.presentationDesigner.addPresentationSet']}}</span>
+            </button>
+            <div class="jr-mButtongroup-divider jr"></div>
+            <button @click="onMoveToTop" :disabled="!moveButtonsStatus.topButtonEnabled" v-bind:data-name="moveToTopButton" class="jr-mButton jr-mButtonAction jr" aria-label="move to top"
+                    :title="i18n['domain.designer.presentationDesigner.label.moveTop']">
+                <span class="jr-mButton-icon jr-mIcon jr-arrowToTop jr"></span>
+            </button>
+            <button @click="onMoveUp" :disabled="!moveButtonsStatus.upButtonEnabled" v-bind:data-name="moveUpButton" class="jr-mButton jr-mButtonAction jr" aria-label="move up"
+                    :title="i18n['domain.designer.presentationDesigner.label.moveUp']">
+                <span class="jr-mButton-icon jr-mIcon jr-arrowUp jr"></span>
+            </button>
+            <button @click="onMoveDown" :disabled="!moveButtonsStatus.downButtonEnabled" v-bind:data-name="moveDownButton" class="jr-mButton jr-mButtonAction jr" aria-label="move down"
+                    :title="i18n['domain.designer.presentationDesigner.label.moveDown']">
+                <span class="jr-mButton-icon jr-mIcon jr-arrowDown jr"></span>
+            </button>
+            <button @click="onMoveToBottom" :disabled="!moveButtonsStatus.bottomButtonEnabled" v-bind:data-name="moveToBottomButton" class="jr-mButton jr-mButtonAction jr" aria-label="move to bottom"
+                    :title="i18n['domain.designer.presentationDesigner.label.moveBottom']">
+                <span class="jr-mButton-icon jr-mIcon jr-arrowToBottom jr"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="jr-mDomain-mode-controls-search jr">
+        <div class="jr-mInput jr-uWidth-300px jr">
+            <search :searchKeyword="searchKeyword"></search>
+        </div>
+    </div>
+</div>

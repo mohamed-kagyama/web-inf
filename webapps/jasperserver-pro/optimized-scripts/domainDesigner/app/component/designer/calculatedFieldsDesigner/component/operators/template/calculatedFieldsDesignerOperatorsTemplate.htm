@@ -1,0 +1,12 @@
+<div class="jr-mForm-container jr-uTop-half jr">
+    <div v-for="operatorGroup in operators" class="jr-mButtongroup jr-mButtongroupSpread jr">
+        <button v-for="operator in operatorGroup"
+                :disabled="disableButtons"
+                :aria-label="operator.ariaLabel"
+                :data-name="getComputedValueByName(operator.dataNameComputed)"
+                @click="selectOperator(operator.sign)"
+                class="jr-mButton jr-mButtonAction jr-mButtonDefault jr-uWidth-15pc jr">
+            <span :class="operator.operatorClass" class="jr-mButton-icon jr-mIcon jr"></span>
+        </button>
+    </div>
+</div>

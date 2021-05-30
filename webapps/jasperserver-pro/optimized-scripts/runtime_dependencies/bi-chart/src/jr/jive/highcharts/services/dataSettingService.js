@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","jquery","./defaultSettingService"],function(e,t,r){var i=e("jquery"),o=e("./defaultSettingService"),s={perform:function(e,t){var r=this;r.setProperties(e,t.properties),t.xCategories&&o.setProperty(e,"xAxis.categories",t.xCategories),t.yCategories&&o.setProperty(e,"yAxis.categories",t.yCategories),e.series=[],i.each(t.series,function(t,o){var s={};r.copyObject(s,o,["name","_jrid"]),r.setProperties(s,o.properties),s.data=[],i.each(o.data,function(e,t){var i={};r.copyObject(i,t,["name","x","y","z","value","id","parent","fullName","colorValue"]),r.setProperties(i,t.properties),s.data.push(i)}),e.series.push(s)})},copyObject:function(e,t,r){i.each(r,function(r,i){void 0!==t[i]&&(e[i]=t[i])})},setProperties:function(e,t){t&&i.each(t,function(t,r){o.setProperty(e,r.prop,r.val,r.isFunction)})}};r.exports=s});

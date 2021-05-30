@@ -1,0 +1,8 @@
+<div class="jr-mInput jr-mInputControlBoolean jr">
+        <js-templateNonce></js-templateNonce>
+    <div class="jr-mInput-boolean jr">
+        <input class="jr-mInput-boolean-box jr" type="checkbox" id="{{-uuid}}" {{ if (readOnly) { }}disabled="disabled"{{ } }}>
+        <label class="jr-mInput-boolean-label {{ if (mandatory) { }} jr-mInput-labelRequired {{ } }} jr" for="{{-uuid}}">{{-label}}</label>
+    </div>
+    <span class="jr-mInput-alert jr jr-isInvisible">{{-message}}</span>
+</div>

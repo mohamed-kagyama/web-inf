@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore"],function(t,e,o){function i(t){return c.reduce(t,function(t,e){return t+e.height},0)}function n(t){var e=t.height,o=t.canvasHeight,i=t.scrollPos,n=t.collection,r=0,c=0;if(e>o)if(i<=Math.ceil(e)-Math.floor(o))for(;;){if(!(r+n[c].height<i))break;r+=n[c].height,c++}else{c=n.length-1;for(var s=n[c].height;s<o&&c>0;)c--,s+=n[c].height;r=e-s}return{index:c,top:r}}function r(t){var e=t.scrollPos,o=t.startPosition,i=t.canvasHeight,n=t.collection;if(i>0){for(var r=o.top-e,c=o.index;r<i&&c<n.length;)r+=n[c].height,c++;return Math.max(c,o.index+1)}return o.index}var c=t("underscore");o.exports={getTotalHeight:i,getVisibleDataOptions:function(t){var e=t.collection,o=t.totalHeight||i(e),c=n({height:o,collection:e,canvasHeight:t.canvasHeight,scrollPos:t.scrollPos}),s=r({startPosition:c,scrollPos:t.scrollPos,canvasHeight:t.canvasHeight,collection:e});return{height:o,top:c.top,startPosition:c.index,endPosition:s}}}});

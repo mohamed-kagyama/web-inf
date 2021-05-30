@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","momentExtension","./formatsMappingUtil","./dateFormatter","runtime_dependencies/js-sdk/src/jrs.configs"],function(e,t,r){function o(e){return parseInt(n(e).format("HH"))>=12?"\u4e0b\u5348":"\u4e0a\u5348"}function n(e){return a(e).locale(u.userLocale).tz(u.userTimezone)}function s(e){return/T/.test(e)?e:"1970-01-01T"+e}var a=e("momentExtension"),i=e("./formatsMappingUtil"),m=e("./dateFormatter"),u=e("runtime_dependencies/js-sdk/src/jrs.configs");r.exports={format:function(e,t,r){return i.isNullOrEmpty(e)?"":i.isOtherNode(e)?e:i.shouldBeFormattedByDateFormatter(r)?m.format(e,t,r):i.shouldBeReturnedAsLocalazedDayOfWeek(r)?i.getLocalizedDayOfWeek(e):(t=i.getFormatForMoment(t,r),t?(/^zh/.test(u.userLocale)&&(t=t.replace("A",o(s(e)))),e=r&&r.ignoreTimezone?i.setToUserTimezone(e):i.ensureTimezone(e),n(s(e)).format(t)):e)}}});

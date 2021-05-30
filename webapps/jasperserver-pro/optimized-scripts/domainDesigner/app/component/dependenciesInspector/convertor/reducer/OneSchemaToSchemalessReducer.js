@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../model/schema/enum/schemaEntitiesEnum","../../../../model/enum/defaultSchemaNameEnum"],function(e,n,t){function u(){r.bindAll(this,"reduce")}var r=e("underscore"),c=e("../../../../../model/schema/enum/schemaEntitiesEnum"),o=e("../../../../model/enum/defaultSchemaNameEnum");r.extend(u.prototype,{reduce:function(e){var n=e.collections,t=e.targetEntityOptions,u=e.reducedCollections;return t=t||{},this._isOneDataSourceGroupEntityAndReplaceDataSourceAction(n,t)?r.reduce(u,function(e,n,t){return e[t]=[],e},{}):u},_isOneDataSourceGroupEntityAndReplaceDataSourceAction:function(e,n){var t=r.reduce(e,function(e,n){return e+=n.length},0),u=1===t,a=n.isReplaceDataSource,i=e[c.DATA_SOURCE_GROUP]||[];if(a&&u&&i.length)return i[0].name!==o.DEFAULT_SCHEMA}}),t.exports=u});

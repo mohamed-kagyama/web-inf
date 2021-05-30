@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+  ~ Licensed pursuant to commercial TIBCO End User License Agreement.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<bean id="reportOptionsRepositoryAction" class="com.jaspersoft.ji.report.options.actions.ReportOptionsRepositoryAction">
+		<property name="attributeResourceList" value="resources"/>
+		<property name="reportOptionsMapAttributeName" value="reportOptionsMap"/>
+		<property name="parameterExpandedReportOptions" value="reportOptionsExpanded"/>
+		<property name="attributeExpandedReportOptions" value="reportOptionsExpanded"/>
+		<property name="repositoryServiceSecurityChecker">
+            <ref bean="${bean.repositoryServiceSecurityChecker}"/>
+        </property>
+	</bean>
+	
+</beans>

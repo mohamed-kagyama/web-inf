@@ -1,0 +1,16 @@
+<div v-bind:data-name="loaderDialog" class="jr-mDialog  jr-mDialogModal jr-isHidden jr">
+    <div class="jr-mDialog-header jr jr-jDialogDraggable">
+        <h1 class="jr-mDialog-header-title jr">{{ i18n['domain.designer.loader.dialog.processing'] }}</h1>
+    </div>
+    <div class="jr-mDialog-body jr-mDialog-bodyPadded jr">
+        <div class="jr-mOverlay jr-mOverlayClear jr">
+            <div class="jr-mSpinner jr-mSpinnerPlain jr"></div>
+        </div>
+    </div>
+
+    <div v-if="hasCancel" class="jr-mDialog-footer jr">
+        <button @click="onCancelClick" v-bind:data-name="cancelButton" class="jr-mButton jr-mButtonText jr-mButtonPrimary jr-uWidth-100pc jr">
+            <span class="jr-mButton-label jr">{{ i18n['domain.designer.loader.dialog.cancel'] }}</span>
+        </button>
+    </div>
+</div>

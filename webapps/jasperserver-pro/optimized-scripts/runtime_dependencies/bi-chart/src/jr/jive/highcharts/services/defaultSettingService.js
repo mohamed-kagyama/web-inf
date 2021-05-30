@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","jquery","highcharts"],function(require,exports,module){var __disableStrictMode__="use strict",$=require("jquery"),Highcharts=require("highcharts"),JRDefaultHighchartsSettingService={perform:function(e,t){var r=this;$.each(t,function(t,o){o&&r.setProperty(e,o.prop,o.val,o.isFunction)})},setProperty:function setProperty(options,propertyPath,propertyValue,isFunction){var tokens=propertyPath.split("."),obj=options,idx,tokenToProp=function(e){var t=/^([a-zA-Z0-9$_]+)(?:\[(\d+)\])$/.exec(e);return t?{name:t[1],position:parseInt(t[2])}:{name:e,position:-1}},setProp=function(e,t,r){var o,i,n=e[t.name],s=Math.max(t.position,0);return $.isArray(n)?i=n[s]=r(n[s]):t.position<0?i=e[t.name]=r(n):(o=e[t.name]=new Array(t.position+1),void 0!==n&&null!=n&&(o[0]=n),i=o[s]=r(o[s])),i};for(idx=0;idx<tokens.length-1;++idx)obj=setProp(obj,tokenToProp(tokens[idx]),function(e){return void 0===e||null==e?{}:e});setProp(obj,tokenToProp(tokens[idx]),function(){return isFunction?eval("["+propertyValue+"][0]"):propertyValue})}};module.exports=JRDefaultHighchartsSettingService});

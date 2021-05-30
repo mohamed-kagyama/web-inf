@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../dispatcher/enum/applicationStateEventsEnum"],function(e,t,i){var n=e("underscore"),r=e("../../../../dispatcher/enum/applicationStateEventsEnum"),o=function(e){this.initialize(e)};n.extend(o.prototype,{initialize:function(e){this.draftJoinTreeFactory=e.draftJoinTreeFactory,this.joinConstructorFactory=e.joinConstructorFactory,this.clientDomainSchemaJoinsDesignerService=e.clientDomainSchemaJoinsDesignerService,this.applicationDispatcherEventBus=e.applicationDispatcherEventBus},execute:function(e,t){var i=this.joinConstructorFactory.create({item:e}),n=this.draftJoinTreeFactory.create({name:this.clientDomainSchemaJoinsDesignerService.generateJoinTreeName(),join:{leftSide:e.resource.parentTableReferenceName},joinConstructor:i,index:t||0});this.applicationDispatcherEventBus.trigger(r.JOINS_DESIGNER_SET_DRAFT_JOIN_TREE_STATE,n)}}),i.exports=o});

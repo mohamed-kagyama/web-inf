@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","./BaseComponentModel","../enum/jiveTypes","../enum/hyperlinkTargets","../enum/hyperlinkTypes"],function(e,r,n){var a=e("underscore"),p=e("./BaseComponentModel"),t=e("../enum/jiveTypes"),s=e("../enum/hyperlinkTargets"),o=e("../enum/hyperlinkTypes");n.exports=p.extend({defaults:function(){return{hyperlinks:[],id:void 0,type:t.HYPERLINKS}},constructor:function(e,r){r||(r={}),r.parse||(r=a.extend({},r,{parse:!0})),p.call(this,e,r)},parse:function(e){var r=this,n=a.clone(e);return n.hyperlinks=a.map(e.hyperlinks,function(e){var n={id:e.id,parameters:e.params,href:e.href,type:e.type,tooltip:e.tooltip,target:a.isUndefined(e.target)?s.SELF:e.target,anchor:e.anchor,pages:e.page};return a.contains([o.REPORT_EXECUTION,o.LOCAL_PAGE,o.LOCAL_ANCHOR],e.type)&&(n.href="",n.resource=e.params&&!a.isUndefined(e.params._report)?e.params._report:r.parent.get("reportURI")),e.type===o.REPORT_EXECUTION&&(n.anchor=e.params?e.params._anchor:void 0,n.pages=e.params?e.params._page:void 0),n}),n}})});

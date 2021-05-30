@@ -1,0 +1,6 @@
+{{_.each(items, function(item) { }}
+    <li class="node {{- item.nodeClass }}" itemId='{{- item.name }}' title='{{- item.tooltip}}'>
+
+    <js-templateNonce></js-templateNonce>
+        <p class="wrap"><b class="icon {{- item.type }} {{- item.kind }}"></b>{{- item.label }}</p></li>
+{{ }); }}

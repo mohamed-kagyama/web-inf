@@ -1,0 +1,11 @@
+<div class="jr-mInstructor jr-mInstructorOutershade jr-mInstructorOuterborder jr-uWidth-500px jr">
+    <div class="jr-mInstructor-wrapper jr">
+        <span class="jr-mInstructor-icon jr-mIcon jr-mIconXLarge jr-message jr"></span>
+        <p class="jr-mInstructor-title jr-mInstructor-titleSmall jr">{{ i18n['domain.designer.advanced.options.empty.locale.bundle'] }}</p>
+        <p class="jr-mInstructor-text jr-mInstructor-textSmall jr-uTop-single jr">{{ i18n['domain.designer.advanced.options.add.or.download.bundle.part1'] }}
+            <a @click="onDownloadBundleTemplate" class="jr-mLink jr-mLinkTheme jr-mLinkDynamic jr">{{ i18n['domain.designer.advanced.options.add.or.download.bundle.part2'] }}</a> {{ i18n['domain.designer.advanced.options.add.or.download.bundle.part3'] }}</p>
+        <button @click="onAddLocaleBundle" v-bind:data-name="addLocaleBundleButton" class="jr-mButton jr-mButtonText jr-mButtonPrimary jr-mButtonSmall jr-uTop-singlehalf jr">
+            <span class="jr-mButton-label jr">{{ i18n['domain.designer.advanced.options.add.locale.bundles'] }}</span>
+        </button>
+    </div>
+</div>

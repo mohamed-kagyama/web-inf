@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../util/metadataDesignerUtil"],function(e,t,r){var i=e("underscore"),a=e("../../../util/metadataDesignerUtil"),c=function(e){this.initialize(e)};i.extend(c.prototype,{initialize:function(e){this.metadataDesignerViewStateModelService=e.metadataDesignerViewStateModelService,this.clientDomainSchemaMetadataService=e.clientDomainSchemaMetadataService,this.clientResourcePropertiesService=e.clientResourcePropertiesService},get:function(e){var t=a.getCurrentResource(e),r=t&&t.resourceId,i=this.metadataDesignerViewStateModelService.getCurrentSidebarResource(),c=i.resourceId,n=i.type,o=this.clientDomainSchemaMetadataService.getDataSourceByChildResource(c,n),s=this.clientDomainSchemaMetadataService.getResourcePath(c,n);return{currentMetadataResourceId:r,currentDataSourceUri:this.clientResourcePropertiesService.getDataSourceUri(o.name),currentMetadataResourcePath:s}}}),r.exports=c});

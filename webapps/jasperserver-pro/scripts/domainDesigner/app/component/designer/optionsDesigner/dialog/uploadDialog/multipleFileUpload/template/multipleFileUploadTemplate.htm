@@ -1,0 +1,81 @@
+<div v-if="isFilesEmpty" class="jr">
+    <div class="jr-uFlexfit-row jr">
+        <div class="jr-uFlexfit-row-item jr">
+            <div class="jr-mInstructor jr-mInstructorShaded jr-uWidth-100pc jr-uHeight-100pc jr">
+                <div class="jr-mInstructor-wrapper jr">
+                    <span class="jr-mInstructor-icon jr-mIcon jr-mIconXLarge jr-message jr"></span>
+                    <p class="jr-mInstructor-title jr-mInstructor-titleSmall jr">{{ infoLabel }}</p>
+                    <div class="jr-mInput jr-mInputCompact jr-uTop-singlehalf jr">
+                        <div class="jr-mInput-file jr-mInput-fileSmall jr">
+                            <input v-bind:data-name="emptyFilesInput"
+                                   class="jr-mInput-file-input jr" id="jr-jInfoFileUploadDialog"
+                                   type="file"
+                                   @change="addFiles"
+                                   :accept="accept"
+                                   :multiple="multiple"
+                            >
+                            <label class="jr-mInput-file-trigger jr">
+                                <button v-bind:data-name="emptyFileButton" class="jr-mButton jr-mButtonText jr-mButtonDefault jr-mButtonSmall jr">
+                                    <span class="jr-mButton-label jr">{{ infoButtonLabel }}</span>
+                                </button>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div v-else class="jr">
+    <div v-bind:data-name="table" class="jr-mTable jr-mTableGrid jr-mTablePlain jr"
+         v-popover="{
+            title: popover.errorTitle,
+            text: popover.errorMessage,
+            placement: popover.placement,
+            type: popover.type,
+            inheritTargetWidth: popover.inheritTargetWidth,
+            offset: popover.offset
+         }"
+         @popoverClose="closeErrorPopover"
+         :class="{ 'jr-isInvalid' : popover.errorMessage}"
+    >
+        <div class="jr-mTable-body jr">
+
+            <template v-for="(file, index) in files">
+                <div class="jr-mTable-row jr" :class="{'jr-isInvalid': file.isInvalid}">
+                    <div class="jr-mTable-cell jr-uWidth-75pc jr">
+                        <div class="jr-mTable-cell-wrapper jr">
+                            <p class="jr-mTable-cell-text jr">{{ file.name }}</p>
+                        </div>
+                    </div>
+                    <div class="jr-mTable-cell jr-uWidth-25pc jr">
+                        <div class="jr-mTable-cell-wrapper jr">
+                            <div class="jr-mTable-cell-actionbuttons jr">
+                                <button v-bind:data-name="removeFileButton" class="jr-mButton jr-mButtonAction jr" aria-label="" @click="removeFile(index, $event)">
+                                    <div class="jr-mButtonAction-icon jr-mIcon jr-delete jr"></div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+    <div class="jr-mInput jr-mInputCompact jr-uTop-half jr-uRight jr">
+        <div class="jr-mInput-file jr-mInput-fileSmall jr">
+            <input v-bind:data-name="fileUploadInput"
+                   class="jr-mInput-file-input jr-jFileUploadInput jr"
+                   type="file"
+                   @change="addFiles"
+                   :accept="accept"
+                   :multiple="multiple"
+                   :disabled="isActionButtonDisabled"
+            >
+            <label class="jr-mInput-file-trigger jr">
+                <button v-bind:data-name="fileUploadButton" class="jr-mButton jr-mButtonText jr-mButtonDefault jr-mButtonSmall jr" :disabled="isActionButtonDisabled">
+                    <span class="jr-mButton-label jr">{{ actionButtonLabel }}</span>
+                </button>
+            </label>
+        </div>
+    </div>
+</div>

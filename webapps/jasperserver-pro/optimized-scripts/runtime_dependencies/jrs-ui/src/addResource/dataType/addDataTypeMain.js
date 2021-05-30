@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","requirejs-domready","../../resource/resource.dataType","underscore","jquery","../../components/components.calendarInput","runtime_dependencies/js-sdk/src/jrs.configs","../../resource/resource.base","../../util/utils.common"],function(e,r,a){function n(){return t.indexOf([3,4,5],i.addDataType.type)>-1}var o=e("requirejs-domready"),s=e("../../resource/resource.dataType"),t=e("underscore"),c=e("jquery"),d=e("../../components/components.calendarInput"),i=e("runtime_dependencies/js-sdk/src/jrs.configs"),u=e("../../resource/resource.base"),l=e("../../util/utils.common"),p=l.isIPad;o(function(){var e=i.addDataType.localContext.initOptions;if(t.extend(window.localContext,i.addDataType.localContext),t.extend(u.messages,i.addDataType.resource.messages),n()){var r=new d(i.addDataType.minValueText);r.container=c("label.minPicker"),r.create();var a=new d(i.addDataType.maxValueText);a.container=c("label.maxPicker"),a.create()}s.initialize(e),p()&&u.initSwipeScroll(),c("body").addClass("jr")})});

@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","./mixin/profileAttributeOperandMixin","../enum/filterParserStateNamesEnum","./mixin/profileAttributeStateMixin","./mixin/addFilterExpressionMixin"],function(t,i,e){var r=t("underscore"),n=t("./mixin/profileAttributeOperandMixin"),o=t("../enum/filterParserStateNamesEnum"),a=t("./mixin/profileAttributeStateMixin"),s=t("./mixin/addFilterExpressionMixin"),E=function(t){this.initialize(t)};r.extend(E.prototype,{initialize:function(t){this.factory=t.factory,this.context=t.context},value:function(t){this._addProfileAttributeFnOperand(t);var i=this._getProfileAttributeString();return i?(this.context.currentFilterExpression.right.value=i,this._addFilterExpression(),this.factory.create(o.SET_FILTER_EXPRESSION_OPERATOR_STATE,this.context)):this.factory.create(o.SET_FILTER_EXPRESSION_LITERAL_PROFILE_ATTRIBUTE_RIGHT_OPERAND_STATE,this.context)},_parseProfileAttribute:function(){return this.factory.create(o.SET_FILTER_EXPRESSION_LITERAL_PROFILE_ATTRIBUTE_RIGHT_OPERAND_STATE,this.context)}},s,n,a),e.exports=E});

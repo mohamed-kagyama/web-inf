@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../enum/rightOperandValueFormatEnum"],function(e,t,r){var n=e("underscore"),a=e("../../../../enum/rightOperandValueFormatEnum");r.exports={create:function(e){var t=e.filtersDesignerEventBus,r=e.dateAndTimePickerOptionsFactory,i=e.defaultRightOperandValueFormatEnum||a;return{computed:{rangeStartDateAndTimePickerOptions:function(){return r.create({dataType:this.filter.dataType,onSelect:n.bind(this.onStartDateSelect,this)})},rangeEndDateAndTimePickerOptions:function(){return r.create({dataType:this.filter.dataType,onSelect:n.bind(this.onEndDateSelect,this)})}},directives:{dateAndTimePicker:e.dateAndTimePicker},methods:{onStartDateSelect:function(e){e=i[this.filter.rightOperand.type]({start:e,end:this.operand.end.value}),t.trigger("draftFilter:changeValue",e)},onEndDateSelect:function(e){e=i[this.filter.rightOperand.type]({start:this.operand.start.value,end:e}),t.trigger("draftFilter:changeValue",e)}}}}}});

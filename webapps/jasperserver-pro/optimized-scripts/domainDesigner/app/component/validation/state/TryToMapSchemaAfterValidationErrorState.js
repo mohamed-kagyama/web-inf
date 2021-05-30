@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","./enum/validationStateNameEnum","./util/validationStateContextUtil"],function(e,a,i){var t=e("underscore"),n=e("./enum/validationStateNameEnum"),r=e("./util/validationStateContextUtil"),o=function(e){this.initialize(e)};t.extend(o.prototype,{initialize:function(e){this.dataSourceFreshInfoService=e.dataSourceFreshInfoService,this.clientDomainValidationService=e.clientDomainValidationService},enter:function(e,a){var i=this;if(r.isSchemasMapped(e)){var o=this.clientDomainValidationService.getDataSource().uri;this.dataSourceFreshInfoService.refreshDataSource(o).then(function(){var r=e.schemaPairs,o=e.availableSchemasToMap,c=i.clientDomainValidationService.getDataSource(),u=t.reduce(r,function(e,a){return t.contains(o,a[1])||e.push(a[1]),e},[]);e.unavailableSchemaError={parameters:{unavailableSchemas:u,dataSourceName:c.name}},a.enter(n.UNAVAILABLE_SCHEMA_ERROR_STATE,e)},function(i){e.xhr=i,a.enter(n.VALIDATION_ERROR_STATE,e)})}else a.enter(n.MAP_SCHEMAS_STATE,e)}}),i.exports=o});

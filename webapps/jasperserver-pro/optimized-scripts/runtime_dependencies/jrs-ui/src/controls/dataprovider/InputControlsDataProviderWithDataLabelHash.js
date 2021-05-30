@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module"],function(t,a,e){function n(t,a){if(!(t instanceof a))throw new TypeError("Cannot call a class as a function")}function r(t,a){for(var e=0;e<a.length;e++){var n=a[e];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(t,n.key,n)}}function o(t,a,e){return a&&r(t.prototype,a),e&&r(t,e),t}function i(t,a,e){return a in t?Object.defineProperty(t,a,{value:e,enumerable:!0,configurable:!0,writable:!0}):t[a]=e,t}var u=function(){function t(a){n(this,t),i(this,"inputControlsDataProvider",void 0),i(this,"dataLabelHash",void 0),this.dataLabelHash={},this.inputControlsDataProvider=a.inputControlsDataProvider}return o(t,[{key:"getData",value:function(t,a){var e=this;return this.inputControlsDataProvider.getData(t,a).then(function(t){var a=t.data,n=t.total;return a.forEach(function(t){e.dataLabelHash[t.value]=t.label}),{data:a,total:n}})}},{key:"getLabelByValue",value:function(t){return this.dataLabelHash[t]}}]),t}();e.exports=u});

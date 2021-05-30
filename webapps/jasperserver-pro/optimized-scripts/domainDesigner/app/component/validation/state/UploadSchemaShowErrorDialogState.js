@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","backbone"],function(o,e,i){var t=o("underscore"),a=o("backbone"),r=function(o){this.initialize(o)};t.extend(r.prototype,a.Events,{initialize:function(o){this.validationEventBus=o.validationEventBus,this.uploadSchemaValidationErrorDialogStore=o.uploadSchemaValidationErrorDialogStore,this.uploadSchemaUnrecoverableErrorDialogStateFactory=o.uploadSchemaUnrecoverableErrorDialogStateFactory},enter:function(o,e){var i=o.errors,a=t.extend({},this.uploadSchemaUnrecoverableErrorDialogStateFactory.create(i),{show:!0});this._subscribeToDialogEvents(),this.uploadSchemaValidationErrorDialogStore.setState(a)},_subscribeToDialogEvents:function(){this.listenTo(this.validationEventBus,"errorDialog:close",this._closeDialogAndUnsubscribe)},_closeDialogAndUnsubscribe:function(){this.uploadSchemaValidationErrorDialogStore.set("show",!1),this.stopListening(this.validationEventBus)}}),i.exports=r});

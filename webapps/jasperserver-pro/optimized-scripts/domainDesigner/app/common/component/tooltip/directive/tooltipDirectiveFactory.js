@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","jquery","underscore","runtime_dependencies/js-sdk/src/common/util/domUtil","./wrapper/TooltipVueWrapper"],function(e,t,o){function r(e){var t;try{t=a.getPaddings(e).left}catch(e){t=0}return t}var n=e("jquery"),u=e("underscore"),a=e("runtime_dependencies/js-sdk/src/common/util/domUtil"),i=e("./wrapper/TooltipVueWrapper");o.exports={create:function(e){function t(e){var t=e.currentTarget;d.setState(u.extend({target:t,offset:{left:r(a(t)),top:2}},t._value))}function o(){d.resetState()}e=e||{};var a=e.$||n,d=e.tooltipVueWrapper||new i;return a("body").append(d.$mount().$el),{bind:function(e,r){var n=a(e);n.on("mouseover",t),n.on("mouseout",o),e._value=r.value},componentUpdated:function(e,t){e._value=t.value},unbind:function(e){var r=a(e);o(),r.off("mouseover",t),r.off("mouseout",o),delete e._value}}}}});

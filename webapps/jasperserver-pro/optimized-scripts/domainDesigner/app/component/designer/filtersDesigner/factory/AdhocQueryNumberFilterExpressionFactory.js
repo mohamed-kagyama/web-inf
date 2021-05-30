@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","./util/getFunctionExpression","./util/getStringValueOperand","./util/getIsNullOrOriginalExpression","./util/getVariableOperand","../../../../model/enum/clientExpressionsEnum"],function(e,n,i){var t=e("underscore"),r=e("./util/getFunctionExpression"),o=e("./util/getStringValueOperand"),a=e("./util/getIsNullOrOriginalExpression"),u=e("./util/getVariableOperand"),l=e("../../../../model/enum/clientExpressionsEnum"),s=function(e){this.initialize(e)};t.extend(s.prototype,{initialize:function(e){this.converter=e.converter},create:function(e){var n=e.criteria,i=e.fieldName;return n=this.converter.convert(n),{object:a({criteria:n,fieldName:i,originalExpression:r({functionName:l.functions.contains.name,leftOperand:r({functionName:l.functions.concat.name,leftOperand:u(i),rightOperand:o("")}),rightOperand:o(n)})})}}}),i.exports=s});

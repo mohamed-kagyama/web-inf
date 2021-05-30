@@ -1,0 +1,14 @@
+<div class="jr-mValidation jr" :class="{
+                'jr-mValidationError': isError,
+                'jr-mValidationSuccess': isSuccess,
+                'jr-mValidationWarning': isWarning
+             }">
+    <span class="jr-mValidation-icon jr-mIcon jr-mIconSmall jr"
+            :class="{
+                'jr-cancelRound': isError,
+                'jr-checkmarkRound': isSuccess,
+                'jr-warningRound': isWarning
+            }">
+    </span>
+    <span class="jr-mValidation-text jr">{{ message }}</span>
+</div>

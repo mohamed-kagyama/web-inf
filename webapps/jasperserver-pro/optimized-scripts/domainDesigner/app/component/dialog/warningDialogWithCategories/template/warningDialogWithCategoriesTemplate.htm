@@ -1,0 +1,22 @@
+<genericNotificationDialog
+        :data-name="warningDialog"
+        :class="'jr-mDialogWarning'"
+        :title="i18n2['warning.title']"
+        :headerClass="'jr-mValidation-alertWarning'"
+        :headerIconClass="'jr-warningRound'"
+        :header="header"
+        :confirmButtonLabel="confirmLabel"
+        :confirmButtonDataNameAttribute="primaryButton"
+        :confirmButtonClass="'jr-mButtonWarning'"
+        :rejectButtonLabel="rejectLabel"
+        :rejectButtonDataNameAttribute="secondaryButton"
+        @confirm="onConfirm"
+        @reject="onReject">
+
+    <template v-for="warning in warnings">
+        <category :category="warning.category" v-if="warning.category"></category>
+        <categoryDetails :categoryDetails="warning.errorParameters" v-if="shouldRenderParametersList(warning.errorParameters)"></categoryDetails>
+    </template>
+
+</genericNotificationDialog>
+

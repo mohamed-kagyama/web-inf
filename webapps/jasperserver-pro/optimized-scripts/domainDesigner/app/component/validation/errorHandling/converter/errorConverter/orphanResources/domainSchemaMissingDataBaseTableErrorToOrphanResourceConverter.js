@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../../model/enum/defaultSchemaNameEnum","../../../../../../model/enum/dataSourceTypeEnum","../../../../../../../model/schema/enum/schemaEntitiesEnum","../../../enum/errorParametersKeysEnum","../../../util/extractPropertyByKeyUtil"],function(e,r,a){var m=e("underscore"),t=e("../../../../../../model/enum/defaultSchemaNameEnum"),u=e("../../../../../../model/enum/dataSourceTypeEnum"),n=e("../../../../../../../model/schema/enum/schemaEntitiesEnum"),E=e("../../../enum/errorParametersKeysEnum"),o=e("../../../util/extractPropertyByKeyUtil");a.exports={convert:function(e,r){var a=o.extract(e.parameters,E.DATA_SOURCE_ELEMENT_NAME).value,c=o.extract(e.parameters,E.SCHEMA_ELEMENT_NAME).value;m.isUndefined(c)&&r.dataSourceType===u.DATA_SOURCE_WITH_SCHEMAS&&(c=t.DEFAULT_SCHEMA);var s=o.extract(e.parameters,E.DB_TABLE_NAME).value;return[{name:a,type:n.DATA_SOURCE},{name:c,type:n.DATA_SOURCE_GROUP},{name:s,type:n.TABLE}]}}});

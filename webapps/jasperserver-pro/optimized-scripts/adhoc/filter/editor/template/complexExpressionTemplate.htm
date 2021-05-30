@@ -1,0 +1,22 @@
+<div class="panel pane expression {{print(filterPodMinimized ? 'minimized' : '');}}">
+
+    <js-templateNonce></js-templateNonce>
+    <div class="content">
+        <div class="header">
+            <div class="title">
+                <div class="filterName">
+                    <div class="button disclosure noBubble"></div>
+                    <span title="{{- i18n.ADH_DYNAMIC_FILTER_CUSTOMIZE_RELATIONSHIPS }}">{{- i18n.ADH_DYNAMIC_FILTER_CUSTOMIZE_RELATIONSHIPS }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="body">
+            <fieldset class="values" id="">
+                <label class="control input text">
+                    <input value="{{-complexExpression}}" type="text">
+                    <p class="message hint">{{- i18n.ADH_DYNAMIC_FILTER_FILTER_EXPRESSION }}</p>
+                </label>
+            </fieldset>
+        </div>
+    </div>
+</div>

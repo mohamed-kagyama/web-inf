@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../common/mixin/selection/selectionMixin"],function(e,t,i){var n=e("underscore"),o=e("../../../../../common/mixin/selection/selectionMixin"),s=function(e){this.initialize(e)};n.extend(s.prototype,{selection:{selector:".jr-jTreeItem",multiple:!0,attrs:["id"],onSelection:"selectItem",onRangeSelection:"onRangeSelection",onToggleSelection:"toggleItemSelection"},initialize:function(e){this.$el=e.el,this.presentationDesignerEventBus=e.presentationDesignerEventBus,this.sidebarTreeModel=e.sidebarTreeModel,this._initializeSelectable&&this._initializeSelectable()},selectItem:function(e){this.presentationDesignerEventBus.trigger("sidebar:selectItem",this._getResource(e))},onRangeSelection:function(e){this.presentationDesignerEventBus.trigger("sidebar:rangeSelection",this._getResource(e))},toggleItemSelection:function(e){this.presentationDesignerEventBus.trigger("sidebar:toggleSelection",this._getResource(e))},_getResource:function(e){return e=this.sidebarTreeModel.getNode(e.id),e.resource}},o),i.exports=s});

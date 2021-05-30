@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../common/mixin/selection/selectionMixin"],function(e,i,t){var n=e("underscore"),s=e("../../../../../common/mixin/selection/selectionMixin"),l={CLICK:"click",DBLCLICK:"dblclick"},r=function(e){this.initialize(e)};n.extend(r.prototype,{selection:{selector:"li",attrs:["id"],event:"click dblclick",onSelection:"onSelection"},initialize:function(e){this.$el=e.el,this.sidebarTreeModel=e.sidebarTreeModel,this.filtersDesignerEventBus=e.filtersDesignerEventBus,this._initializeSelectable&&this._initializeSelectable()},onSelection:function(e,i){var t=this.sidebarTreeModel.getNode(e.id),n=i&&i.type;n===l.CLICK?this.filtersDesignerEventBus.trigger("sidebar:selectItem",t.resource):n===l.DBLCLICK&&this.filtersDesignerEventBus.trigger("sidebar:doubleClickItem",t.resource)}},s),t.exports=r});

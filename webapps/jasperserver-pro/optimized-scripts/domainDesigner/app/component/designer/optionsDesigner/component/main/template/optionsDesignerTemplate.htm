@@ -1,0 +1,25 @@
+<div class="jr-mDomain-mode-wrapper jr">
+
+    <div class="jr-mDomain-mode-title jr">
+        <span class="jr-mDomain-mode-title-text jr">{{i18n['domain.designer.advanced.options.title']}}</span>
+    </div>
+    <div class="jr-mDomain-mode-subtitle jr-uBottom-doublehalf jr">
+        <p class="jr-mText jr-mTextParagraph jr-mTextGreyLight jr">{{i18n['domain.designer.advanced.options.subtitle']}}</p>
+    </div>
+
+    <!--SECURITY-->
+    <!-- <h2 class="jr-mText jr-mTextTitle jr-mTextSmall jr-uBottom-half jr">
+        <span class="jr-mText-wrapper jr">{{i18n['domain.designer.advanced.options.security.file']}}</span>
+    </h2>
+
+    <emptySecurityFile v-if="!securityFile" :securityFile="securityFile"></emptySecurityFile>
+    <securityFile v-if="securityFile" :securityFile="securityFile"></securityFile> -->
+
+    <!-- START LOCALE BUNDLES FILES -->
+    <!-- <h2 class="jr-mText jr-mTextTitle jr-mTextSmall jr-uBottom-half jr">
+        <span class="jr-mText-wrapper jr">{{i18n['domain.designer.advanced.options.locale.bundles']}}</span>
+    </h2> -->
+
+    <emptyBundles v-if="bundles.length === 0" :bundles="bundles"></emptyBundles>
+    <bundlesList v-if="bundles.length > 0" :bundles="bundles"></bundlesList>
+</div>

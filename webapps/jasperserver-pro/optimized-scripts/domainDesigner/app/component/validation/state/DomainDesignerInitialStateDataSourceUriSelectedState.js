@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","./enum/validationStateNameEnum","./util/validationStateContextUtil"],function(t,i,e){var n=t("underscore"),a=t("./enum/validationStateNameEnum"),o=t("./util/validationStateContextUtil"),r=function(t){this.initialize(t)};n.extend(r.prototype,{initialize:function(t){this.domainValidationMutations=t.domainValidationMutations,this.clientDomainInitialDesignerStateService=t.clientDomainInitialDesignerStateService},enter:function(t,i){var e=this;o.setDataSource(t,t.dataSourceUri),o.shouldInitializeNewDomainByDataSourceUri(t)?i.enter(a.INITIALIZE_DOMAIN_DESIGNER_BY_DATA_SOURCE_URI_STATE,t):this.clientDomainInitialDesignerStateService.getInitialDesignerStateByDomainResource(t.domainResource).then(function(n){e.domainValidationMutations.setDesignerState(n),i.enter(a.REPLACE_DATA_SOURCE_STATE,t)},function(e){t.xhr=e,i.enter(a.DOMAIN_DESIGNER_INITIAL_STATE_FAIL_STATE,t)})}}),e.exports=r});

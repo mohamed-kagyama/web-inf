@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore"],function(e,a,l){var s=e("underscore"),r=function(e){this.inMemoryDomainForAvailableValuesCache=e.inMemoryDomainForAvailableValuesCache,this.booleanAvailableValuesDataProvider=e.booleanAvailableValuesDataProvider,this.dataProviderWithSearchAndCacheForAvailableValues=e.dataProviderWithSearchAndCacheForAvailableValues,this.availableValuesErrorsCache=e.availableValuesErrorsCache,this.availableValuesFirstRequestSuccessCache=e.availableValuesFirstRequestSuccessCache};s.extend(r.prototype,{clean:function(){this.inMemoryDomainForAvailableValuesCache.reset(),this.availableValuesErrorsCache.reset(),this.booleanAvailableValuesDataProvider.clear(),this.dataProviderWithSearchAndCacheForAvailableValues.clear(),this.availableValuesFirstRequestSuccessCache.reset()},cleanAvailableValuesErrorsCache:function(){this.availableValuesErrorsCache.reset()},cleanAvailableValuesFirstRequestSuccessCache:function(){this.availableValuesFirstRequestSuccessCache.reset()}}),l.exports=r});

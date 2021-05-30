@@ -1,0 +1,127 @@
+<div v-bind:data-name="expressionEditorDialog" class="jr-mDialog jr jr-isHidden jr-uWidth-450px">
+    <div class="jr-mDialog-header jr jr-jDialogDraggable">
+        <h1 class="jr-mDialog-header-title jr jr-jTitleText">{{ titleText }}</h1>
+    </div>
+
+    <div class="jr-mDialog-body jr">
+        <div class="jr-mDialog-body-wrapper jr">
+            <div class="jr-mForm jr">
+                <p class="jr-mForm-instructions jr jr-jHeaderMessage"></p>
+                <div class="jr-mForm-section jr">
+                    <div class="jr-mInputgroup jr">
+                        <div class="jr-mGrid jr-mGridLoose jr">
+                            <div class="jr-mGrid-column jr-uWidth-72pc jr">
+                                <div class="jr-mInput jr">
+                                    <label class="jr-mInput-label jr">{{ i18n["domain.designer.joinsDesigner.constantJoinExpression.dialog.field"] }}:</label>
+                                    <select :disabled="disableInput"
+                                            @change="changeField($event.target.value)"
+                                            class="jr-mInput-select jr-mInput-selectWide jr j-field">
+                                        <option class="jr-mInputjr-mInput-selectt-list-item jr"
+                                                v-for="field in fieldOptions"
+                                                :value="field.value"
+                                                :selected="isFieldSelected(field.value)"
+                                        >
+                                            {{ field.label }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="jr-mGrid-column jr-uWidth-25pc jr">
+                                <div class="jr-mInput jr">
+                                    <label class="jr-mInput-label jr">{{ i18n["domain.designer.joinsDesigner.constantJoinExpression.dialog.operator"] }}:</label>
+                                    <select :disabled="disableInput"
+                                            @change="changeOperator($event.target.value)"
+                                            class="jr-mInput-select jr-mInput-selectWide jr  j-operator">
+                                        <option class="jr-mInputjr-mInput-selectt-list-item jr"
+                                                v-for="operator in operatorOptions"
+                                                :value="operator.value"
+                                                :selected="isOperatorSelected(operator.value)"
+                                        >
+                                            {{ operator.label }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="jr-mInput jr">
+                            <label class="jr-mInput-label jr">{{ i18n["domain.designer.joinsDesigner.constantJoinExpression.dialog.value"] }}:</label>
+                            <textarea
+                                    :disabled="disableInput"
+                                    :data-name="expressionEditorInput"
+                                    :value="value"
+                                    class="jr-mInput-textarea jr j-value"
+                                    @input="changeValue($event.target.value)"></textarea>
+                            <div class="jr-mInput-validation jr">
+                                <div class="jr-mInput-validation-alert jr-mInput-validation-alertError jr-isInvisible jr">
+                                    <span class="jr-mInput-validation-alert-icon jr-mIcon jr-mIconSmall jr-cancelRound jr"></span>
+                                    <span class="jr-mInput-validation-alert-text jr"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- END jr-mInputgroup -->
+
+                    <div class="jr-mForm-validation jr">
+                        <div class="jr-mForm-validation-message jr">
+                            <validation :message="validationMessage"
+                                        :type="validationMessageType"></validation>
+                        </div>
+                        <template v-if="expressionValidationInProgress">
+                            <div class="jr-mForm-validation-button jr">
+                                <div class="jr-mButton jr-mButtonCombo jr-mButtonMedium jr">
+                                    <span class="jr-mButton-icon jr-mIcon jr-mIconMedium jr-loading jr"></span>
+                                    <span class="jr-mButton-label jr-mButton-labelTheme jr">{{ i18n['domain.designer.dialog.validating'] }}</span>
+                                </div>
+                            </div>
+                            <actionButton
+                                    @click="onValidationCancelButtonClick"
+                                    :data-name="cancelValidationButton"
+                                    :label="i18n['domain.designer.dialog.cancel.validation']"
+                                    class="jr-mButtonSecondary jr-mButtonMedium">
+                            </actionButton>
+                        </template>
+                        <div class="jr-mForm-validation-button jr" v-else>
+                            <actionButton
+                                    @click="onValidateButtonClicked"
+                                    :disabled="isValidateButtonDisabled"
+                                    :data-name="validateButton"
+                                    :label="i18n['domain.designer.joinsDesigner.constantJoinExpression.dialog.button.validate']"
+                                    class="jr-mButtonPrimary jr-mButtonMedium">
+                            </actionButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="jr-mDialog-footer jr">
+        <template v-if="constantJoinValidationInProgress">
+            <button class="jr-mButton jr-mButtonCombo jr-mButtonMedium jr">
+                <span class="jr-mButton-icon jr-mIcon jr-mIconMedium jr-loading jr"></span>
+                <span class="jr-mButton-label jr-mButton-labelTheme jr">{{ constantJoinValidationLabel }}</span>
+            </button>
+
+            <actionButton
+                    :data-name="cancelButton"
+                    :label="cancelConstantJoinValidationLabel"
+                    @click="onValidationCancelButtonClick"
+                    class="jr-mButtonSecondary">
+            </actionButton>
+        </template>
+        <template v-else>
+            <actionButton
+                    @click="onClickMainAction"
+                    :disabled="isUpdateDisabled"
+                    :label="mainActionText"
+                    :data-name="mainActionButton"
+                    class="jr-mButtonPrimary">
+            </actionButton>
+            <actionButton
+                    :data-name="cancelButton"
+                    :label="i18n2['button.cancel']"
+                    class="jr-mButtonSecondary jr-jDialogClose">
+            </actionButton>
+        </template>
+        <div class="jr-mDialog-footer-sizer jr jr-jDialogResizer"></div>
+    </div>
+</div>

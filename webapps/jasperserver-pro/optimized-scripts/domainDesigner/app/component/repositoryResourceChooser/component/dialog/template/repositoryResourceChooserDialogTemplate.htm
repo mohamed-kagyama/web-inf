@@ -1,0 +1,52 @@
+<div v-bind:data-name="resourceChooserDialog" class="jr-mDialog jr-uWidth-400px jr-uHeight-500px jr jr-isHidden" >
+    <div class="jr-mDialog-header jr jr-jDialogDraggable">
+        <h1 class="jr-mDialog-header-title jr">{{ i18n['domain.designer.resource.chooser.title'] }}</h1>
+    </div>
+
+    <div class="jr-mDialog-body jr">
+        <repositoryResourceChooser
+                class="jr-mDialog-body-wrapper jr-mDialog-body-wrapperFit jr"
+
+                @listSelect="selectListItem"
+                @treeSelect="selectTreeNode"
+                @toggle="toggleRepositoryTree"
+                @repositoryTreeDoubleClick="confirmSelection"
+                @resourcesListDoubleClick="confirmSelection"
+                @submitSearchKeyword="submitSearchKeyword"
+                @toggleSearchResultMode="toggleSearchResultMode"
+                @resetSearchKeyword="resetSearchKeyword"
+                @closeErrorPopover="closeErrorPopover"
+
+                :repositoryTree="repositoryResourceChooser.repositoryTree"
+                :resourcesList="repositoryResourceChooser.resourcesList"
+                :searchKeyword="repositoryResourceChooser.searchKeyword"
+                :searchResultMode="repositoryResourceChooser.searchResultMode"
+                :popover="repositoryResourceChooser.popover"
+        ></repositoryResourceChooser>
+    </div>
+
+    <div class="jr-mDialog-footer jr">
+        <div v-if="isCheckInProgress"
+            class="jr-mButton jr-mButtonCombo jr-mButtonMedium jr">
+
+            <span class="jr-mButton-icon jr-mIcon jr-mIconMedium jr-loading jr"></span>
+            <span class="jr-mButton-label jr-mButton-labelTheme jr">{{ i18n['domain.designer.loading']}}</span>
+        </div>
+        <button @click="confirmSelection"
+                :disabled="!isConfirmationActive"
+                v-if="!isCheckInProgress"
+                v-bind:data-name="confirmSelectionButton"
+                class="jr-mButton jr-mButtonText jr-mButtonPrimary jr jr-jDataSourceChooserSelectionConfirm">
+            <span class="jr-mButton-label jr">{{ i18n['domain.designer.dialog.ok'] }}</span>
+        </button>
+        <button
+                @click="rejectSelection"
+                v-bind:data-name="rejectSelectionButton"
+                class="jr-mButton jr-mButtonText jr-mButtonSecondary jr">
+            <span class="jr-mButton-label jr">
+                {{ isCheckInProgress ? i18n['domain.designer.resource.chooser.confirm.loading.cancel'] : i18n['domain.designer.dialog.cancel'] }}
+            </span>
+        </button>
+        <div class="jr-mDialog-footer-sizer jr jr-jDialogResizer"></div>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../model/enum/clientExpressionsEnum","../../../../../../model/schema/enum/dataSourceMetadataTypesEnum","../../util/filterOperandTypeUtil"],function(e,i,n){var t=e("underscore"),a=e("../../../../../model/enum/clientExpressionsEnum"),r=e("../../../../../../model/schema/enum/dataSourceMetadataTypesEnum"),o=e("../../util/filterOperandTypeUtil"),d=a.operators,l=function(e){this.clientDomainSchemaService=e.clientDomainSchemaService};t.extend(l.prototype,{isSatisfiedBy:function(e,i){if(!t.isUndefined(i.isRawValueEditor))return i.isRawValueEditor;var n=e.expression.left,a=n.fieldId&&this.clientDomainSchemaService.getFieldById(n.fieldId).type,l=i.operator,s=o.isVariable(i.rightOperandType),u=a===r.String||a===r.Boolean,m=l===d.equals.name||l===d.notEqual.name;return!(s||u&&m)}}),n.exports=l});

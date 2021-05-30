@@ -1,0 +1,10 @@
+<div class ="jr" :class="{'jr-mTable-cell-text': isLeft}">
+    <div class="jr-mDropzone jr-jDropZone jr" :class="{
+            'jr-isDropped': isFieldAvailable,
+            'jr-isActive': operand.shouldDropZoneBeActive,
+            'jr-isOver': isOver
+        }">
+        <p class="jr-mDropzone-label jr">{{label}}</p>
+        <span v-show="isFieldAvailable" @click="removeField" class="jr-mDropzone-remover jr-mIcon jr-cancel jr"></span>
+    </div>
+</div>

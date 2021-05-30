@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","backbone"],function(e,t,i){var s=e("underscore"),r=e("backbone"),n=function(e){this.initialize(e)};s.extend(n.prototype,r.Events,{initialize:function(e){this.selectionProvider=e.selectionProvider,this.storeChangeEventBus=e.storeChangeEventBus,this.tree=e.tree,this.treeDataProvider=e.treeDataProvider,this.model=e.model,this.fetchTreeEventsBlacklist=e.fetchTreeEventsBlacklist,this._initEvents()},_initEvents:function(){this.listenTo(this.storeChangeEventBus,"change",this._renderFromState)},_onUpdateViewState:function(e){this.model.setState(e)},_fetchTreeIfVisible:function(e,t,i){var r=this._getSelection(e);r=s.isArray(r)?r:[r],this.model.get("isVisible")&&(this.fetchTreeEventsBlacklist[i]||this.tree.fetch(void 0,{keepPosition:!0}),this.tree.setValue(r))},_renderFromState:function(e,t,i){this._onUpdateViewState(e),this._setProviderState(e),this._fetchTreeIfVisible(e,t,i)},_getSelection:function(e){return this.selectionProvider.get(e)},_setProviderState:function(e){this.treeDataProvider.setState({dataStore:e.dataStore})}}),i.exports=n});

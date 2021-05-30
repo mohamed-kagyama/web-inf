@@ -1,0 +1,315 @@
+/* FONTS */
+/* Formats woff and woff2 generated from Font Squirrel */
+/* Formats ttf are from TIBCO UXPL, renamed to lower-case */
+@font-face {
+    font-family: "source_sans_proregular";
+    src: url("fonts/sourcesanspro-regular-webfont.woff2") format("woff2"),
+    url("fonts/sourcesanspro-regular-webfont.woff") format("woff"),
+    url("fonts/sourcesanspro-regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "source_sans_prosemibold";
+    src: url("fonts/sourcesanspro-semibold-webfont.woff2") format("woff2"),
+    url("fonts/sourcesanspro-semibold-webfont.woff") format("woff"),
+    url("fonts/sourcesanspro-semibold.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "source_sans_probold";
+    src: url("fonts/sourcesanspro-bold-webfont.woff2") format("woff2"),
+    url("fonts/sourcesanspro-bold-webfont.woff") format("woff"),
+    url("fonts/sourcesanspro-bold.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* BASE */
+
+html {
+    background-color: #055dab;
+}
+body {
+    background: #055dab;
+    font-family: source_sans_proregular, Franklin Gothic, Verdana, Arial, sans-serif;
+    font-size: 13px;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active	{
+	color:#0081cb;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: normal;
+    color: #055dab;
+}
+
+h2 {
+    color:#ffffff;
+    font-weight: normal;
+}
+
+h3 {
+    color: #055dab;
+    font-family: source_sans_prosemibold, Franklin Gothic Medium, Verdana, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 1.5;
+    margin-top: 1.75em;
+}
+
+p, ol, ul {
+	font-size: 14px;
+	color: #555555;
+	line-height: 20px;
+}
+
+ol, ul {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    line-height: 22px;
+    list-style-type: disc;
+}
+
+button	{
+    font-family: source_sans_prosemibold, Franklin Gothic Medium, Verdana, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 31px;
+    padding: 0 16px;
+    color: #ffffff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+/* LAYOUT */
+.panelDecorated {
+    align-items: center;
+    background-color: pink;
+    background: rgba(0, 0, 0, 0) url("bg_signin_light.png") no-repeat;
+    background-position: bottom right;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    bottom: 12px;
+    width: 48%;
+}
+
+.subheader {
+    color: #055dab;
+    font-size: 16px;
+    margin-top: 5px;
+    width: 45%;
+}
+
+.wrapper {
+    display: block;
+    background: #ffffff;
+    margin: 2em auto 0;
+    width: 960px;
+    height: auto;
+    text-align: left;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+.iframeWrapper {
+    display: block;
+    background: #ffffff;
+    margin: 0.5rem auto 0;
+    width: 960px;
+    height: auto;
+    text-align: left;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.content {
+    padding: 26px 42px;
+    position: relative;
+}
+
+.actionSteps {
+	width: 45%;
+}
+
+.panelDecorated-note {
+    display: flex;
+    min-height: 100px;
+    padding: 22px;
+}
+
+.panelDecorated-launcher {
+    display: flex;
+    justify-content: center;
+    padding-top: 22px;
+    width: 100%;
+}
+
+.note {
+    background-color: #ffefd5;
+    border-radius: 3px;
+    box-sizing: border-box;
+    margin-top: 1em;
+    padding: 10px 12px;
+}
+
+.content > .note {
+    width: 45%;
+}
+
+.panelDecorated-note > .note {
+    width: auto;
+}
+
+.panelDecorated .note {
+    margin-top: 0;
+}
+
+
+/* MODULES */
+.logo.aws,
+.logo.azure {
+    margin: 24px 0;
+    width: 200px;
+}
+
+.banner h2	{
+	float:right;
+	line-height: 1rem;
+	margin-right:12px;
+	margin-top: 2rem;
+}
+
+.actionSteps h3:first-of-type {
+    margin-top: 0;
+}
+
+button {
+    align-items: center;
+    background-color: #0081cb;
+    display: inline-flex;
+    padding-left: 9px;
+}
+
+button.step {
+    margin-top: 9px;
+}
+
+button.login {
+    width: 90%;
+    justify-content: center;
+}
+
+.resource-icon {
+    background-image: url(resources_icons_light_sprite.svg);
+    background-repeat: no-repeat;
+    background-size: 20px;
+    float: left;
+    height: 20px;
+    margin-right: 9px;
+    width: 20px;
+}
+
+.step.license > .resource-icon {
+    background-position: 0 -179px;
+}
+
+.step.community > .resource-icon {
+    background-position: 0 -60px;
+}
+
+.step.video > .resource-icon {
+    background-position: 0 -149px;
+}
+
+.login > .resource-icon {
+    background-position: 0 -210px;
+}
+
+
+.launcher {
+    background-color: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 70%;
+}
+
+.launcher-header {
+    display: flex;
+    flex: 0 1 auto;
+    justify-content: center;
+    padding: 24px 0 10px 0;
+}
+
+.launcher-body {
+    /*    display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2em;*/
+}
+
+.credentials {
+    margin: 0 auto;
+    width: 250px;
+}
+
+.credentials p {
+    margin: 1em 0;
+}
+
+.credentials .label {
+    font-weight: bold;
+}
+
+.launcher-footer {
+    display: flex;
+    flex: 0 1 auto;
+    justify-content: center;
+    padding: 2em 0 1em 0;
+}
+
+.logo.jasper {
+    width: 250px;
+}
+
+.hint {
+    font-size: 11px;
+    width: 250px;
+    margin: 1em auto;
+}
+
+.footer {
+    color: #DBD8D4;
+    font-size: 11px;
+    text-align: center;
+    line-height: 32px;
+    margin: 0 auto;
+    width: 960px;
+}
+
+.footer a:link, .footer a:visited, .footer a:hover, .footer a:active {
+    color: #BFD1E5;
+}

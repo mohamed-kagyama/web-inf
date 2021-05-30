@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","runtime_dependencies/js-sdk/src/common/component/panel/Panel","runtime_dependencies/js-sdk/src/common/component/panel/trait/resizablePanelTrait"],function(e,n,i){var t=e("runtime_dependencies/js-sdk/src/common/component/panel/Panel"),s=e("runtime_dependencies/js-sdk/src/common/component/panel/trait/resizablePanelTrait");i.exports=t.extend({constructor:function(e){t.prototype.constructor.call(this,{traits:[s],handles:function(e){return{e:e.find(".jr-jSidebarResizer")}},minWidth:e.SIDEBAR_MIN_WIDTH,maxWidth:e.SIDEBAR_MAX_WIDTH,applicationCrossComponentEventBus:e.applicationCrossComponentEventBus})},initialize:function(e){this.applicationCrossComponentEventBus=e.applicationCrossComponentEventBus,this._initEvents(),t.prototype.initialize.call(this,e)},_initEvents:function(){this.listenTo(this,"resize",this._onResize)},_onResize:function(e,n){var i=n.size.width;this.applicationCrossComponentEventBus.trigger("sidebar:resize",i,this.previousWidth||i),this.previousWidth=i}})});

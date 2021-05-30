@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","text!../../template/metadataDesignerSidebarTreeTemplate.htm","../../../../layout/sidebarView/tree/plugin/TooltipPlugin","../../../../layout/sidebarView/tree/plugin/ContextMenuTreePlugin"],function(e,t,i){function n(e){var t=e.dataProvider,i=e.listItemHeight,n=e.metadataDesignerSidebarTooltipOptionsFactory,s=e.metadataDesignerSidebarContextMenuOptionsProvider,l=e.metadataDesignerSidebarContextMenuEventHandlers,d=e.metadataDesignerSidebarTreeContextMenuVisibilitySpecification;return{itemsTemplate:a,listItemHeight:i,dataProvider:t,selection:{allowed:{left:!1,right:!1}},plugins:[{constr:r,options:{getContextMenuOptions:s.getMenuOptions,showContextMenuCondition:d.isSatisfiedBy,contextMenuEvents:l}},{constr:o,options:{getTooltipOptions:n.create}}]}}var a=e("text!../../template/metadataDesignerSidebarTreeTemplate.htm"),o=e("../../../../layout/sidebarView/tree/plugin/TooltipPlugin"),r=e("../../../../layout/sidebarView/tree/plugin/ContextMenuTreePlugin");i.exports={getTreeOptions:n}});

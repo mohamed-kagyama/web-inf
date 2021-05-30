@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","text!../template/properties/controls/titleBarElements/showTitleBarElementsControlTemplate.htm","text!../template/properties/controls/titleBarElements/showMaximizeButtonControlTemplate.htm","text!../template/properties/controls/titleBarElements/showRefreshButtonControlTemplate.htm","text!../template/properties/controls/titleBarElements/showExportButtonControlTemplate.htm","../enum/dashboardComponentTypes"],function(t,e,o){var r=t("text!../template/properties/controls/titleBarElements/showTitleBarElementsControlTemplate.htm"),l=t("text!../template/properties/controls/titleBarElements/showMaximizeButtonControlTemplate.htm"),n=t("text!../template/properties/controls/titleBarElements/showRefreshButtonControlTemplate.htm"),s=t("text!../template/properties/controls/titleBarElements/showExportButtonControlTemplate.htm"),p=t("../enum/dashboardComponentTypes");o.exports=function(t){switch(t){case p.TABLE:case p.CROSSTAB:case p.REPORT:case p.ADHOC_VIEW:case p.CHART:return r.replace("{{controls}}",[n,l,s].join("\n"));default:return r.replace("{{controls}}",[n,l].join("\n"))}}});

@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../util/joinVariableParser","../enum/joinParserStateNamesEnum","../../../enum/clientExpressionsEnum","../mixin/addJoinExpressionMixin"],function(e,i,n){var t=e("underscore"),r=e("../util/joinVariableParser"),s=e("../enum/joinParserStateNamesEnum"),o=e("../../../enum/clientExpressionsEnum"),a=e("../mixin/addJoinExpressionMixin"),u=o.operators,x=function(e){this.initialize(e)};t.extend(x.prototype,{initialize:function(e){this.context=e.context,this.factory=e.factory},parseConstantJoinExpression:function(e){var i=e.operands,n=t.first(i),o=t.last(i),a=n[u.variable.name][u.name.name],x=r.parse(a);return this.context.currentJoinExpression.leftAlias=x.alias,this.context.currentJoinExpression.leftField=x.field,this.context.currentJoinExpression.rightValue=o,this._addJoinExpression(),this.factory.create(s.PARSE_JOIN_EXPRESSION_OPERATOR_STATE,this.context)}},a),n.exports=x});

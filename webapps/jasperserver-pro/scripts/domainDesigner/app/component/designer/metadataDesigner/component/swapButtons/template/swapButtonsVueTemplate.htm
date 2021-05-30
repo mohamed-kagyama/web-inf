@@ -1,0 +1,20 @@
+<div class="jr-mShuttle-movers jr ">
+
+    <button class="jr-mButton jr-mButtonAction jr-mButtonSecondary jr-mButtonMedium jr"
+            :title="i18n['domain.designer.metadataDesignerView.moveToResult']"
+            @click="onMoveToResultButtonClick"
+            :disabled="isMoveToResultButtonDisabled"
+            :data-name="moveToResult"
+            >
+        <span class="jr-mButton-icon jr-mIcon jr-arrowRight jr"></span>
+    </button>
+    <button class="jr-mButton jr-mButtonAction jr-mButtonSecondary jr-mButtonMedium jr"
+            :title="i18n['domain.designer.metadataDesignerView.moveToSource']"
+            @click="onMoveToSourceButtonClick"
+            :disabled="isMoveToSourceButtonDisabled"
+            :data-name="moveToSource"
+            >
+        <span class="jr-mButton-icon jr-mIcon jr-arrowLeft jr"></span>
+    </button>
+
+</div>

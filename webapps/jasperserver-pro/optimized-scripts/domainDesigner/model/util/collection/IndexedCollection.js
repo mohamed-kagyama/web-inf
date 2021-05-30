@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","./Collection","./IndexSet"],function(e,t,n){var i=e("underscore"),r=e("./Collection"),o=e("./IndexSet"),d=function(e,t){r.apply(this,arguments)};i.extend(d.prototype,r.prototype,{fromArray:function(e,t){t=t||{},r.prototype.fromArray.call(this,e,t),this._createIndexSet(t.indexConfig||[],t)},by:function(e){var t,n,r=i.keys(e);if(1===r.length&&(t=i.first(r),n=this.indexSet.getItem(t,e[t]),!i.isUndefined(n)))return n;var o=this.findWhere(e);return i.isUndefined(o)||this.indexSet.addItems(o),o},add:function(e,t){if(this._chain)throw new Error("Chainable collection is read-only");return r.prototype.add.call(this,e,t),this.indexSet.addItems(e),this},remove:function(e,t){if(this._chain)throw new Error("Chainable collection is read-only");var n=r.prototype.remove.call(this,e,t);return this.indexSet.removeItems(n),n},_getCollectionClass:function(){return d},_createIndexSet:function(e,t){t=t||{},this.indexSet=new o(e),t.eagerIndexing&&this.indexSet.addItems(this.collection)}}),n.exports=d});

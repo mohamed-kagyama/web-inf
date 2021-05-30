@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","backbone","runtime_dependencies/jrs-ui/src/components/components.webHelp","../../model/enum/canvasViewDesignersEnum"],function(e,n,t){var s=e("underscore"),i=e("backbone"),a=e("runtime_dependencies/jrs-ui/src/components/components.webHelp"),o=e("../../model/enum/canvasViewDesignersEnum"),r=function(e){this.initialize(e)};s.extend(r.prototype,{initialize:function(e){this.storeChangeEventBus=e.storeChangeEventBus,this._initEvents()},_initEvents:function(){this.listenTo(this.storeChangeEventBus,"change",this._setConextHelp)},_setConextHelp:function(e){var n="domain2";switch(e.viewState.getCurrentDesigner()){case o.METADATA_DESIGNER:n="domain_metadata";break;case o.JOINS_DESIGNER:n="domain_joins";break;case o.FILTERS_DESIGNER:n="domain_filters";break;case o.PRESENTATION_DESIGNER:n="domain_presentation";break;case o.CALCULATED_FIELDS_DESIGNER:n="metadataDesigner";break;case o.SECURITY_DESIGNER:n="domain_security";break;case o.OPTIONS_DESIGNER:n="domain_locales"}a.setCurrentContext(n)}},i.Events),t.exports=r});

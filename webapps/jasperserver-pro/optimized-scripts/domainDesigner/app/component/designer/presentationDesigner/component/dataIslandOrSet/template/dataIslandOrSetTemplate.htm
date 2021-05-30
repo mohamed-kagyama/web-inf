@@ -1,0 +1,117 @@
+<presentationItem
+        :item="item"
+        :tableRowClass="tableRowClass"
+        :treeNodeClass="'jr-mTree-node'"
+        :treeIconClass="treeIconClass"
+        :toggleNodeClass="{'jr-isOpen': item.isExpanded, 'jr-isClosed': !item.isExpanded}"
+        :eventName="eventName"
+        :column0Width="column0Width"
+        :column1Width="column1Width">
+
+    <template v-if="!item.isPropertiesEditorExpanded">
+        <template v-if="isDefault(item.columnSet)">
+            <property
+                    class="jr-mTable-cellLabel"
+                    :editProperty="editProperty"
+                    :item="item"
+                    :propertyName="propertyNames.labelPropertyEditorName">
+            </property>
+
+            <cell class="jr-mTable-cellFieldtype"></cell>
+            <cell class="jr-mTable-cellCalculation"></cell>
+
+            <property
+                    class="jr-mTable-cellDescription"
+                    :editProperty="editProperty"
+                    :item="item"
+                    :propertyName="'description'">
+            </property>
+        </template>
+        <template v-else-if="isIdentification(item.columnSet)">
+            <property
+                    class="jr-mTable-cellLabel"
+                    :editProperty="editProperty"
+                    :item="item"
+                    :propertyName="propertyNames.labelPropertyEditorName">
+            </property>
+            <property
+                    class="jr-mTable-cellId"
+                    :editProperty="editProperty"
+                    :item="item"
+                    :propertyName="propertyNames.namePropertyEditorName">
+            </property>
+            <property
+                    class="jr-mTable-cellDescription"
+                    :editProperty="editProperty"
+                    :item="item"
+                    :propertyName="propertyNames.descriptionPropertyEditorName">
+            </property>
+        </template>
+        <template v-else-if="isBundleKeys(item.columnSet)">
+            <property
+                    class="jr-mTable-cellLabelkey"
+                    :editProperty="editProperty"
+                    :item="item"
+                    :propertyName="propertyNames.labelKeyPropertyEditorName">
+            </property>
+            <property
+                    class="jr-mTable-cellDescriptionkey"
+                    :editProperty="editProperty"
+                    :item="item"
+                    :propertyName="propertyNames.descriptionKeyPropertyEditorName">
+            </property>
+        </template>
+        <template v-else-if="isData(item.columnSet)">
+            <cell class="jr-mTable-cellSource"></cell>
+            <cell class="jr-mTable-cellFieldtype"></cell>
+            <cell class="jr-mTable-cellCalculation"></cell>
+            <cell class="jr-mTable-cellDataformat"></cell>
+        </template>
+    </template>
+    <template v-else>
+        <cell class="jr-mTable-cellAll">
+            <div class="jr-mTable-cell-form jr">
+                <!--GRID start-->
+                <div class="jr-mGrid jr-mGridLoose jr">
+                    <!--grid column 1-->
+                    <inputGroup class="jr-uWidth-61pc">
+                        <propertyEditor
+                                :editProperty="editProperty"
+                                :item="item"
+                                :propertyName="propertyNames.labelPropertyEditorName">
+                            <label class="jr-mInput-label jr">{{i18n['domain.designer.presentationDesigner.columnSet.label']}}:</label>
+                        </propertyEditor>
+                        <propertyEditor
+                                :editProperty="editProperty"
+                                :item="item"
+                                :propertyName="propertyNames.namePropertyEditorName">
+                            <label class="jr-mInput-label jr">{{i18n['domain.designer.presentationDesigner.columnSet.id']}}:</label>
+                        </propertyEditor>
+                        <propertyEditor
+                                :editProperty="editProperty"
+                                :item="item"
+                                :propertyName="propertyNames.descriptionPropertyEditorName">
+                            <label class="jr-mInput-label jr">{{i18n['domain.designer.presentationDesigner.columnSet.description']}}:</label>
+                        </propertyEditor>
+                    </inputGroup>
+
+                    <!--grid column 3-->
+                    <inputGroup class="jr-uWidth-36pc">
+                        <propertyEditor
+                                :editProperty="editProperty"
+                                :item="item"
+                                :propertyName="propertyNames.labelKeyPropertyEditorName">
+                            <label class="jr-mInput-label jr">{{i18n['domain.designer.presentationDesigner.columnSet.labelKey']}}:</label>
+                        </propertyEditor>
+                        <propertyEditor
+                                :editProperty="editProperty"
+                                :item="item"
+                                :propertyName="propertyNames.descriptionKeyPropertyEditorName">
+                            <label class="jr-mInput-label jr">{{i18n['domain.designer.presentationDesigner.columnSet.descriptionKey']}}:</label>
+                        </propertyEditor>
+                    </inputGroup>
+                </div>
+            </div>
+        </cell>
+    </template>
+</presentationItem>

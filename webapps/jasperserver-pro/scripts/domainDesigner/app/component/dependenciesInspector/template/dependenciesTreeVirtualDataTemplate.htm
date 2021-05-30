@@ -1,0 +1,32 @@
+<div class="jr-mListbox jr"
+     :class="[widthClass, alignmentClass]">
+    <div class="jr-mListbox-label jr">{{ label }}:</div>
+    <div v-bind:data-name="virtualDataList"
+         class="jr-mListbox-list jr jr-jDependencies"
+         :style="wrapperStyleObject">
+        <virtualData v-bind:data-name="virtualDataTree"
+                     class="jr-mTree jr"
+                     role="tree"
+                     :scrollPos="scrollPos"
+                     :top="top"
+                     :height="height"
+                     :style="styleObject">
+            <treeItem v-for="node in collection"
+                      :id="node.id"
+                      :label="node.label"
+                      :icon="node.icon"
+                      :invalid="node.invalid"
+                      :properties="node.properties"
+                      :open="node.open"
+                      :isSelectable="node.isSelectable"
+                      :selected="false"
+                      :level="node.level"
+                      :group="node.group"
+                      :visible="node.visible"
+                      :tooltip="node.tooltip"
+                      @toggle="onToggle">
+            </treeItem>
+        </virtualData>
+    </div>
+</div>
+

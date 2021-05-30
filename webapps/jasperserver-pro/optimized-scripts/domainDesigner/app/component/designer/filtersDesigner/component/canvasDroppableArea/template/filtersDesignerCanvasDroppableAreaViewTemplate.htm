@@ -1,0 +1,26 @@
+<div class="jr-mTable-body jr">
+    <div v-if="!isEmptyDataStructure" class="jr-mInstructor jr-mInstructorFull jr-mInstructorInnershade jr-mInstructorInnerborder jr">
+        <div class="jr-mInstructor-wrapper jr">
+            <span class="jr-mInstructor-icon jr-mIcon jr-mIconXLarge jr-warningRound jr"></span>
+            <p class="jr-mInstructor-title jr-mInstructor-titleMedium jr">{{ i18n['domain.designer.emptyDataStructure.canvas.title'] }}</p>
+            <p class="jr-mInstructor-text jr-mInstructor-textSmall jr-uTop-single jr">{{ i18n['domain.designer.filtersDesigner.emptyDataStructure.canvas.text'] }}</p>
+        </div>
+    </div>
+    <div v-else class="jr-mTable-row jr-mTable-rowDropstarter jr">
+        <div class="jr-mTable-cell jr-mTable-cellDropstarter jr">
+            <div class="jr-mTable-cell-wrapper jr">
+                <div class="jr-mTable-cell-dropzone jr">
+                    <div class="jr-mDropzone jr-mDropzoneFull jr" :class="{'jr-isActive': isDropZoneActive, 'jr-isOver': isOver}" v-droppable="droppableConfig">
+                        <div class="jr-mInstructor jr-mInstructorPlain jr-uWidth-100pc jr-uHeight-100pc jr">
+                            <div class="jr-mInstructor-wrapper jr">
+                                <span class="jr-mInstructor-icon jr-mIcon jr-mIconXLarge jr-message jr"></span>
+                                <p class="jr-mInstructor-title jr-mInstructor-titleMedium jr">{{ i18n['domain.designer.filtersDesigner.empty.canvas.title'] }}</p>
+                                <p class="jr-mInstructor-text jr-mInstructor-textMedium jr-uTop-single jr">{{ i18n['domain.designer.filtersDesigner.empty.canvas.text'] }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

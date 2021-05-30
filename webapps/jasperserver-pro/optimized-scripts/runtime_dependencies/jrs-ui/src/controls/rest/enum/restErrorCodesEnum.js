@@ -1,0 +1,1 @@
+define(["require","exports","module"],function(r,e,o){var R;!function(r){r.OUT_OF_RANGE_ERROR="error.out.of.range",r.UNEXPECTED_ERROR="unexpected.error",r.SERIALIZATION_ERROR="serialization.error"}(R||(R={})),o.exports=R});

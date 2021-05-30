@@ -1,0 +1,9 @@
+{{ if (data) { }}
+{{ for (var i = 0; i < data.length; i++) { }}
+<li class="jr-mInput-radio jr">
+    <js-templateNonce></js-templateNonce>
+    <input class="jr-mInput-radio-button jr" id="{{-data[i].uuid}}" type="radio" name="{{-data[i].name}}" value="{{-data[i].value}}" {{ if (data[i].readOnly) { }}disabled="disabled"{{ } }} {{ if (data[i].selected) { }}checked="checked"{{ } }} />
+    <label class="jr-mInput-radio-label jr" for="{{-data[i].uuid}}" title="{{-data[i].description}}">{{-data[i].label}}</label>
+</li>
+{{ } }}
+{{ } }}

@@ -1,0 +1,19 @@
+<div class="jr-Visualchooser-panel-minimize jr">
+    <div class="jr-Visualchooser-panel-minimize-icon jr-mIcon jr-caretLeft jr"></div>
+</div>
+
+<ul class="jr-mTab jr-mTabVertical jr-mTabReverse jr">
+    <li class="jr-mTab-item jr-isActive jr" data-group-name="all">
+
+        <js-templateNonce></js-templateNonce>
+        <span class="jr-mTab-item-label jr">{{- this.i18n["visualization.chooser.group.all"] }}</span>
+        <span class="jr-mTab-item-icon jr jr-mTab-item-iconAll"></span>
+    </li>
+    {{ var self = this; _.each(groups, function(type) { }}
+    <li class="jr-mTab-item jr" data-group-name="{{- type.name}}">
+        <span class="jr-mTab-item-label jr">{{- self.i18n[type.bundleName] }}</span>
+        <span class="jr-mTab-item-icon jr {{- type.cssClass}}"></span>
+    </li>
+    {{ }); }}
+
+</ul>

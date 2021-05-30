@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../model/enum/clientExpressionsEnum"],function(e,n,r){function t(e){return[{name:e.leftOperand,type:e.leftOperandType}]}function i(e){var n=e.leftOperand,r=e.rightOperand,i=p.in.name;return o(r?n+" "+i+" "+r:"",t(e))}function a(e){var n=i(e);return s.extend({},n,{expression:{string:p.not.name+"("+n.expression.string+")"}})}function o(e,n){var r={expression:{string:e}};return n&&(r=s.extend({},r,{variables:n})),r}var s=e("underscore"),c=e("../../../../model/enum/clientExpressionsEnum"),p=c.operators,u={};u[p.in.name]=i,u[p.notIn.name]=a;var d=function(e){this.initialize(e)};s.extend(d.prototype,{initialize:function(e){this.clientDomainSchemaService=e.clientDomainSchemaService},create:function(e){var n=this.clientDomainSchemaService.getFieldById(e.fieldId),r=e.operator,t=n.type,i=n.name,a=e.value,s=u[r];return s?s({leftOperand:i,rightOperand:a,leftOperandType:t}):o(a)}}),r.exports=d});

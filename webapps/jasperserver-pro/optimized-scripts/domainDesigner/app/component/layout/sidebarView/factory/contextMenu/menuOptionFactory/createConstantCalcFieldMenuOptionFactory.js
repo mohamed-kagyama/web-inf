@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","bundle!DomainDesignerBundle","runtime_dependencies/js-sdk/src/common/util/i18nMessage","../../../../../../dispatcher/enum/applicationStateEventsEnum","../enum/menuOptionsEventsEnum","../../../util/artificialTreeResourceEntityUtil"],function(e,n,t){var i=e("bundle!DomainDesignerBundle"),u=e("runtime_dependencies/js-sdk/src/common/util/i18nMessage"),r=e("../../../../../../dispatcher/enum/applicationStateEventsEnum"),s=e("../enum/menuOptionsEventsEnum"),a=e("../../../util/artificialTreeResourceEntityUtil"),c=u.create(i);t.exports={create:function(){return function(e){return{label:c("domain.designer.calcFields.contextMenu.createConstantField"),action:s.CREATE_CALC_FIELD.event,value:!1,triggerEvent:r.CALCULATED_FIELDS_DESIGNER_SHOW,test:function(){return a.isConstantGroup(e.resource)}}}}}});

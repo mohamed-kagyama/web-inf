@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","prototype","runtime_dependencies/jrs-ui/src/core/core.ajax.utils"],function(e,r,o){function n(e,r){alert(e+"\n"+r)}var t=e("prototype"),i=t.$,a=e("runtime_dependencies/jrs-ui/src/core/core.ajax.utils"),s=a.showErrorPopup,c=a.baseErrorHandler,d=function(e){if(clearTimeout(window.cancelQueryTimer),window.cancelQueryTimer=null,e.getResponseHeader("LoginRequested"))return document.location=window.urlContext,!0;var r=e.getResponseHeader("fileExistsException");if(r)return r=decodeURIComponent(r),!0;var o=e.getResponseHeader("multipleFileExistException");if(o)return o=decodeURIComponent(o),alert(o.replace(/@@/g," ")),i("saveAsBtnSave")&&(i("saveAsBtnSave").disabled=!1),!0;var n=e.getResponseHeader("adhocException");if(n){var t=decodeURIComponent(n);return s(t.replace(/@@/g," ")),!0}return c(e)};r.showErrorPopup=s,r.showMessageDialog=n,r.errorHandler=d,r.baseErrorHandler=c});

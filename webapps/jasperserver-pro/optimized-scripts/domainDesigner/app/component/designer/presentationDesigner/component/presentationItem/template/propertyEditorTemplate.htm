@@ -1,0 +1,31 @@
+<div :data-name="dataName" class="jr-mInput jr">
+    <slot></slot>
+    <div
+            @mousedown="onClickOnValue"
+            @mouseenter="onMouseEnter"
+            @mouseleave="onMouseLeave"
+            :class="{'jr-isClicked': isEditMode, 'jr-isHovered': isHovered}"
+            class="jr-mInput-editable jr-mInput-editableStatic jr">
+        <p class="jr-mInput-editable-text jr">
+            {{label}}
+        </p>
+        <span class="jr-mInput-editable-indicator jr">
+            <span class="jr-mIcon jr-mIconSmall jr-edit jr"></span>
+        </span>
+    </div>
+    <div :class="{'jr-isInvalid': isErrorMessageVisible}"
+            class="jr-mInput-editable jr-mInput-editableEdit jr">
+        <input  :value="editProperty.value"
+                @input="onInput($event.target.value)"
+                @blur="onBlur($event.target.value)"
+                @keydown.enter="onEnter"
+                @keydown.esc="onEsc"
+                v-bind:data-name="editorInput"
+                class="jr-mInput-text jr" type="text" >
+    </div>
+    <tooltip :type="tooltipType"
+             :placement="tooltipPlacement"
+             :content="{text: errorMessage}"
+             :style="tooltipStyle"
+             :isVisible="isErrorMessageVisible"></tooltip>
+</div>

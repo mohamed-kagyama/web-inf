@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","jquery"],function(e,t,i){var a=e("jquery"),d=function(e,t){this.loader=e,this.timeoutId=null,this.updateInterval=t};d.prototype={checkPageModified:function(e,t){var i=this,d=a.Deferred();return i._timedCheckPageModified(!1,e,t,d,null),d.promise()},cancelCheckPageModified:function(){clearTimeout(this.timeoutId)},_timedCheckPageModified:function(e,t,i,a,d){var o=this;e?a.resolve(d):o.timeoutId=setTimeout(function(){o._getPageModifiedStatus(t,i,a)},o.updateInterval)},_getPageModifiedStatus:function(e,t,i){var a=this;return a.loader.getStatusForPage(e,t).then(function(d,o,u){var r;r=a.loader.config.stopOnFinishOnly?"finished"==d.result.status:d.result.pageModified||"finished"==d.result.status,!r&&a.loader.setPageUpdateStatus&&a.loader.setPageUpdateStatus(d),a._timedCheckPageModified(r,e,t,i,d.result)})}},i.exports=d});

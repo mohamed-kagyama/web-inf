@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../model/schema/util/entityUtil","../../../../../model/schema/enum/schemaEntitiesEnum"],function(e,r,n){var t=e("underscore"),i=e("../../../../../model/schema/util/entityUtil"),s=e("../../../../../model/schema/enum/schemaEntitiesEnum"),o=function(){};t.extend(o.prototype,{convert:function(e){return t.extend(e,{models:this._getNestedModels(e.models)})},_getNestedModels:function(e){return t.reduce(e,function(e,r){return r.isJoinTreePlaceholder?e.result.push(r):r.isDraftJoinTree||i.isJoinTree(r.modelType)?(e.currentJoinTree=t.extend({},r,{children:[]}),e.result.push(e.currentJoinTree)):(t.isEmpty(e.currentJoinTree)&&(e.currentJoinTree=this._getHeadLessJoinTree(r),e.result.push(e.currentJoinTree)),e.currentJoinTree.children.push(r)),e},{currentJoinTree:{},result:[]},this).result},_getHeadLessJoinTree:function(e){var r={children:[],isExpanded:!0,isHeadLessJoinTree:!0};return r=e.isDraftJoinTreeChild?t.extend({isDraftJoinTree:!0},r):t.extend({id:e.joinTreeId,modelType:s.JOIN_TREE},r)}}),n.exports=o});

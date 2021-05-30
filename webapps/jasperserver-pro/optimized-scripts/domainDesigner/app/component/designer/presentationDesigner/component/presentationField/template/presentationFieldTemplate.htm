@@ -1,0 +1,179 @@
+<presentationItem
+        :item="presentationField"
+        :tableRowClass="'jr-mTable-rowItem'"
+        :treeNodeClass="'jr-mTree-leaf'"
+        :treeIconClass="treeIconClass"
+        :toggleNodeClass="''"
+        :eventName="'presentationField'"
+        :column0Width="column0Width"
+        :column1Width="column1Width"
+>
+
+    <template v-if="!presentationField.isPropertiesEditorExpanded">
+        <template v-if="isDefault(presentationField.columnSet)">
+            <property
+                    class="jr-mTable-cellLabel"
+                    :editProperty="editProperty"
+                    :item="presentationField"
+                    :propertyName="propertyNames.labelPropertyEditorName">
+            </property>
+
+            <selectPropertyCollapsed
+                    :propertyName="propertyNames.kindPropertyEditorName"
+                    :id="presentationField.id"
+                    :items="measureOrDimensionOptions"
+                    :dataName="fieldTypeDataName"
+                    class="jr-mTable-cellFieldtype"></selectPropertyCollapsed>
+            <selectPropertyCollapsed
+                    :propertyName="propertyNames.aggregationPropertyEditorName"
+                    :id="presentationField.id"
+                    :items="aggregationOptions"
+                    :dataName="calculationDataName"
+                    class="jr-mTable-cellCalculation"></selectPropertyCollapsed>
+            <property
+                    class="jr-mTable-cellDescription"
+                    :editProperty="editProperty"
+                    :item="presentationField"
+                    :propertyName="propertyNames.descriptionPropertyEditorName">
+            </property>
+        </template>
+        <template v-else-if="isIdentification(presentationField.columnSet)">
+            <property
+                    class="jr-mTable-cellLabel"
+                    :editProperty="editProperty"
+                    :item="presentationField"
+                    :propertyName="propertyNames.labelPropertyEditorName">
+            </property>
+            <property
+                    class="jr-mTable-cellId"
+                    :editProperty="editProperty"
+                    :item="presentationField"
+                    :propertyName="propertyNames.namePropertyEditorName">
+            </property>
+            <property
+                    class="jr-mTable-cellDescription"
+                    :editProperty="editProperty"
+                    :item="presentationField"
+                    :propertyName="propertyNames.descriptionPropertyEditorName">
+            </property>
+
+        </template>
+        <template v-else-if="isBundleKeys(presentationField.columnSet)">
+            <property
+                    class="jr-mTable-cellLabelkey"
+                    :editProperty="editProperty"
+                    :item="presentationField"
+                    :propertyName="propertyNames.labelKeyPropertyEditorName">
+            </property>
+            <property
+                    class="jr-mTable-cellDescriptionkey"
+                    :editProperty="editProperty"
+                    :item="presentationField"
+                    :propertyName="propertyNames.descriptionKeyPropertyEditorName">
+            </property>
+        </template>
+        <template v-else-if="isData(presentationField.columnSet)">
+            <property
+                    class="jr-mTable-cellSource"
+                    readonly="true"
+                    :editProperty="editProperty"
+                    :item="presentationField"
+                    :propertyName="propertyNames.sourcePathPropertyEditorName">
+            </property>
+
+            <selectPropertyCollapsed
+                    :propertyName="propertyNames.kindPropertyEditorName"
+                    :id="presentationField.id"
+                    :items="measureOrDimensionOptions"
+                    :dataName="fieldTypeDataName"
+                    class="jr-mTable-cellFieldtype"></selectPropertyCollapsed>
+            <selectPropertyCollapsed
+                    :propertyName="propertyNames.aggregationPropertyEditorName"
+                    :id="presentationField.id"
+                    :items="aggregationOptions"
+                    :dataName="calculationDataName"
+                    class="jr-mTable-cellCalculation"></selectPropertyCollapsed>
+            <selectPropertyCollapsed v-if="isMaskPresent"
+                                     :propertyName="propertyNames.maskPropertyEditorName"
+                                     :id="presentationField.id"
+                                     :dataName="dataFormatDataName"
+                                     :items="maskOptions" class="jr-mTable-cellDataformat"></selectPropertyCollapsed>
+        </template>
+    </template>
+
+    <cell v-else class="jr-mTable-cellAll">
+        <div class="jr-mTable-cell-form jr">
+            <!--GRID start-->
+            <div class="jr-mGrid jr-mGridLoose jr">
+                <!--grid column 1-->
+                <inputGroup class="jr-uWidth-36pc">
+                    <propertyEditor
+                            :editProperty="editProperty"
+                            :item="presentationField"
+                            :propertyName="propertyNames.labelPropertyEditorName">
+                        <label class="jr-mInput-label jr">{{i18n['domain.designer.presentationDesigner.columnSet.label']}}:</label>
+                    </propertyEditor>
+                    <propertyEditor
+                            :editProperty="editProperty"
+                            :item="presentationField"
+                            :propertyName="propertyNames.namePropertyEditorName">
+                        <label class="jr-mInput-label jr">{{i18n['domain.designer.presentationDesigner.columnSet.id']}}:</label>
+                    </propertyEditor>
+                    <propertyEditor
+                            :editProperty="editProperty"
+                            :item="presentationField"
+                            :propertyName="propertyNames.descriptionPropertyEditorName">
+                        <label class="jr-mInput-label jr">{{i18n['domain.designer.presentationDesigner.columnSet.description']}}:</label>
+                    </propertyEditor>
+                </inputGroup>
+
+                <!--grid column 2-->
+                <inputGroup class="jr-uWidth-22pc">
+                    <selectPropertyExpanded
+                            :propertyName="propertyNames.kindPropertyEditorName"
+                            :id="presentationField.id"
+                            :label="i18n['domain.designer.presentationDesigner.columnSet.fieldType']"
+                            :dataName="fieldTypeDataName"
+                            :items="measureOrDimensionOptions">
+                    </selectPropertyExpanded>
+                    <selectPropertyExpanded
+                            :propertyName="propertyNames.aggregationPropertyEditorName"
+                            :id="presentationField.id"
+                            :label="i18n['domain.designer.presentationDesigner.columnSet.summaryCalculation']"
+                            :dataName="calculationDataName"
+                            :items="aggregationOptions">
+                    </selectPropertyExpanded>
+                    <selectPropertyExpanded v-if="isMaskPresent"
+                                            :propertyName="propertyNames.maskPropertyEditorName"
+                                            :id="presentationField.id"
+                                            :dataName="dataFormatDataName"
+                                            :label="i18n['domain.designer.presentationDesigner.columnSet.dataFormat']"
+                                            :items="maskOptions">
+                    </selectPropertyExpanded>
+                </inputGroup>
+
+                <!--grid column 3-->
+                <inputGroup class="jr-uWidth-36pc">
+                    <propertyEditor
+                            :editProperty="editProperty"
+                            :item="presentationField"
+                            :propertyName="propertyNames.labelKeyPropertyEditorName">
+                        <label class="jr-mInput-label jr">{{i18n['domain.designer.presentationDesigner.columnSet.labelKey']}}:</label>
+                    </propertyEditor>
+                    <propertyEditor
+                            :editProperty="editProperty"
+                            :item="presentationField"
+                            :propertyName="propertyNames.descriptionKeyPropertyEditorName">
+                        <label class="jr-mInput-label jr">{{i18n['domain.designer.presentationDesigner.columnSet.descriptionKey']}}:</label>
+                    </propertyEditor>
+                    <readOnlyProperty
+                            :item="presentationField"
+                            :propertyName="propertyNames.sourcePathPropertyEditorName">
+                        <label class="jr-mInput-label jr">{{i18n['domain.designer.presentationDesigner.columnSet.source']}}:</label>
+                    </readOnlyProperty>
+                </inputGroup>
+            </div>
+        </div>
+    </cell>
+
+</presentationItem>

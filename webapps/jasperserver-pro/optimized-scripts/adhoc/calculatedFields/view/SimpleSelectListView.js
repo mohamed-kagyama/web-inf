@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","jquery","backbone","text!../template/SimpleSelectListTemplate.htm"],function(e,t,i){var l=e("underscore"),r=e("jquery"),n=e("backbone"),c=e("text!../template/SimpleSelectListTemplate.htm");i.exports=n.View.extend({template:l.template(c),events:{mousedown:"clickHandler",dblclick:"dblClickHandler"},render:function(e){this.$el.empty();var t={};return t.items=e,this.$el.html(this.template(t)),this},clickHandler:function(e){this.triggerEvent(e,"item:click")},dblClickHandler:function(e){this.triggerEvent(e,"item:dblClick")},triggerEvent:function(e,t){var i=r(e.target).is(".pickList li")?e.target:r(e.target).parents(".pickList li")[0];i&&(this.clearSelection(),r(i).addClass("selected"),this.trigger(t,r(i).attr("itemId")))},clearSelection:function(){this.$el.find("li.selected").removeClass("selected")}})});

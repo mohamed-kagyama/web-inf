@@ -1,0 +1,49 @@
+<div class="jr-mJointree-join jr" :class="{'jr-isExpanded': join.isExpanded, 'jr-isCollapsed': !join.isExpanded}">
+    <div class="jr-mJointree-join-table jr-mJointree-join-tableLeft jr" @click="toggleJoin">
+        <span class="jr-mJointree-join-table-toggle jr"></span>
+        <p class="jr-mJointree-join-table-text jr">{{ joinLeftSide }}</p>
+    </div>
+
+    <div class="jr-mJointree-join-joiner jr-mIcon jr-mIconSmall jr-join jr"></div>
+
+    <div class="jr-mJointree-join-table jr-mJointree-join-tableRight jr">{{ joinRightSide }}</div>
+
+    <div class="jr-mJointree-join-type jr">
+        <select @change="selectJoinType($event.target.value)" class="jr">
+            <option v-for="option in joinTypeOptions"
+                    :value="option.value"
+                    :selected="isJoinTypeSelected(option.value)"
+            >
+                {{ option.label }}
+            </option>
+        </select>
+    </div>
+
+    <div class="jr-mJointree-join-weight jr">
+        <select class="jr"
+                @change="selectJoinWeight($event.target.value)"
+                :disabled="isJoinWeightDisabled">
+            <option v-for="option in joinWeightOptions"
+                    :selected="isJoinWeightSelected(option.value)"
+                    :value="option.value"
+            >
+                {{ option.label }}
+            </option>
+        </select>
+    </div>
+
+    <div class="jr-mJointree-join-action jr"
+         v-clickMenu="joinMenuOptions"
+         v-bind:data-name="menuOptionsButton"
+    >
+        <button v-if="isAnyJoinMenuOptions" class="jr-mButton jr-mButtonAction jr button mutton" aria-label="">
+            <span class="jr-mButton-icon jr-mIcon jr-kebab jr"></span>
+        </button>
+    </div>
+
+    <div class="jr-mJointree-join-action jr">
+        <button @click="removeJoin" v-bind:data-name="removeJoinButton" class="jr-mButton jr-mButtonAction jr" aria-label="">
+            <span class="jr-mButton-icon jr-mIcon jr-delete jr"></span>
+        </button>
+    </div>
+</div>

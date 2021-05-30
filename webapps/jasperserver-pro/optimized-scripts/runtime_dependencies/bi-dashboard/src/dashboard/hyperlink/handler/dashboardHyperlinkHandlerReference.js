@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","jquery","runtime_dependencies/bi-report/src/bi/report/jive/enum/hyperlinkTargets","runtime_dependencies/bi-report/src/bi/report/jive/enum/hyperlinkTypes"],function(e,r,t){var n=e("underscore"),i=e("jquery"),p=e("runtime_dependencies/bi-report/src/bi/report/jive/enum/hyperlinkTargets"),a=e("runtime_dependencies/bi-report/src/bi/report/jive/enum/hyperlinkTypes"),o=n.template("{{=url}}{{=parameters}}{{=anchor}}");t.exports={events:{click:function(e,r,t){var s,u=r.href.match(/^([^\?\#]+)(\?[^\#]+)?(\#.*)?$/),c="",d=u[3]||"";u[2]&&(c+=u[2]),r.parameters&&(c+=(c?"&":"?")+i.param(r.parameters,!0)),s=o({url:u[1],parameters:c,anchor:d}),r.target!==p.SELF?window.open(s,n.contains(n.values(p),r.target)?"_"+r.target.toLowerCase():r.target):t&&t.drilldown&&t.drilldown(n.extend({},r,{type:a.REFERENCE,href:s}))}}}});

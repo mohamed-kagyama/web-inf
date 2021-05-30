@@ -1,0 +1,21 @@
+<genericNotificationDialog
+    :data-name="errorDialog"
+    :class="['jr-mDialogError', {'jr-isHidden': isHidden}]"
+    :title="i18n2['error.title']"
+    :headerClass="'jr-mValidation-alertError'"
+    :headerIconClass="'jr-cancelRound'"
+    :header="header"
+    :confirmButtonLabel="confirmLabel"
+    :confirmButtonDataNameAttribute="confirmLabelButton"
+    :confirmButtonClass="'jr-mButtonError'"
+    :rejectButtonLabel="rejectLabel"
+    :rejectButtonDataNameAttribute="rejectLabelButton"
+    @confirm="onConfirm"
+    @reject="onReject">
+
+    <template v-for="error in errors">
+        <category :category="error.category" v-if="error.category"></category>
+        <categoryDetails :categoryDetails="error.errorParameters" v-if="shouldRenderParametersList(error.errorParameters)"></categoryDetails>
+    </template>
+
+</genericNotificationDialog>

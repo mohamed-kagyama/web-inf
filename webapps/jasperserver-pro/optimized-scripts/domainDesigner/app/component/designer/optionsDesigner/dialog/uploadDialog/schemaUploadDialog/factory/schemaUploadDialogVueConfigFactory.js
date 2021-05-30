@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../../../common/vue/computed/i18nComputed","bundle!DomainDesignerBundle","runtime_dependencies/js-sdk/src/common/util/i18nMessage","text!../template/schemaUploadDialogVueTemplate.htm"],function(e,t,n){var i=e("underscore"),o=e("../../../../../../../common/vue/computed/i18nComputed"),l=e("bundle!DomainDesignerBundle"),s=e("runtime_dependencies/js-sdk/src/common/util/i18nMessage"),a=e("text!../template/schemaUploadDialogVueTemplate.htm");s.create(l);n.exports={create:function(e){var t=e.store,n=e.ActionButton,l=e.SingleFileUpload;return{template:a,mixins:e.mixins,components:{actionButton:n,singleFileUpload:l},computed:i.extend({isPrimaryButtonDisabled:function(){return!Boolean(this.singleFileUpload.file)||Boolean(this.singleFileUpload.errorMessage)}},o),data:function(){return t.attributes},methods:{onPrimaryButtonClick:function(){this.$emit("uploadSchema",this.singleFileUpload.file.content,this.singleFileUpload.file.name)},onSecondaryButtonClick:function(){this.$emit("close")},reset:function(){t.reset()}}}}}});

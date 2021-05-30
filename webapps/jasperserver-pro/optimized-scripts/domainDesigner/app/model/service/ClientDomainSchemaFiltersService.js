@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../model/schema/enum/fieldTypesToGenericTypesEnum","../../../model/schema/mixin/allCollectionsMixin"],function(e,t,i){var n=e("underscore"),r=e("../../../model/schema/enum/fieldTypesToGenericTypesEnum"),o=e("../../../model/schema/mixin/allCollectionsMixin"),d=function(e){this.initialize(e)};n.extend(d.prototype,{initialize:function(e){this.dataStore=e.dataStore,this.mixInAllCollections(this.dataStore)},getFilterById:function(e){var t=this.filters.byId(e);if(t){var i=t.fieldReferences.map(function(e){return n.extend(e.toJSON(),{id:e.getId()})});return n.extend({},t.toJSON(),{fieldReferences:i,sourceId:t.getSourceId(),sourceType:t.getSourceType()})}},getFilterDataType:function(e){var t=this.filters.byId(e),i=t.getExpression().left,n=i.fieldReferenceId,o=t.getFieldReferences().find(function(e){return e.getId()===n}),d=this.fields.byId(o.getFieldId());return r[d.getType()]}}),n.extend(d.prototype,o),i.exports=d});

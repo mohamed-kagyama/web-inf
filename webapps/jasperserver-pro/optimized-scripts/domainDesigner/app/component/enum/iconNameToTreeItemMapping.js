@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","./treeItemIconClassEnum","../../../model/schema/enum/schemaEntitiesEnum","../layout/sidebarView/enum/artificialTreeResourceTypesEnum"],function(E,T,e){var R=E("./treeItemIconClassEnum"),A=E("../../../model/schema/enum/schemaEntitiesEnum"),I=E("../layout/sidebarView/enum/artificialTreeResourceTypesEnum"),L={};L[A.DATA_SOURCE]=R.DATA_SOURCE,L[A.TABLE]=R.TABLE,L[A.TABLE_REFERENCE]=R.TABLE,L[A.FIELD]=R.COLUMN,L[A.PRESENTATION_FIELD]=R.ITEM,L[A.PRESENTATION_SET]=R.SET,L[A.CALC_FIELD]=R.CALC_FIELD,L[A.DATA_ISLAND]=R.ISLAND,L[A.JOIN_TREE]=R.JOIN_TREE,L[A.DATA_SOURCE_GROUP]=R.SCHEMA,L[A.DERIVED_TABLE]=R.DERIVED_TABLE,L[A.CONSTANT_GROUP]=R.CALC_FIELDS,L[A.FILTER_EXPRESSION]=R.FILTER,L[A.COMPLEX_FILTER]=R.FILTER,L[I.PRE_FILTER]=R.FILTER,L[I.DERIVED_TABLE_GROUP]=R.DERIVED_TABLES,L[I.CONSTANT_GROUP]=R.CALC_FIELDS,L[I.DEPENDENCY_DIALOG_GROUP]=R.FOLDER,L[I.PROFILE_ATTRIBUTE_DATA_SOURCE_GROUP]=R.ATTRIBUTE_SCHEMA,e.exports=L});

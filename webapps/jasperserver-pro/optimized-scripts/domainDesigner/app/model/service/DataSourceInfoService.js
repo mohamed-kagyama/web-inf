@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","jquery","../service/util/dataSourceTypeUtil","../enum/emptyDataSourceEnum","../../util/uriUtil"],function(e,t,r){var i=e("underscore"),a=e("jquery"),u=e("../service/util/dataSourceTypeUtil"),n=e("../enum/emptyDataSourceEnum"),o=e("../../util/uriUtil"),c=function(e){this.initialize(e)};i.extend(c.prototype,{initialize:function(e){this.metadataService=e.metadataService},getDataSourceInfo:function(e,t){var r=this;return this.metadataService.getMetadata(e,[],t).then(function(t){return r._isEmptyDataSource(t)?r._getEmptyDataSourceErrorPromise():{uri:e,name:o.getLastSegment(e),type:u.getDataSourceType(t)}})},_isEmptyDataSource:function(e){return!e},_getEmptyDataSourceErrorPromise:function(){return(new a.Deferred).reject({responseJSON:{errorCode:n.DATA_SOURCE_IS_EMPTY}}).promise()}}),r.exports=c});

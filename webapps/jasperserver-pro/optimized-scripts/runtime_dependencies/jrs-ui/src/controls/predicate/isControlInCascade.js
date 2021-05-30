@@ -1,0 +1,1 @@
+define(["require","exports","module"],function(e,n,r){r.exports=function(e){var n=e.slaveDependencies;return!!n&&n.length>0}});

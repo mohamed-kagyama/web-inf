@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","backbone"],function(e,t,n){var i=e("underscore"),s=e("backbone"),a=function(e){this.initialize(e)};i.extend(a.prototype,s.Events,{initialize:function(e){this.eventBus=e.eventBus,this.storeChangeEventBus=e.storeChangeEventBus,this.store=e.store,this.searchKeywordProvider=e.searchKeywordProvider,this.dispatcherEventName=e.dispatcherEventName,this.applicationDispatcherEventBus=e.applicationDispatcherEventBus,this.onChangeStateSearchStrategy=e.onChangeStateSearchStrategy,this._initEvents()},_initEvents:function(){this.listenTo(this.storeChangeEventBus,"change",this._onChangeState),this.listenTo(this.eventBus,"change:searchKeyword",this._onChangeSearchKeyword)},_onChangeState:function(e){this.onChangeStateSearchStrategy.execute({state:e,store:this.store,searchKeyword:this.searchKeywordProvider.get(e)})},_onChangeSearchKeyword:function(e){this.applicationDispatcherEventBus.trigger(this.dispatcherEventName,e)}}),n.exports=a});

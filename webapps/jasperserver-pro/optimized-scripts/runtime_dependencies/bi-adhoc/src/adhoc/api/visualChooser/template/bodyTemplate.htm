@@ -1,0 +1,26 @@
+<ul class="jr-mVisualchooser-menu jr">
+    {{ var self = this; _.each(types, function(type) { }}
+    <li class="jr-mVisualchooser-menu-item jr" data-chart-type="{{- type.name}}" style="list-style: none;">
+
+        <js-templateNonce></js-templateNonce>
+        <div class="jr-mVisualchooser-menu-item-wrapper jr">
+            <div class="jr-mVisualchooser-menu-item-icon jr-mVisualchooser-menu-item-icon{{- type.cssClass}} jr"></div>
+            <span class="jr-mVisualchooser-menu-item-label jr">{{- self.i18n[type.bundleName] }}</span>
+        </div>
+    </li>
+    {{ }); }}
+</ul>
+{{ if (designView) { }}
+    <div class="jr-mVisualchooser-rules jr">
+        <div class="jr-mVisualchooser-rule  jr">
+            <div id="ruleIcon" class="jr-mVisualchooser-rule-icon jr-mVisualchooser-rule-iconCrosstab jr"></div>
+            <div class="jr-mVisualchooser-rule-text jr">
+                <ul class="jr-mList jr-mListSmall jr">
+                    <li class="jr-mList-item jr">
+                        <span class="jr-mList-item-title jr"><span class="jr-mVisualchooser-rule-text-label jr">{{- i18n['visualization.chooser.rule.title']}}: </span></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{{ } }}

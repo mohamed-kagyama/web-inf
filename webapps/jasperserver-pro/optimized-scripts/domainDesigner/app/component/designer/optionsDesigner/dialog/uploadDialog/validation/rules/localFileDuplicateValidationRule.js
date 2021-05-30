@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","bundle!DomainDesignerBundle","runtime_dependencies/js-sdk/src/common/util/i18nMessage"],function(e,n,i){function r(e){var n=e.filesToUpload,i=e.currentFileToUpload,r=e.currentFileToUploadIndex;return d.find(n,function(e,n){if(r>n)return e.name===i.name})}var d=e("underscore"),l=e("bundle!DomainDesignerBundle"),o=e("runtime_dependencies/js-sdk/src/common/util/i18nMessage"),a=o.create(l);i.exports={validate:function(e,n){var i=d.reduce(e,function(i,l,o){var a=l.name,s=d.find(n,function(e){return e.name===a});return s||(s=r({filesToUpload:e,currentFileToUpload:l,currentFileToUploadIndex:o})),s?i.invalidFiles.push(l):i.validFiles.push(l),i},{invalidFiles:[],validFiles:[],errorMessage:a("domain.designer.advanced.options.uploadDialog.duplicateFileName")},this);if(i.invalidFiles.length)return i}}});

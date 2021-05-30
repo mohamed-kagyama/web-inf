@@ -1,0 +1,35 @@
+<div v-if="group"
+     v-show="visible"
+     v-tooltip="tooltip"
+     class="jr"
+     :class="classObject"
+     @click="toggle"
+     @click="select"
+     role="treeItem">
+    <div v-if="group"
+         class="jr-mTree-group-expander jr">
+        <span class="jr-mIcon jr"
+              :class="classGroupExpander"></span>
+    </div>
+    <p class="jr"
+       :class="classTreeLabel">{{ label }}</p>
+</div>
+
+<div v-else
+     v-show="visible"
+     v-tooltip="tooltip"
+     class="jr"
+     :class="classObject"
+     @click="select"
+     role="treeItem">
+    <div @click="toggle"
+         class="jr-mTree-iconContainer jr">
+        <span class="jr-mTree-expander jr"></span>
+        <span class="jr-mTree-icon jr" :class="icon">
+    </span>
+    </div>
+    <p class="jr"
+       @dblclick="toggle"
+       :class="classTreeLabel">{{ label }}</p>
+</div>
+

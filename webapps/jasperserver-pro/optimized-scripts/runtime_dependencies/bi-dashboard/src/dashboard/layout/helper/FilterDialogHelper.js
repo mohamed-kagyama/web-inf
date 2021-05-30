@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","jquery","underscore","../../enum/dashboardComponentTypes","./BasicHelper"],function(e,t,r){var o=e("jquery"),n=e("underscore"),i=e("../../enum/dashboardComponentTypes"),s=e("./BasicHelper");r.exports=s.extend({init:function(e){this.container=e,this.helper=o("<div>").addClass("helper filter-dialog-drop").appendTo(o("body#dashboard")).hide(),this.helper.position={}},drag:function(e,t){if(this.strategy.model.currentFoundation.components.getDashboardPropertiesComponent().get("dashletFilterShowPopup")){var r=(t&&t.componentId,o(e.toElement||e.originalEvent.target)),s=o(".filterGroup.dialog.open");if(t.resourceType===i.INPUT_CONTROL&&(r.is(this.helper)||r.parents(".dashboardCanvas").length||r.is(".filterGroup.dialog.open")||r.parents(".filterGroup.dialog.open").length)){if(!s.length)return void this.strategy.model.currentFoundation.trigger("open:filterDialog");var p=s[0].getBoundingClientRect();this.helper.element=s,this.helper.css(n.extend({zIndex:parseInt(s.css("zIndex"))+2},n.pick(p,["top","left","width","height"]))),this.helper.show()}else this.helper.hide()}},stop:function(){this.helper.hide()}})});

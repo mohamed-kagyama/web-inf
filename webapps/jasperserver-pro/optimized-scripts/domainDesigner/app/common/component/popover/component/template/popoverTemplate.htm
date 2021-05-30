@@ -1,0 +1,14 @@
+<div class="jr-mMessage jr" :class="[typeClass, placementClass, isVisibleClass]" :style="style">
+    <div class="jr-mMessage-close jr-mIcon jr-mIconSmall jr-cancel jr" @click="close"></div>
+    <div class="jr-mMessage-iconContainer jr">
+        <span class="jr-mMessage-icon jr-mIcon jr-mIconXLarge jr" :class="[iconClass]"></span>
+    </div>
+    <div class="jr-mMessage-textContainer jr">
+        <p class="jr-mMessage-title jr">{{ title }}</p>
+
+        <template v-if="isTextArray">
+            <p v-for="textEntry in text" class="jr-mMessage-text jr">{{ textEntry }}</p>
+        </template>
+        <p v-else class="jr-mMessage-text jr">{{ text }}</p>
+    </div>
+</div>

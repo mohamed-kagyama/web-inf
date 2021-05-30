@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","text!../template/renameDialogVueTemplate.htm","../../../../common/vue/computed/i18nComputed"],function(t,e,n){var i=t("underscore"),o=t("text!../template/renameDialogVueTemplate.htm"),s=t("../../../../common/vue/computed/i18nComputed");n.exports={create:function(t){var e=t.store;return{template:o,components:t.components,watch:{show:function(t){this.$emit("show",t),t&&this.$nextTick(function(){this.focusInputOnShow&&this.$refs.input.focus(),this.selectValueOnShow&&this.$refs.input.select()})}},computed:i.extend({},{isInputLabelExists:function(){return void 0!==this.inputLabel},isHidden:function(){return!this.show},isDisabled:function(){return Boolean(this.value===this.originalValue||this.validationMessage)}},s),data:function(){return e},methods:{onInput:function(){this.$emit("input",this.$refs.input.value)},onSecondaryButtonClick:function(){this.$emit("cancel")},onEnterConfirm:function(){this.isDisabled||this.triggerOkAction()},triggerOkAction:function(){var t=this.$refs.input.value;this.$emit("ok",t)}}}}}});

@@ -1,0 +1,33 @@
+<div class="jr-mDomain-attributeinput jr" :class="{'jr-isHidden': !schemaAttributeInput.isVisible}">
+    <div class="jr-mInput jr">
+        <label class="jr-mInput-label jr">{{ i18n["domain.designer.metadataDesignerView.schemaAttribute.title"] }}</label>
+
+        <div class="jr-mInput-action jr">
+            <div class="jr-mInput-action-text jr">
+                <input v-bind:data-name="input" class="jr-mInput-text jr" type="text" @keyup.enter="onEnter" @input="onInput" :value="schemaAttributeInput.attribute">
+            </div>
+
+            <div class="jr-mInput-action-button jr" v-show="!isEditMode" @click="add">
+                <button v-bind:data-name="addButton" class="jr-mButton jr-mButtonText jr-mButtonPrimary jr-mButtonMedium jr">
+                    <span class="jr-mButton-label jr">{{ i18n["domain.designer.metadataDesignerView.schemaAttribute.button.add"] }}</span>
+                </button>
+            </div>
+
+            <div class="jr-mInput-action-button jr" v-show="isEditMode">
+                <button v-bind:data-name="updateButton" class="jr-mButton jr-mButtonText jr-mButtonPrimary jr-mButtonMedium jr" @click="update">
+                    <span class="jr-mButton-label jr">{{ i18n["domain.designer.metadataDesignerView.schemaAttribute.button.update"] }}</span>
+                </button>
+
+                <button v-bind:data-name="cancelButton" class="jr-mButton jr-mButtonText jr-mButtonSecondary jr-mButtonMedium jr" @click="cancel">
+                    <span class="jr-mButton-label jr">{{ i18n2["button.cancel"] }}</span>
+                </button>
+            </div>
+        </div>
+        <div class="jr-mInput-validation jr" v-show="schemaAttributeInput.error">
+            <div class="jr-mValidation jr-mValidationError jr">
+                <span class="jr-mValidation-icon jr-mIcon jr-mIconSmall jr-cancelRound jr"></span>
+                <span class="jr-mValidation-text jr">{{ schemaAttributeInput.error }}</span>
+            </div>
+        </div>
+    </div>
+</div>

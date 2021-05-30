@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../../model/schema/enum/measureOrDimensionEnum","text!./template/treeNode.htm"],function(e,t,n){var s=(e("underscore"),e("../../../../../../model/schema/enum/measureOrDimensionEnum")),i=e("text!./template/treeNode.htm");n.exports={create:function(e){return{template:i,components:{dropZoneActivator:e.dropZoneActivator},mixins:e.mixins,props:["item","nestingLevelClass","treeNodeClass","treeIconClass","toggleNodeClass","eventName"],computed:{labelOrName:function(){return this.item.label||this.item.name},nestingLevelClass:function(){return this.treeNodeClass+"-"+this.item.nestingLevel},treeNodeKindClass:function(){var e="";return this.item.kind===s.MEASURE?e="jr-mTree-leafMeasure":this.item.kind===s.DIMENSION&&(e="jr-mTree-leafField"),e}},methods:{onToggle:function(){this.toggleNodeClass&&e.presentationDesignerEventBus.trigger("toggle:"+this.eventName,this.item)}}}}}});

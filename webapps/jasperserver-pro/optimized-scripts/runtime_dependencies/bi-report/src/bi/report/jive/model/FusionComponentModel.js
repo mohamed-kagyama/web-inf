@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","jquery","./BaseComponentModel","../enum/jiveTypes","runtime_dependencies/js-sdk/src/common/logging/logger"],function(e,n,s){function o(e,n){n.events&&!e.collection.fusionChartsLinkOptionsProcessed&&(e.collection.fusionChartsLinkOptionsProcessed=!0,n.events.mouseout&&c.info("Fusion charts does not support mouseout events for hyperlinks"),n.events.mouseover&&c.info("Fusion charts does not support mouseover events for hyperlinks"),n.events.click&&(n.events.click=i.wrap(n.events.click,function(e,n,s){s instanceof t.Event?e.call(this,n,s):e.call(this,s.id,n)})))}var i=e("underscore"),t=e("jquery"),r=e("./BaseComponentModel"),l=e("../enum/jiveTypes"),u=e("runtime_dependencies/js-sdk/src/common/logging/logger"),c=u.register("FusionComponentModel");s.exports=r.extend({defaults:{id:null,instanceData:null,module:"jive.fusion",type:l.FUSION_WIDGET,linksOptions:{}},initialize:function(e,n){this.on("change:linksOptions",o),n.linkOptions&&this.set("linksOptions",n.linkOptions)}})});

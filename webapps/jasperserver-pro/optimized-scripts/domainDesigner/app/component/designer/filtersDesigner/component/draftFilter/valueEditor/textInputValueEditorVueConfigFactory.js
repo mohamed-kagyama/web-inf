@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../enum/rightOperandValueFormatEnum","../../../../../../common/component/inputErrorMessage/InputErrorMessage"],function(e,r,t){var n=(e("underscore"),e("../../../enum/rightOperandValueFormatEnum")),o=e("../../../../../../common/component/inputErrorMessage/InputErrorMessage");t.exports={create:function(e){var r=e.template,t=e.mixins||[],i=e.filtersDesignerEventBus,s=e.rightOperandValueFormatEnum||n;return{template:r,mixins:t,props:["filter","operand"],components:{errorMessage:o},computed:{errorMessage:function(){return this.filter.errors.right&&this.filter.errors.right.errorMessage},isDisabled:function(){return!this.filter.leftOperand.fieldId}},methods:{onInput:function(e){var r=e.target.value;r=s[this.filter.rightOperand.type](r),i.trigger("draftFilter:changeValue",r)}}}}}});

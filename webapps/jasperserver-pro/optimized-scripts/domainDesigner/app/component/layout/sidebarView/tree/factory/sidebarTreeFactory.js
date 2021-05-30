@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","runtime_dependencies/js-sdk/src/components/scalableList/view/ListWithSelection","runtime_dependencies/js-sdk/src/components/scalableList/model/ListWithSelectionAsObjectHashModel","../trait/setValueWithoutRerenderTrait","text!../../template/treeItemsTemplate.htm","../../../../../common/util/initializeTreePluginsUtil"],function(e,t,i){function s(e){var t=e.dataProvider;return{itemsTemplate:e.itemsTemplate||a,listItemHeight:e.listItemHeight||10,lazy:!0,selection:e.selection||{allowed:!1,multiple:!1},getData:t}}var n=e("runtime_dependencies/js-sdk/src/components/scalableList/view/ListWithSelection"),l=e("runtime_dependencies/js-sdk/src/components/scalableList/model/ListWithSelectionAsObjectHashModel"),r=e("../trait/setValueWithoutRerenderTrait"),a=e("text!../../template/treeItemsTemplate.htm"),o=e("../../../../../common/util/initializeTreePluginsUtil"),c=n.extend(r).extend({ListModel:l});i.exports={create:function(e){var t=s(e),i=e.Tree||c,n=new i(t);return o.initTreePlugins(n,e.plugins),n}}});

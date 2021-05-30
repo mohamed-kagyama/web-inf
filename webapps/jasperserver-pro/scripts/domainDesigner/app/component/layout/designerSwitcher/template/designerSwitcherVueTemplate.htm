@@ -1,0 +1,37 @@
+<ul class="jr-mTab jr-mTabHorizontal jr">
+
+    <li v-bind:data-name="switchToDataManagementButton" class="jr-mTab-item jr" v-bind:class="{'jr-isActive': isDataManagement }" @click="switchToDataManagement">
+        <span class="jr-mTab-item-label jr">{{ i18n["domain.designer.tabs.dataManagement"] }}</span>
+        <span class="jr-mTab-item-icon jr"></span>
+    </li>
+
+    <li v-bind:data-name="switchToDataIslandsButton" class="jr-mTab-item jr" v-bind:class="{'jr-isActive': isJoins, 'jr-hasError':  !errorsPresentOnJoinsTab}" @click="switchToJoins">
+        <span class="jr-mTab-item-label jr">{{ i18n["domain.designer.tabs.joins"] }}</span>
+        <span class="jr-mTab-item-icon jr"></span>
+        <div class="jr-mTab-item-badge jr" v-bind:class="{'jr-isHidden': errorsPresentOnJoinsTab}">
+            <div class="jr-mBadge jr-mBadgeRound jr-mBadgeError jr-mBadgeOutline jr">
+                <span class="jr-mBadge-icon jr-mIcon jr-warning jr"></span>
+            </div>
+        </div>
+    </li>
+
+    <li v-bind:data-name="switchToPreFiltersButton" class="jr-mTab-item jr" v-bind:class="{'jr-isActive': isPreFilters }" @click="switchToPreFilters">
+        <span class="jr-mTab-item-label jr">{{ i18n["domain.designer.tabs.preFilters"] }}</span>
+        <span class="jr-mTab-item-icon jr"></span>
+    </li>
+
+    <li v-bind:data-name="switchToPresentationButton" class="jr-mTab-item jr" v-bind:class="{'jr-isActive': isDataPresentation }" @click="switchToDataPresentation">
+        <span class="jr-mTab-item-label jr">{{ i18n["domain.designer.tabs.dataPresentation"] }}</span>
+        <span class="jr-mTab-item-icon jr"></span>
+    </li>
+
+    <li v-bind:data-name="switchToSecurityButton" class="jr-mTab-item jr" v-bind:class="{'jr-isActive': isSecurity }" @click="switchToSecurity">
+        <span class="jr-mTab-item-label jr">{{ i18n["domain.designer.tabs.security"] }}</span>
+        <span class="jr-mTab-item-icon jr"></span>
+    </li>
+
+    <li v-bind:data-name="switchToOptionsButton" class="jr-mTab-item jr" v-bind:class="{'jr-isActive': isOptions }" @click="switchToOptions">
+        <span class="jr-mTab-item-label jr">{{ i18n["domain.designer.tabs.locales"] }}</span>
+        <span class="jr-mTab-item-icon jr"></span>
+    </li>
+</ul>

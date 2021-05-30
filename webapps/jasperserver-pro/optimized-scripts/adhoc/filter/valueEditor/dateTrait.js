@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","jquery","runtime_dependencies/js-sdk/src/jrs.configs","underscore","../../../calendar2/calendar2"],function(e,r,s){var n=e("jquery"),i=e("runtime_dependencies/js-sdk/src/jrs.configs"),t=e("underscore"),a=e("../../../calendar2/calendar2"),c=/([\s]+$|^[\s]+)/g,d=/[\s]*(\+|\-)[\s]*/g;s.exports={init:function(e){this._calendars=[],this.pickerType=e.pickerType},render:function(){return this._destroyCalendars(),this.$el.html(this.template(this.i18nModel(this.serializeModel()))),this._setupCalendar(this.$(this.inputSelector),this.pickerType),this.trigger("rendered",this),this},valueConverter:function(e){var r=(e||"").toUpperCase().replace(c,"");return r=r.replace(d,"$1"),this._basicValueConverter(r)},removeView:function(){this._destroyCalendars(),this._calendars=null},_setupCalendar:function(e,r){var s=this;e.each(function(){var e=n(this);s._calendars.push(a.instance({inputField:e,calendarType:r,jqueryPickerOptions:i.calendar.timepicker}))})},_destroyCalendars:function(){t.invoke(this._calendars,"destroy"),this._calendars=[]}}});

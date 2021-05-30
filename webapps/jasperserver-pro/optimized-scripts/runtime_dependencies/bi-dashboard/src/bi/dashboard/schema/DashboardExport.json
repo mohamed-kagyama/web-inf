@@ -1,0 +1,12 @@
+{
+    "title": "Dashboard export options",
+    "type": "object",
+    "properties": {
+        "outputFormat": {
+            "type": "string",
+            "description": "A format for output of the export operation",
+            "default": "pdf"
+        }
+    },
+    "required": ["outputFormat"]
+}

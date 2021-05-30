@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","./BaseComponentModel"],function(e,t,n){var o=e("underscore"),i=e("./BaseComponentModel");n.exports=i.extend({defaults:{fixedGrandTotal:!1,fixedGroupTotal:!1,fixedHeader:!1,showDetails:!0,showTotals:!1,showDistinct:!1},initialize:function(e,t){o.bindAll(this,"ensureArtificialColumn"),this.on("change:showDetails",this.ensureArtificialColumn),this.on("change:showTotals",this.ensureArtificialColumn)},getColumns:function(){return this.components.filter(function(e){return"column"===e.componentType})},getGroups:function(){return this.components.filter(function(e){return"group"===e.componentType})},ensureArtificialColumn:function(){this.components&&(this._artificialColumn||(this._artificialColumn=this.adHocModel.componentsFactory.create({componentType:"column"})),this.get("showDetails")&&this.get("showTotals")?this.components.models[0]&&this.components.models[0].get("reference")!==this._artificialColumn.get("reference")&&this.components.unshift(this._artificialColumn):this.components.models[0]&&this.components.models[0].get("reference")===this._artificialColumn.get("reference")&&this.components.shift())}})});

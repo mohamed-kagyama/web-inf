@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","../../../enum/iconNameToTreeItemMapping","../../../../../model/util/profileAttributeUtil","../enum/artificialTreeResourceTypesEnum","../../../../../model/schema/util/entityUtil"],function(e,i,t){var l=e("../../../enum/iconNameToTreeItemMapping"),r=e("../../../../../model/util/profileAttributeUtil"),a=e("../enum/artificialTreeResourceTypesEnum"),o=e("../../../../../model/schema/util/entityUtil");t.exports=function(e,i){var t=e.resource,u=t.type;if(o.isJoinAlias(u)||o.isTableReference(u))u=o.getEntityName(i.table);else if(o.isDataSourceGroup(u)){var n=r.containsProfileAttribute(e.sourceName);n&&(u=a.PROFILE_ATTRIBUTE_DATA_SOURCE_GROUP)}if(e.iconName=l[u],o.isCalcField(u)){e.labelClass="jr-uBold";i.calcFieldsUsedInOtherCalcFields[t.resourceId]&&(e.labelClass="jr-uBolditalic")}return e}});

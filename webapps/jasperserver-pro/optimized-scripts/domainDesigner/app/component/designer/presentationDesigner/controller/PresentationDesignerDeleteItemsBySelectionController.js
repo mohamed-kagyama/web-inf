@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","backbone"],function(e,t,n){function i(e){return"INPUT"===e.tagName&&"text"===e.type}var s=e("underscore"),r=e("backbone"),a=function(e){this.initialize(e)};s.extend(a.prototype,r.Events,{initialize:function(e){s.bindAll(this,"_onKeyup"),this.presentationDesignerDeleteDataIslandsBySelectionStrategy=e.presentationDesignerDeleteDataIslandsBySelectionStrategy,this.presentationDesignerDeletePresentationItemsBySelectionStrategy=e.presentationDesignerDeletePresentationItemsBySelectionStrategy,this.presentationDesignerEventBus=e.presentationDesignerEventBus,this.presentationDesignerViewStateModelService=e.presentationDesignerViewStateModelService,this._initEvents()},_initEvents:function(){this.listenTo(this.presentationDesignerEventBus,"keyup",this._onKeyup)},_onKeyup:function(e){46===e.which&&!i(e.target)&&this._executeDeleteStrategy()},_executeDeleteStrategy:function(){this.presentationDesignerViewStateModelService.getPresentationCanvasSelectionParentId()?this.presentationDesignerDeletePresentationItemsBySelectionStrategy.execute():this.presentationDesignerDeleteDataIslandsBySelectionStrategy.execute()}}),n.exports=a});

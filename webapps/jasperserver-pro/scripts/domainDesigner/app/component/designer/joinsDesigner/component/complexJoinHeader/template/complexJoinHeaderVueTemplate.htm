@@ -1,0 +1,45 @@
+<div class="jr-mJointree-join jr" :class="{'jr-isExpanded': join.isExpanded,
+                             'jr-isCollapsed': !join.isExpanded}">
+    <div class="jr-mJointree-join-table jr-mJointree-join-tableLeft jr" @click="toggleJoin">
+        <span class="jr-mJointree-join-table-toggle jr"></span>
+        <p class="jr-mJointree-join-table-text jr">{{ joinLeftSide }}</p>
+    </div>
+
+    <div class="jr-mJointree-join-joiner jr-mIcon jr-mIconSmall jr-join jr"></div>
+
+    <div class="jr-mJointree-join-table jr-mJointree-join-tableRight jr">{{ joinRightSide }}</div>
+
+    <div class="jr-mJointree-join-type jr">
+        <select class="jr" @change="selectJoinType($event.target.value)">
+            <option
+                    v-for="option in joinTypeOptions"
+                    :value="option.value"
+                    :selected="isJoinTypeSelected(option.value)"
+            >
+                {{ option.label }}
+            </option>
+        </select>
+    </div>
+
+    <div class="jr-mJointree-join-weight jr">
+        <select class="jr"
+                @change="selectJoinWeight($event.target.value)"
+                :disabled="isJoinWeightDisabled">
+            <option
+                    v-for="option in joinWeightOptions"
+                    :value="option.value"
+                    :selected="isJoinWeightSelected(option.value)"
+            >
+                {{ option.label }}
+            </option>
+        </select>
+    </div>
+
+    <div class="jr-mJointree-expression-action jr"></div>
+
+    <div class="jr-mJointree-join-action jr">
+        <button class="jr-mButton jr-mButtonAction jr" @click="removeJoin" v-bind:data-name="removeButton" aria-label="">
+            <span class="jr-mButton-icon jr-mIcon jr-delete jr"></span>
+        </button>
+    </div>
+</div>

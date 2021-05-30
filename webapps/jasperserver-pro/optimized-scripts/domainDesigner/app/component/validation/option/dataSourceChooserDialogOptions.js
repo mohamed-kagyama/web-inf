@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","bundle!DomainDesignerBundle","runtime_dependencies/js-sdk/src/common/util/i18nMessage","settings!domainSettings","text!../template/domainSourceTreeItemsTemplate.htm","runtime_dependencies/bi-repository/src/bi/repository/enum/repositoryResourceTypes"],function(e,t,s){var r=e("bundle!DomainDesignerBundle"),o=e("runtime_dependencies/js-sdk/src/common/util/i18nMessage"),i=e("settings!domainSettings"),n=e("text!../template/domainSourceTreeItemsTemplate.htm"),m=e("runtime_dependencies/bi-repository/src/bi/repository/enum/repositoryResourceTypes"),u=o.create(r),c=[m.CUSTOM_DATA_SOURCE].concat(i.supportedDataSources);s.exports={title:u("domain.designer.dataSourceChooserDialog.title"),treeItemsTemplate:n,resourcesTypeToSelect:c,resourcesTypeToLoad:i.supportedDataSources,resourcesTypeToSelectTree:c}});

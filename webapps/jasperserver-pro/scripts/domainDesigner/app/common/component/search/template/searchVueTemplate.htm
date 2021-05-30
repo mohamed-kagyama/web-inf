@@ -1,0 +1,21 @@
+<div v-bind:data-name="search" class="jr-mInput-searchContainer jr">
+    <input :value="searchKeyword"
+           :placeholder="i18n['domain.designer.search.placeholder']"
+
+           @input="onSearchKeywordInput($event.target.value)"
+           @keypress.enter="searchByEnterKey($event.target.value)"
+           class="jr-mInput-search jr"
+           type="text"
+    >
+    <button class="jr-mInput-search-clear jr"
+            aria-label="clear search"
+            :class="{'jr-isVisible': searchKeyword}"
+            @click="reset"
+    >
+        <span class="jr-mIcon jr-cancel jr"></span>
+    </button>
+
+    <button class="jr-mInput-search-trigger jr" aria-label="search" @click="searchByClick">
+        <span class="jr-mIcon jr-search jr"></span>
+    </button>
+</div>

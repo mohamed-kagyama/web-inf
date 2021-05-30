@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../../model/schema/util/entityUtil","../../../../../util/getResourceSourceNameOrNameUtil"],function(e,t,r){function i(e,t){return e.label=t,delete e.name,e}var a=e("underscore"),o=e("../../../../../../model/schema/util/entityUtil"),u=e("../../../../../util/getResourceSourceNameOrNameUtil"),c=function(e){this.initialize(e)};a.extend(c.prototype,{initialize:function(e){a.bindAll(this,"getNameAsLabel","getSourceNameAsLabel"),this.clientDataSourceGroupService=e.clientDataSourceGroupService},getNameAsLabel:function(e,t){var r=e.name;return o.isDataSourceGroup(e.type)&&(r=this.clientDataSourceGroupService.getName(t.dataSourceGroup.toJSON())),i(e,r)},getSourceNameAsLabel:function(e,t){var r=u(e);return o.isDataSourceGroup(e.type)&&(r=this.clientDataSourceGroupService.getName(t.dataSourceGroup.toJSON())),i(e,r)}}),r.exports=c});

@@ -1,0 +1,9 @@
+{{ if(-options.showVizSelector){}}
+<label class="control checkBox">
+
+    <js-templateNonce></js-templateNonce>
+    <span class="wrap">{{-i18n["dashboard.component.dialog.properties.show.visualize.icon"]}}</span>
+    <input name="showVizSelectorIcon" data-bind="checked:showVizSelectorIcon, enabled:showVizSelector" type="checkbox"/>
+    <span class="message warning"></span>
+</label>
+{{ } }}

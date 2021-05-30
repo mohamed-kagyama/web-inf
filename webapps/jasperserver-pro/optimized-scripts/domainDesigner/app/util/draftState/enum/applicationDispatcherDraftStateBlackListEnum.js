@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../model/enum/draftStateTypesEnum"],function(e,r,T){var t=e("underscore"),R=e("../../../model/enum/draftStateTypesEnum"),s=t.values(R);T.exports={clearDraftState:s,expandSidebarNode:s,collapseSidebarNode:s,setFiltersDesignerSidebarSearchKeyword:[R.DRAFT_FILTER],cancelDraftFilter:[R.DRAFT_FILTER],setFiltersDesignerCurrentResource:[R.DRAFT_FILTER],addFilter:[R.DRAFT_FILTER],updateFilter:[R.DRAFT_FILTER],setDraftFilter:[R.DRAFT_FILTER],setJoinsDesignerCurrentResource:[R.JOIN_CONSTRUCTOR,R.DRAFT_JOIN_TREE],setJoinsDesignerSidebarSearchKeyword:[R.JOIN_CONSTRUCTOR,R.DRAFT_JOIN_TREE],setJoinsDesignerSearchKeyword:[R.JOIN_CONSTRUCTOR,R.DRAFT_JOIN_TREE],toggleJoinTree:[R.JOIN_CONSTRUCTOR,R.DRAFT_JOIN_TREE],toggleJoin:[R.JOIN_CONSTRUCTOR,R.DRAFT_JOIN_TREE],setJoinsDesignerJoinConstructorState:[R.JOIN_CONSTRUCTOR],setJoinsDesignerDraftJoinTreeState:[R.DRAFT_JOIN_TREE],createJoinTreeWithJoinExpression:[R.DRAFT_JOIN_TREE],createJoinExpression:[R.JOIN_CONSTRUCTOR]}});

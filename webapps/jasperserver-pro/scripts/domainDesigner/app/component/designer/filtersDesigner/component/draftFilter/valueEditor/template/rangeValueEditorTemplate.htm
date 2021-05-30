@@ -1,0 +1,13 @@
+<div class="jr-mInputpair jr">
+    <div class="jr-mInput jr">
+        <input @input="onInputRangeStart" :disabled="isDisabled"
+               v-bind:data-name="rangeStartInput" class="jr-mInput-text jr" type="text" :value="operand.start.value">
+        <errorMessage :message="startErrorMessage" type="error"></errorMessage>
+    </div>
+    <div class="jr-mInputpair-text jr">{{ i18n['domain.designer.filters.draftState.valueEditor.range.andLabel'] }}</div>
+    <div class="jr-mInput jr">
+        <input @input="onInputRangeEnd" :disabled="isDisabled"
+               v-bind:data-name="rangeEndInput" class="jr-mInput-text jr" type="text" :value="operand.end.value">
+        <errorMessage :message="endErrorMessage" type="error"></errorMessage>
+    </div>
+</div>

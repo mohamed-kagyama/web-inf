@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","jquery","text!../template/assetsToIncludeExtendedVersionTemplate.htm","text!../template/eventsToIncludeTemplate.htm","text!../template/exportDataFileTemplate.htm","text!../template/rolesAndUsersToIncludeTemplate.htm","text!../template/exportOptionsContainerTemplate.htm","text!../template/repositoryExportTemplate.htm","../enum/exportTypesEnum","text!../../templates/secretKeyTemplate.htm"],function(e,t,m){var p=e("jquery"),l=e("text!../template/assetsToIncludeExtendedVersionTemplate.htm"),a=e("text!../template/eventsToIncludeTemplate.htm"),o=e("text!../template/exportDataFileTemplate.htm"),n=e("text!../template/rolesAndUsersToIncludeTemplate.htm"),r=e("text!../template/exportOptionsContainerTemplate.htm"),T=e("text!../template/repositoryExportTemplate.htm"),s=e("../enum/exportTypesEnum"),x=e("text!../../templates/secretKeyTemplate.htm"),i={};i[s.ROOT_TENANT]=[n,l,a].join(""),i[s.TENANT]=[n,l].join(""),i[s.SERVER_PRO]=[n,l,a].join(""),i[s.SERVER_CE]=[n,l,a].join(""),i[s.REPOSITORY]=[T].join(""),m.exports=function(e){return e=e||{},o+x+p(r).append(i[e.type])[0].outerHTML}});

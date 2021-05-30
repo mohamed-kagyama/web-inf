@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+  ~ Licensed pursuant to commercial TIBCO End User License Agreement.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<!-- for olap client connection actions -->
+
+	<!--
+    <bean id="olapClientConnectionAction" class="com.jaspersoft.jasperserver.war.action.OlapClientConnectionAction">
+      -->
+	<bean id="olapClientConnectionAction" 
+	      class="com.jaspersoft.ji.ja.security.war.SecureOlapClientConnectionAction">
+	  <property name="repository">
+            <ref bean="${bean.repositoryService}"/>
+          </property>
+          <property name="engine">
+            <ref bean="engineService"/>
+	  </property>
+	  <property name="olapConnection">
+	    <ref bean="olapConnectionService"/>
+	  </property>
+        <property name="dataSourceTreeDataProvider" ref="proDsTreeDataProvider" />
+        <property name="jrxmlTreeDataProvider" ref="jrxmlTreeDataProvider" />
+        <property name="messages" ref="messageSource"/>
+        <property name="validator" ref="olapClientConnectionValidator" />
+        <property name="configuration" ref="configurationBean"/>
+        <property name="classOlap4jCache" value="${class.olap4jCache}"/>
+    </bean>
+
+    <bean id="olapClientConnectionValidator" class="com.jaspersoft.ji.ja.security.war.OlapClientConnectionValidator">
+        <property name="repository">
+            <ref bean="${bean.repositoryService}"/>
+        </property>
+    </bean>
+
+    <import resource="repositoryExplorerProBean.xml"/>
+	
+</beans>

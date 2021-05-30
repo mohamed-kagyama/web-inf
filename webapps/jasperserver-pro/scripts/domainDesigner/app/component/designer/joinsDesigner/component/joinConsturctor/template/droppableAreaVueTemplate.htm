@@ -1,0 +1,14 @@
+<div class="jr-mJointree-dropzones-dropzone jr" v-droppable="droppableConfig">
+    <div class="jr-mDropzone jr" :class="{
+            'jr-isOver': overLabel,
+            'jr-isActive': state.isDropAreaEnabled,
+            'jr-isDropped': isResourceDropped
+        }">
+        <span class="jr-mDropzone-label jr" v-show="isPlaceholderVisible">{{ placeholder }}</span>
+        <span class="jr-mDropzone-label jr" v-show="overLabel" >{{ overLabel }}</span>
+        <span class="jr-mDropzone-label jr" v-show="isLabelVisible">{{ label }}</span>
+        <span class="jr-mDropzone-remover jr-mIcon jr-cancel jr" @click="remove" v-show="isResourceDropped"></span>
+    </div>
+</div>
+
+

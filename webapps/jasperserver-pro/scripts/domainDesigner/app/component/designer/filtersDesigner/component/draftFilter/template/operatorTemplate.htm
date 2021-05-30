@@ -1,0 +1,16 @@
+<div class="jr-mTable-cell jr-mTable-cellOperator jr">
+    <div class="jr-mTable-cell-wrapper jr">
+        <div class="jr-mTable-cell-selectlist jr">
+            <div class="jr-mInput jr">
+                <select :disabled="isDisabled" class="jr-mInput-select jr-mInput-selectWide jr" @change="onChange($event.target.value)">
+                    <option v-for="operator in availableOperators"
+                            :selected="isOperatorSelected(operator)"
+                            :value="operator.value">
+
+                        {{ operator.label }}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>

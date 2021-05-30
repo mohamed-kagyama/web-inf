@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","bundle!DomainDesignerBundle","runtime_dependencies/js-sdk/src/common/util/i18nMessage","../../../../../../model/schema/enum/dataSourceMetadataTypesBoundariesEnum","../../../../../common/util/numberUtil"],function(e,i,n){var r=e("underscore"),a=e("bundle!DomainDesignerBundle"),s=e("runtime_dependencies/js-sdk/src/common/util/i18nMessage"),d=e("../../../../../../model/schema/enum/dataSourceMetadataTypesBoundariesEnum"),t=e("../../../../../common/util/numberUtil"),o=s.create(a);n.exports={validate:function(e,i){if(e){e=t.parseNumber(e);var n=d[i.filterType];return!r.isFinite(e)&&r.isFinite(n.max)&&r.isFinite(n.min)?o("domain.designer.filters.validation.rightOperand.outOfBoundaries"):r.isFinite(e)&&(e>n.max||e<n.min)?o("domain.designer.filters.validation.rightOperand.outOfBoundaries"):void 0}}}});

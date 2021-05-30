@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","../enum/columnSetEnum","../../../../../util/scrollBarWidthUtil","../../../../../model/schema/enum/schemaEntitiesEnum","../../../../../model/util/SimpleModel"],function(e,t,n){var o=e("../enum/columnSetEnum"),i=e("../../../../../util/scrollBarWidthUtil"),l=e("../../../../../model/schema/enum/schemaEntitiesEnum"),s=e("../../../../../model/util/SimpleModel");n.exports=s.extend({defaults:function(){return{isVisible:!1,ownDesigner:"",columnSet:o.DEFAULT,scrollBarWidth:i,isScrollBarPresent:!1,resizer:{},column0Width:0,column1Width:0,models:[],searchKeyword:"",top:0,scrollPos:0,height:0,canvasWidth:0,canvasHeight:0,isEmptyDataStructure:!0,emptyDataIslandsDropZone:{index:0,isActive:!1,isOver:!1,accepts:[l.JOIN_TREE,l.JOIN_ALIAS,l.TABLE_REFERENCE,l.CALC_FIELD,l.FIELD]},editProperty:{},isAddSetButtonActive:!1,moveButtonsStatus:{topButtonEnabled:!1,upButtonEnabled:!1,downButtonEnabled:!1,bottomButtonEnabled:!1}}}})});

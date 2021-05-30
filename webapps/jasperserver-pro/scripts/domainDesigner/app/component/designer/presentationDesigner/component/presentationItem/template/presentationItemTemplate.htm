@@ -1,0 +1,22 @@
+<div :class="[tableRowClass, {'jr-isExpanded': item.isPropertiesEditorExpanded}]"
+     class="jr-mTable-row jr">
+
+    <treeNode
+            :style="column0WidthStyle"
+            :item="item"
+            :treeNodeClass="treeNodeClass"
+            :treeIconClass="treeIconClass"
+            :toggleNodeClass="toggleNodeClass"
+            :eventName="eventName">
+    </treeNode>
+
+    <div :style="column1WidthStyle" class="jr-mTable-cell jr-mTable-cellProperties jr">
+        <div v-resizer="resizerConfig" class="jr-mTable-cell jr-mTable-cellResizer jr"></div>
+
+        <togglePropertiesEditor :item="item" :eventName="eventName"></togglePropertiesEditor>
+
+        <slot></slot>
+
+        <removeItem :item="item" :eventName="eventName"></removeItem>
+    </div>
+</div>

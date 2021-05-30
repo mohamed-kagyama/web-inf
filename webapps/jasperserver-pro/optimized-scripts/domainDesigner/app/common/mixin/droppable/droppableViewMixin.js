@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","jquery","underscore","./util/droppableFnWrapper","jquery-ui/ui/widgets/droppable"],function(e,r,p){var o=e("jquery"),t=e("underscore"),l=e("./util/droppableFnWrapper");e("jquery-ui/ui/widgets/droppable");var a=["drop","over","out","el"];p.exports={_initializeDroppable:function(e){var r,p=t.result(this,"droppable")||e,o=t.result(p,"el");if(!(r=this._getDroppableElement(o))||0===r.length)throw new Error("Can not found droppable element");var l=this._getDroppableOptions(p);this.$droppable=r.droppable(l)},_getDroppableElement:function(e){return":el"===e?o(this.$el):o(this.$el).find(e)},_disableDroppable:function(){this.$droppable.droppable("disable")},_enableDroppable:function(){this.$droppable.droppable("enable")},_destroyDroppable:function(){this.$droppable&&this.$droppable.data("ui-droppable")&&this.$droppable.droppable("destroy")},_getDroppableOptions:function(e){var r=t.result(e,"drop"),p=t.result(e,"over"),o=t.result(e,"out");r=l.call(this,r),p=l.call(this,p),o=l.call(this,o);var i=t.extend({},t.omit(e,a));return r&&(i.drop=r),p&&(i.over=p),o&&(i.out=o),i}}});

@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","../view/control/BooleanControlView","../view/control/SingleValueTextControlView","../view/control/SingleValueNumberControlView","../view/control/SingleValueDateControlView","../view/control/SingleValueDatetimeControlView","../view/control/SingleValueTimeControlView","../view/control/SingleSelectControlView","../view/control/SingleSelectRadioControlView","../view/control/MultiSelectControlView","../view/control/MultiSelectCheckboxControlView"],function(e,l,o){var i=e("../view/control/BooleanControlView"),t=e("../view/control/SingleValueTextControlView"),n=e("../view/control/SingleValueNumberControlView"),r=e("../view/control/SingleValueDateControlView"),w=e("../view/control/SingleValueDatetimeControlView"),c=e("../view/control/SingleValueTimeControlView"),V=e("../view/control/SingleSelectControlView"),a=e("../view/control/SingleSelectRadioControlView"),u=e("../view/control/MultiSelectControlView"),S=e("../view/control/MultiSelectCheckboxControlView");o.exports={bool:i,singleValueText:t,singleValueNumber:n,singleValueDate:r,singleValueDatetime:w,singleValueTime:c,singleSelect:V,singleSelectRadio:a,multiSelect:u,multiSelectCheckbox:S}});

@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","runtime_dependencies/js-sdk/src/common/model/BaseModel","./InputControlStateModel","runtime_dependencies/js-sdk/src/common/logging/logger"],function(e,t,i){var s=e("underscore"),n=e("runtime_dependencies/js-sdk/src/common/model/BaseModel"),o=e("./InputControlStateModel"),a=e("runtime_dependencies/js-sdk/src/common/logging/logger"),d=a.register("InputControlModel");i.exports=n.extend({defaults:{id:void 0,label:void 0,description:void 0,mandatory:!1,readOnly:!1,type:void 0,uri:void 0,visible:!1,masterDependencies:void 0,slaveDependencies:void 0,validationRules:void 0,state:void 0},initialize:function(){n.prototype.initialize.apply(this,arguments),this.state=new o(this.get("state")||{}),this.state.dataType=this.get("dataType"),this.state.validationRules=this.get("validationRules"),this.state.mandatory=this.get("mandatory"),this.on("change:state",s.bind(function(){this.state.clear({silent:!0}).set(this.get("state")||{})},this)),this.on("all",d.debug,d)},changeState:function(e){this.state.changeState(e),this.collection.trigger("changeState",this)},getData:function(){return this.state.getData()}})});

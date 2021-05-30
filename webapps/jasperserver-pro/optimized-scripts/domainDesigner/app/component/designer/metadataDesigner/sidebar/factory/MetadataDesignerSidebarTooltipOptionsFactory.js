@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","bundle!DomainDesignerBundle","runtime_dependencies/js-sdk/src/common/util/i18nMessage","../../../../../common/component/enum/messageTypesEnum","../../../../../common/component/enum/placementsEnum"],function(e,n,t){var o=e("underscore"),i=e("bundle!DomainDesignerBundle"),s=e("runtime_dependencies/js-sdk/src/common/util/i18nMessage"),m=e("../../../../../common/component/enum/messageTypesEnum"),r=e("../../../../../common/component/enum/placementsEnum"),c=s.create(i),u=function(e){this.initialize(e)};o.extend(u.prototype,{initialize:function(e){this.tooltipOffset=e.tooltipOffset,o.bindAll(this,"create")},create:function(e,n){var t={};return e.isEmptyDataSourceGroup&&(t.content={text:c("domain.designer.metadataDesigner.sidebar.tooltip.emptySchemasMessage")},t.offset={top:this.tooltipOffset},t.bindToTarget=!0,t.type=m.ATTENTION,t.placement=r.BOTTOM_RIGHT,t.target=n.querySelector(".jr-jEmptyDataSourceGroup")),t}}),t.exports=u});

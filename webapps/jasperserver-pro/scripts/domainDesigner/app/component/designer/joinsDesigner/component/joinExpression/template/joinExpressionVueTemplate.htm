@@ -1,0 +1,28 @@
+<div class="jr-mJointree-expression jr">
+    <div class="jr-mJointree-expression-field jr-mJointree-expression-fieldLeft jr">
+        <span class="jr-mJointree-expression-field-table jr">{{ joinExpression.leftJoinAlias }}:</span>{{ joinExpression.leftField }}
+    </div>
+
+    <div class="jr-mJointree-expression-operator jr">
+        <select @change="selectOperator($event.target.value)" class="jr">
+            <option v-for="option in operatorOptions"
+                    :value="option.value"
+                    :selected="isOperatorSelected(option.value)"
+            >
+                {{ option.label }}
+            </option>
+        </select>
+    </div>
+
+    <div class="jr-mJointree-expression-field jr-mJointree-expression-fieldRight jr">
+        <span class="jr-mJointree-expression-field-table jr">{{ joinExpression.rightJoinAlias }}:</span>{{ joinExpression.rightField }}
+    </div>
+
+    <div class="jr-mJointree-expression-action jr"></div>
+
+    <div class="jr-mJointree-expression-action jr">
+        <button @click="remove" v-bind:data-name="removeJoinExpressionButton" class="jr-mButton jr-mButtonAction jr" aria-label="">
+            <span class="jr-mButton-icon jr-mIcon jr-delete jr"></span>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","vue","../actions/singleFileUploadActionsFactory","../mutations/singleFileUploadMutationsFactory","./singleFileUploadVueConfigFactory","../mixin/behaviour/singleFileUploadBehaviourMixinFactory","../../../../../../../common/factory/addAutomationDataNameAttributeMixinFactory","../../../../../../../common/enum/automationDataNameAttributesEnum"],function(e,t,o){var a=e("vue"),i=e("../actions/singleFileUploadActionsFactory"),n=e("../mutations/singleFileUploadMutationsFactory"),r=e("./singleFileUploadVueConfigFactory"),l=e("../mixin/behaviour/singleFileUploadBehaviourMixinFactory"),c=e("../../../../../../../common/factory/addAutomationDataNameAttributeMixinFactory"),s=e("../../../../../../../common/enum/automationDataNameAttributesEnum");o.exports={create:function(e){var t=e.store,o=e.fileLoader,u=i.create({fileLoader:o}),m=n.create({store:t}),d=l.create({singleFileUploadActions:u,singleFileUploadStateMutations:m}),F=r.create(),g=c.create({config:F,dataNames:s.optionsDesigner.singleFileUpload});return{component:a.extend(g),actions:u,mutations:m,behaviour:d}}}});

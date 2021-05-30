@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../enum/draftFilterStateEnum","../../../../../../model/schema/enum/genericTypesEnum"],function(e,t,r){var n=e("underscore"),a=e("../enum/draftFilterStateEnum"),i=e("../../../../../../model/schema/enum/genericTypesEnum"),o=function(e){this.rightOperandValueEnum=e.rightOperandValueEnum,this.validatorConfig=e.validatorConfig};n.extend(o.prototype,{enter:function(e,t){var r=this._getRightOperandContext(e);this._getRightOperandAndSwitchToNextState(e,t,r)},_getRightOperandContext:function(e){return n.extend({},e,{validatorConfig:this.validatorConfig})},_getRightOperandAndSwitchToNextState:function(e,t,r){var i=this._getValueFactory(e),o=n.cloneDeep(e);o.newFilterOptions.rightOperand=i(r),t.enter(a.FINAL_STATE,o)},_getValueFactory:function(e){var t=e.currentFilter.dataType,r=e.newFilterOptions;return t||(t=i.STRING),this._getValueFactoryByOptions({dataType:t,rightOperandType:r.rightOperandType,operator:r.operator})},_getValueFactoryByOptions:function(e){var t=e.dataType,r=e.rightOperandType,n=e.operator;return this.rightOperandValueEnum[t][r][n]}}),r.exports=o});

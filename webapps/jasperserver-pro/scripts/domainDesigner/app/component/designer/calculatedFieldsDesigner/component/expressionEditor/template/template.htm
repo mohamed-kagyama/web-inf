@@ -1,0 +1,8 @@
+<textarea
+        :data-name="editorInput"
+        :value="value"
+        @select="onChange"
+        @keyup="onChange"
+        @click="onChange"
+        v-rangeSelection="{selectionRange: selectionRange}">
+</textarea>

@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../../model/schema/util/entityUtil","../../../../../common/mixin/draggable/lazyDraggableMixin"],function(e,i,r){var t=e("underscore"),a=e("../../../../../../model/schema/util/entityUtil"),l=e("../../../../../common/mixin/draggable/lazyDraggableMixin"),n=function(e){this.initialize(e)};t.extend(n.prototype,{draggable:{selector:"li",onDragStart:"onDragStart",onDragStop:"onDragStop",shouldBeDraggable:"shouldBeDraggable",attrs:["id"]},initialize:function(e){this.$el=e.el,this.sidebarTreeModel=e.sidebarTreeModel,this.filtersDesignerEventBus=e.filtersDesignerEventBus,this._initializeDraggable&&this._initializeDraggable()},shouldBeDraggable:function(e){var i=this.sidebarTreeModel.getNode(e.id);return a.isField(i.resource.type)},onDragStart:function(e){var i=this.sidebarTreeModel.getNode(e.id);return this.filtersDesignerEventBus.trigger("sidebar:selectItem",i.resource),{label:i.label,data:i.resource}}},l),r.exports=n});

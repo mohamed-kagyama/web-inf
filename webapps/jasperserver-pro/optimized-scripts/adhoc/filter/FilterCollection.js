@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","backbone","./FilterModel","underscore"],function(e,t,i){var r=e("backbone"),n=e("./FilterModel"),l=e("underscore");i.exports=r.Collection.extend({model:n,addFromField:function(e){return this.add(this.createFilter(e))},createFilter:function(e){return new this.model({filterDataType:e.type,id:e.name,label:e.defaultDisplayName,operatorName:"equals",filterLetter:this.nextLetter(),value:"",state:{value:""}})},initialize:function(e,t){this.service=t.service,this.isOlap=t.isOlap},set:function(e,t){return t=t||{},l.extend(t,{service:this.service,isOlap:this.isOlap}),r.Collection.prototype.set.call(this,e,t)},nextLetter:function(){return this.length>0?this.incLetter(this.at(this.length-1).get("filterLetter")):"A"},incLetter:function(e){return l.isEmpty(e)?e:String.fromCharCode(e.charCodeAt(0)+1)},editableFilters:function(){return this.filter(function(e){return e.get("editable")})},toExpression:function(){return l(this.editableFilters()).map(function(e){return{filterId:e.get("id"),filterExpression:e.toExpression()}})}})});

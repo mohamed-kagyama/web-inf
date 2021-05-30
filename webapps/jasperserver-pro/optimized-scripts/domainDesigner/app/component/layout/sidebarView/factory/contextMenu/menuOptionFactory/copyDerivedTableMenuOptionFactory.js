@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","bundle!DomainDesignerBundle","runtime_dependencies/js-sdk/src/common/util/i18nMessage","../../../../../../../model/schema/util/entityUtil","../../../../../../dispatcher/enum/applicationStateEventsEnum","../enum/menuOptionsEventsEnum"],function(e,n,t){var i=e("bundle!DomainDesignerBundle"),s=e("runtime_dependencies/js-sdk/src/common/util/i18nMessage"),r=e("../../../../../../../model/schema/util/entityUtil"),u=e("../../../../../../dispatcher/enum/applicationStateEventsEnum"),a=e("../enum/menuOptionsEventsEnum"),o=s.create(i);t.exports={create:function(e){var n=e.isItemJoinAliasOrTableReference;return function(e){return{label:o("domain.designer.joinsDesigner.tree.contextMenu.copyTable"),action:a.COPY_DERIVED_TABLE.event,value:!1,triggerEvent:u.SIDEBAR_TREE_MENU_COPY_DERIVED_TABLE,test:function(){return r.isDerivedTable(e.resource.type)||n(e)&&e.resource.isDerivedTable}}}}}});

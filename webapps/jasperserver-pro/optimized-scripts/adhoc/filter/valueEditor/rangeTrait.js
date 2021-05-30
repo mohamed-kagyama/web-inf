@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","jquery","underscore","../validation/ValidationError"],function(e,r,t){var i=e("jquery"),n=e("underscore"),a=e("../validation/ValidationError");t.exports={onChange:function(){var e=this.$(this.inputSelector),r=e.map(function(){return i(this).val()}).get(),t=this.convert(r);this.setValue(t)},convert:function(e){var r=this;return n.map(e,function(e){return r.valueConverter?r.valueConverter(e):e})},getValue:function(e){var r=this.model.get("value");return n.isNumber(e)?r[e]:r},validCallback:function(e,r,t){e.markAllFieldsAsValid(r,t)},invalidCallback:function(e,r,t,i){e.markAllFieldsAsValid(r,i),n.isArray(t)||(t=[t]),n.each(t,function(t){e.markSingleFieldAsInvalid(t instanceof a?t.getAttr():r,t,i)})},markAllFieldsAsValid:function(e,r){this.$("["+r+"]").text("").parent().removeClass("error")}}});

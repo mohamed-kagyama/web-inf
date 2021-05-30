@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../model/util/resourcePropertiesUtil","../util/resourceDownloadUtil","backbone"],function(e,o,n){var t=e("underscore"),i=e("../../../../model/util/resourcePropertiesUtil"),r=e("../util/resourceDownloadUtil"),l=e("backbone"),s=function(e){this.optionsDesignerEventBus=e.optionsDesignerEventBus,this._initEvents()};t.extend(s.prototype,l.Events,{_initEvents:function(){this.listenTo(this.optionsDesignerEventBus,"download:bundle",this._onDownloadBundle)},_getFileNameForUrlDownload:function(e){return i.parseFileNameFromUrl(e.uri)},_getFileNameForContentDownload:function(e){return i.createBundleLabelFromLabelAndLocale(e.label,e.locale)},_onDownloadBundle:function(e){r.downloadResource(e,this._getFileNameForUrlDownload,this._getFileNameForContentDownload)}}),n.exports=s});

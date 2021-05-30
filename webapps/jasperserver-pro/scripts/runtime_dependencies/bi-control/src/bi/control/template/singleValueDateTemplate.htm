@@ -1,0 +1,9 @@
+<div class="jr-mInput jr-mInputControlSingleValueDate jr">
+    <js-templateNonce></js-templateNonce>
+    <label class="jr-mInput-label {{ if (mandatory) { }} jr-mInput-labelRequired {{ } }} jr" for="{{-uuid}}">{{-label}}</label>
+    <input class="jr-mInput-date jr" type="text" id="{{-uuid}}" {{ if (readOnly) { }}disabled{{ } }} />
+    <button class="jr-mInput-datetrigger jr">
+        <span class="jr-mInput-datetrigger-icon jr-mIcon jr-calendar jr"></span>
+    </button>
+    <span class="jr-mInput-alert jr jr-isInvisible">{{-message}}</span>
+</div>

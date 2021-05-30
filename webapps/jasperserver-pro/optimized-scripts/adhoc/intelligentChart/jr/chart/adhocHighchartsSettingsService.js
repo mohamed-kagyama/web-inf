@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","runtime_dependencies/js-sdk/src/jrs.configs","jquery","runtime_dependencies/bi-adhoc/src/adhoc/api/chart/adhocToHighchartsAdapter","runtime_dependencies/bi-adhoc/src/adhoc/api/chart/adhocToHighchartsAdapter/adhocDataProcessor"],function(e,r,a){var t=e("runtime_dependencies/js-sdk/src/jrs.configs"),c=e("jquery"),s=e("runtime_dependencies/bi-adhoc/src/adhoc/api/chart/adhocToHighchartsAdapter"),i=e("runtime_dependencies/bi-adhoc/src/adhoc/api/chart/adhocToHighchartsAdapter/adhocDataProcessor");t.xssNonce||(t.xssNonce="__XSS_NONCE_STUB__");var o={perform:function(e,r){var a=r.chartState,o=r.extraOptions;if(r.reportLocale&&(t.userLocale=r.reportLocale),r.reportTimezone&&(t.userTimezone=r.reportTimezone),r.chartType&&(a.chartType=r.chartType),o){var n=c("#"+r.chartContainerId);if(n.parents("table.jrPage").first().length){var d=n.width(),h=n.height();d>0&&(o.width=d),h>0&&(o.height=h)}}var p=JSON.parse(JSON.stringify(r.queryData)),g=JSON.parse(JSON.stringify(a));i.load(p),i.messages=o.messages;var u=s.generateOptions(p,g,o);c.extend(!0,e,u)}};a.exports=o});

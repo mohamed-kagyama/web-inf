@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","backbone","../../../../dispatcher/enum/applicationStateEventsEnum"],function(e,t,i){var n=e("underscore"),s=e("backbone"),r=e("../../../../dispatcher/enum/applicationStateEventsEnum"),o=function(e){this.initialize(e)};n.extend(o.prototype,{initialize:function(e){this.designerSwitcherStore=e.designerSwitcherStore,this.applicationDispatcherEventBus=e.applicationDispatcherEventBus,this.storeChangeEventBus=e.storeChangeEventBus,this.clientDomainSchemaService=e.clientDomainSchemaService,this.designerSwitcherEventBus=e.designerSwitcherEventBus,this._initEvents()},_initEvents:function(){this.listenTo(this.designerSwitcherEventBus,"designer:select",this._onDesignerSelect),this.listenTo(this.storeChangeEventBus,"change",this._setTab)},_onDesignerSelect:function(e){this.applicationDispatcherEventBus.trigger(r.DESIGNER_SWITCHER_SET_DESIGNER,e)},_setTab:function(e){this.designerSwitcherStore.set({errorsPresentOnJoinsTab:this._errorsPresentOnJoinsTab(),currentDesigner:e.viewState.getCurrentDesigner()})},_errorsPresentOnJoinsTab:function(){return this.clientDomainSchemaService.isJoinTreesConsistOfASingleComponent()}},s.Events),i.exports=o});

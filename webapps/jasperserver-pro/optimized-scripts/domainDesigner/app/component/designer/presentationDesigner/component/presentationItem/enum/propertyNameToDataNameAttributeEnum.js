@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","../../../../../../common/enum/automationDataNameAttributesEnum","./propertyToPropertyNameEnum"],function(e,t,r){var a=e("../../../../../../common/enum/automationDataNameAttributesEnum"),n=e("./propertyToPropertyNameEnum"),o={};o[n.labelPropertyEditorName]=a.presentationDesigner.dataIslandOrSet.columnSetLabel,o[n.aggregationPropertyEditorName]=a.presentationDesigner.dataIslandOrSet.columnSetAggregation,o[n.kindPropertyEditorName]=a.presentationDesigner.dataIslandOrSet.columnSetKind,o[n.maskPropertyEditorName]=a.presentationDesigner.dataIslandOrSet.columnSetMask,o[n.namePropertyEditorName]=a.presentationDesigner.dataIslandOrSet.columnSetId,o[n.descriptionPropertyEditorName]=a.presentationDesigner.dataIslandOrSet.columnSetDescription,o[n.labelKeyPropertyEditorName]=a.presentationDesigner.dataIslandOrSet.columnSetLabelKey,o[n.descriptionKeyPropertyEditorName]=a.presentationDesigner.dataIslandOrSet.columnSetDescriptionKey,o[n.sourcePathPropertyEditorName]=a.presentationDesigner.dataIslandOrSet.columnSetSource,r.exports=o});

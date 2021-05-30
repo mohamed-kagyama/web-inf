@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","text!../template/canvasVueTemplate.htm","../../../../../model/enum/canvasViewDesignersEnum"],function(e,n,i){var t=e("text!../template/canvasVueTemplate.htm"),r=e("../../../../../model/enum/canvasViewDesignersEnum");i.exports={create:function(e){return{template:t,data:function(){return e.data},components:{metadataDesigner:e.metadataDesigner,joinsDesigner:e.joinsDesigner,filtersDesigner:e.filtersDesigner,presentationDesigner:e.presentationDesigner,optionsDesigner:e.optionsDesigner,securityDesigner:e.securityDesigner},computed:{isMetadataDesignerVisible:function(){return this.currentDesigner===r.METADATA_DESIGNER},isJoinsDesignerVisible:function(){return this.currentDesigner===r.JOINS_DESIGNER},isFiltersDesignerVisible:function(){return this.currentDesigner===r.FILTERS_DESIGNER},isPresentationDesignerVisible:function(){return this.currentDesigner===r.PRESENTATION_DESIGNER},isOptionsDesignerVisible:function(){return this.currentDesigner===r.OPTIONS_DESIGNER},isSecurityDesignerVisible:function(){return this.currentDesigner===r.SECURITY_DESIGNER}}}}}});

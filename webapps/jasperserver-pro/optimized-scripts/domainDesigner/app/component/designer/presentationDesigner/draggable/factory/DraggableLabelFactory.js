@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","bundle!DomainDesignerBundle","runtime_dependencies/js-sdk/src/common/util/i18nMessage"],function(e,i,n){var t=e("underscore"),s=e("bundle!DomainDesignerBundle"),r=e("runtime_dependencies/js-sdk/src/common/util/i18nMessage"),d=r.create(s),o=function(e){this.initialize(e)};t.extend(o.prototype,{initialize:function(e){this.selectionService=e.selectionService},getDraggableLabel:function(e){var i,n,t=e.item,s="",r=this.selectionService.getSelectionSize(),o=e.isSingleSelectShouldBePerformed,l=e.isMultipleSelectShouldBePerformed,c=e.isRangeSelectionShouldBePerformed,a=r<=1;return c?(i=this.selectionService.getRangeSelectionStartItem(),n=Math.abs(t.index-i.index),s=d("domain.designer.draggable.items.selected",n+1)):s=o?t.name:l?d("domain.designer.draggable.items.selected",r+1):a?t.name:d("domain.designer.draggable.items.selected",r),s}}),n.exports=o});

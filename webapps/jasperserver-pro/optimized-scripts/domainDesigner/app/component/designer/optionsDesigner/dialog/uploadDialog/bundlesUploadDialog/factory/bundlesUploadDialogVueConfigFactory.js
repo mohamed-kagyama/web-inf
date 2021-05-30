@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","text!../template/bundlesUploadDialogVueTemplate.htm"],function(e,t,i){var o=e("underscore"),s=e("text!../template/bundlesUploadDialogVueTemplate.htm");i.exports={create:function(e){var t=e.store;return{components:{tabs:e.Tabs,multipleFileUpload:e.MultipleFileUpload,actionButton:e.ActionButton,repositoryResourceChooser:e.RepositoryResourceChooser},mixins:e.mixins,computed:{isLocalFilesListEmpty:function(){return o.isEmpty(this.multipleFileUpload.files)},isAnyInvalidLocalFiles:function(){return o.some(this.multipleFileUpload.files,function(e){return e.isInvalid})},isPrimaryButtonDisabled:function(){return this.isLocalFileTab?this.isLocalFileActionButtonDisabled:this.isRepositoryTab?this.isSelectionShouldBeIgnored||this.isRepositoryChooserSelectionEmptyInCurrentMode||this.isAnyInvalidRepositoryChooserResourcesInCurrentMode:void 0},isLocalFileActionButtonDisabled:function(){return this.isLocalFilesListEmpty||this.isAnyInvalidLocalFiles}},template:s,data:function(){return t.attributes}}}}});

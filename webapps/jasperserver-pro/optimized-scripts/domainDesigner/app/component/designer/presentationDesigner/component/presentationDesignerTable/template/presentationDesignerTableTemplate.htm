@@ -1,0 +1,54 @@
+<div :class="{'jr-mTablePresentationBundles': isBundleKeys(columnSet), 'jr-mTablePresentationIdentification': isIdentification(columnSet), 'jr-mTablePresentationData': isData(columnSet)}"
+     v-bind:data-name="table"
+     class="jr-mTable jr-mTableGrid jr-mTablePresentation jr">
+
+    <tableHeader
+            :scrollBarWidth="scrollBarWidth"
+            :isScrollBarPresent="isScrollBarPresent"
+            :columnSet="columnSet"
+            :column0Width="column0Width"
+            :column1Width="column1Width">
+    </tableHeader>
+
+    <virtualData v-if="modelsArePresent" class="jr-mTable-body jr-jResizable-size jr" :scrollPos="scrollPos" :top="top" :height="height">
+        <template v-for="model in models">
+            <dataIslandOrSet v-if="isDataIsland(model)"
+                             :item="model"
+                             :editProperty="editProperty"
+                             :tableRowClass="'jr-mTable-rowIsland'"
+                             :treeIconClass="'jr-mTree-iconIsland'"
+                             :eventName="'dataIsland'"
+                             :column0Width="column0Width"
+                             :column1Width="column1Width">
+            </dataIslandOrSet>
+            <dataIslandOrSet v-else-if="isPresentationSet(model)"
+                             :item="model"
+                             :editProperty="editProperty"
+                             :tableRowClass="'jr-mTable-rowSet'"
+                             :treeIconClass="'jr-mTree-iconSet'"
+                             :eventName="'presentationSet'"
+                             :column0Width="column0Width"
+                             :column1Width="column1Width">
+            </dataIslandOrSet>
+
+            <presentationField v-else-if="isPresentationField(model)"
+                               :presentationField="model"
+                               :editProperty="editProperty"
+                               :column0Width="column0Width"
+                               :column1Width="column1Width">
+            </presentationField>
+            <dropZone v-else-if="isDropZone(model)" :dropZone="model"></dropZone>
+            <lastRow v-else-if="isLastRow(model)"
+                     :lastRow="model"
+                     :column0Width="column0Width"
+                     :column1Width="column1Width"
+            ></lastRow>
+        </template>
+    </virtualData>
+
+    <emptyDataIslands v-else-if="!searchKeyword" class="jr-mTable-body"
+                      :dropZone="emptyDataIslandsDropZone"
+                      :column0Width="column0Width"
+                      :isEmptyDataStructure="isEmptyDataStructure"
+    ></emptyDataIslands>
+</div>

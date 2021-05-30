@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","requirejs-domready","../repository/repository.search.root","runtime_dependencies/js-sdk/src/jrs.configs","../components/list.base","underscore","backbone","../components/components.dependent.dialog","../components/components.toolbarButtons.events","../components/components.tooltip","../util/tools.infiniteScroll","../manage/mng.common"],function(o,e,n){var t=o("requirejs-domready"),s=o("../repository/repository.search.root"),i=o("runtime_dependencies/js-sdk/src/jrs.configs"),r=o("../components/list.base"),c=r.dynamicList,m=o("underscore");o("backbone"),o("../components/components.dependent.dialog"),o("../components/components.toolbarButtons.events"),o("../components/components.tooltip"),o("../util/tools.infiniteScroll"),o("../manage/mng.common"),t(function(){m.extend(s.messages,i.repositorySearch.i18n),m.extend(c.messages,i.dynamicList.i18n),m.extend(window.localContext,i.repositorySearch.localContext),s.initialize(window.localContext)})});

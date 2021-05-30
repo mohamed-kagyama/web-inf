@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","bundle!DomainDesignerBundle","runtime_dependencies/js-sdk/src/common/util/i18nMessage","./enum/validationStateNameEnum"],function(e,r,i){var n=e("underscore"),o=e("bundle!DomainDesignerBundle"),t=e("runtime_dependencies/js-sdk/src/common/util/i18nMessage"),a=e("./enum/validationStateNameEnum"),s=t.create(o),m=function(e){this.initialize(e)};n.extend(m.prototype,{initialize:function(e){this.clientDomainService=e.clientDomainService},enter:function(e,r){var i=e.domainSchemaAsJSONString;try{var n=JSON.parse(i);e.domainResource=this._getDomainInServerFormatWithUploadedSchema(n),delete e.domainSchemaAsJSONString,r.enter(a.UPLOAD_SCHEMA_VALIDATE_DOMAIN_STATE,e)}catch(i){this._showErrorDialogForJsonParseError(e,r,i)}},_showErrorDialogForJsonParseError:function(e,r,i){var n={category:s("domain.designer.error.dialog.schema.parse.error.file.invalid"),errorParameters:[i.toString()]};e.errors=[n],r.enter(a.UPLOAD_SCHEMA_SHOW_ERROR_DIALOG_STATE,e)},_getDomainInServerFormatWithUploadedSchema:function(e){var r=n.omit(this.clientDomainService.serialize(),["bundles","securityFile"]);return r.schema=e,r.uri="/",r}}),i.exports=m});

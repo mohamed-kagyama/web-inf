@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","../../../../model/enum/joinsEnum","../../../../util/designer/collectionComponentsVisibilityUtil"],function(e,i,n){function o(e,i,n){return n=n||[],f([i.name].concat(n),e)}function t(e,i,n){n=n||[];var o=[i.leftTableReference,i.rightTableReference,c.joinTypes[i.type].label,String(i.weight)].concat(n);return f(o,e)}function r(e,i,n){n=n||[];var o=[i.leftTableReference,i.rightTableReference,c.joinTypes[i.type].label,String(i.weight),i.expression].concat(n);return f(o,e)}function l(e,i,n){return n=n||[],f([i.name].concat(n),e)}function s(e,i,n){n=n||[];var o=[i.leftField,i.rightField,i.leftJoinAlias,i.rightJoinAlias,c.joinOperators[i.operator].label].concat(n);return f(o,e)}function a(e,i,n){n=n||[];var o=[i.field,i.joinAlias,c.joinOperators[i.operator].label,i.value].concat(n);return f(o,e)}var c=e("../../../../model/enum/joinsEnum"),u=e("../../../../util/designer/collectionComponentsVisibilityUtil"),f=u.matchSearchKeyword;n.exports={isJoinTreeVisible:o,isJoinVisible:t,isComplexJoinVisible:r,isJoinAliasVisible:l,isJoinExpressionVisible:s,isConstantJoinExpressionVisible:a}});

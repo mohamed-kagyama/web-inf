@@ -1,0 +1,29 @@
+<div class="jr-mDomain-mode-resourcetable jr-uBottom-triple jr-uWidth-75pc jr">
+    <div v-bind:data-name="table" class="jr-mTable jr-mTableGrid jr-mTablePlain jr">
+        <div class="jr-mTable-body jr">
+            <div class="jr-mTable-row jr">
+                <div class="jr-mTable-cell jr-uWidth-85pc jr">
+                    <div class="jr-mTable-cell-wrapper jr">
+                        <p class="jr-mTable-cell-titletext jr">{{ securityFile.computedLabel }}</p>
+                        <p class="jr-mTable-cell-textwrap jr">{{ securityFile.location }}</p>
+                    </div>
+                </div>
+                <div class="jr-mTable-cell jr-uWidth-15pc jr">
+                    <div class="jr-mTable-cell-wrapper jr">
+                        <div class="jr-mTable-cell-actionbuttons jr">
+                            <button @click="onDownloadSecurityFile" v-bind:data-name="downloadButton" class="jr-mButton jr-mButtonAction jr" aria-label="">
+                                <div class="jr-mButtonAction-icon jr-mIcon jr-download jr"></div>
+                            </button>
+                            <button @click="onDeleteSecurityFile" v-bind:data-name="deleteButton" class="jr-mButton jr-mButtonAction jr" aria-label="">
+                                <div class="jr-mButtonAction-icon jr-mIcon jr-delete jr"></div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button @click="onReplaceSecurityFile" v-bind:data-name="replaceButton" class="jr-mButton jr-mButtonText jr-mButtonSmall jr-mButtonPrimary jr-uTop-half jr-uRight jr">
+            <span class="jr-mButton-label jr">{{i18n['domain.designer.advanced.options.replace.security.file']}}</span>
+        </button>
+    </div>
+</div>

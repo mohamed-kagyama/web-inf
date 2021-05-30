@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","../../model/specification/SchemaLessDataSourceWithEmptyResolvedSchemaAttributeSpec","../../model/specification/DefaultSchemaExistsAndNotEmptySpecification"],function(e,t,i){function a(e,t){e.register("validationSchemaLessDataSourceWithEmptyResolvedSchemaAttributeSpec",new o({dataStore:e.get("domainValidationDataStore"),resourceProperties:e.get("resourcePropertiesForDomainSchemaValidationService"),viewStateModel:e.get("viewStateModelForDomainSchemaValidationService"),profileAttributesServiceCache:e.get("profileAttributesServiceCache")})),e.register("validationDefaultSchemaExistsAndNotEmptySpecification",new c({dataStore:e.get("domainValidationDataStore")}))}var o=e("../../model/specification/SchemaLessDataSourceWithEmptyResolvedSchemaAttributeSpec"),c=e("../../model/specification/DefaultSchemaExistsAndNotEmptySpecification");i.exports=function(e,t){a(e,t)}});

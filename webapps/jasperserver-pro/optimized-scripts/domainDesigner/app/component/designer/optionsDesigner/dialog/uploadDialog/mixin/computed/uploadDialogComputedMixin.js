@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../../../common/vue/computed/i18nComputed","../../../../../../repositoryResourceChooser/component/chooser/util/repositoryResourceChooserDialogUtil"],function(o,e,r){var t=o("underscore"),s=o("../../../../../../../common/vue/computed/i18nComputed"),i=o("../../../../../../repositoryResourceChooser/component/chooser/util/repositoryResourceChooserDialogUtil");r.exports={computed:t.extend({isRepositoryTreeMode:function(){return i.isRepositoryTreeMode(this.repositoryResourceChooser.searchResultMode)},isResourcesListMode:function(){return i.isResourcesListMode(this.repositoryResourceChooser.searchResultMode)},primaryButtonLabel:function(){return this.isRepositoryTab?this.i18n2["button.add"]:this.i18n2["button.upload"]},secondaryButtonLabel:function(){return this.i18n2["button.cancel"]}},s)}});

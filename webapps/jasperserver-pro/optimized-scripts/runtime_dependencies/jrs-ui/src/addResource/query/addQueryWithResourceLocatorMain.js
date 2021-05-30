@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","requirejs-domready","underscore","runtime_dependencies/js-sdk/src/jrs.configs","../../resource/resource.base","../../resource/resource.query","jquery","../../util/utils.common","../../resource/resource.locate"],function(e,r,o){var u=e("requirejs-domready"),s=e("underscore"),n=e("runtime_dependencies/js-sdk/src/jrs.configs"),c=e("../../resource/resource.base"),t=e("../../resource/resource.query"),i=e("jquery"),d=e("../../util/utils.common"),a=d.isIPad;e("../../resource/resource.locate"),u(function(){var e=n.addQuery.localContext.initOptions;s.extend(window.localContext,n.addQuery.localContext),s.extend(c.messages,n.addQuery.resource.messages),t.initialize(e),n.addQuery.buttonFlowControls&&(i("#steps1_2").on("click",function(){return t.jumpTo("reportNaming")}),i("#step3").on("click",function(){return t.jumpTo("resources")}),i("#step4").on("click",function(){return t.jumpTo("dataSource")}),i("#step5").on("click",function(){return t.jumpTo("query")}),i("#step6").on("click",function(){return t.jumpTo("customization")})),a()&&c.initSwipeScroll()})});

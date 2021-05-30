@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","./expressionsEnum"],function(e,r,t){function n(e){return function(r){return r=s.defaults(r,{operator:e}),q(r)}}var s=e("underscore"),o=e("./expressionsEnum"),a=o.operators.and.expressionString,i=o.operators.not.expressionString,p=o.operators.equals.expressionString,l=o.operators.notEqual.expressionString,u=o.operators.greater.expressionString,g=o.operators.less.expressionString,d=o.operators.greaterOrEqual.expressionString,m=o.operators.lessOrEqual.expressionString,x=o.operators.in.expressionString,f=s.template("{{=value}}"),q=s.template("{{=leftOperand}} {{=operator}} {{=rightOperand}}");t.exports={string:s.template("'{{=value}}'"),integer:f,boolean:f,decimal:f,date:f,time:f,timestamp:f,range:s.template("({{=start}}:{{=end}})"),list:s.template("({{_.each(items, function(item, index) {if (index > 0) { print(', '); } print(item); }); }})"),and:n(a),equals:n(p),notEqual:n(l),greater:n(u),less:n(g),greaterOrEqual:n(d),lessOrEqual:n(m),in:n(x),notIn:s.template(i+" ({{=leftOperand}} "+x+" {{=rightOperand}})"),operatorWithTwoOperands:q}});

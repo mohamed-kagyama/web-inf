@@ -1,0 +1,20 @@
+<div class="jr-mTable-row jr">
+    <div class="jr-mTable-cell jr-uWidth-85pc jr">
+        <div class="jr-mTable-cell-wrapper jr">
+            <p class="jr-mTable-cell-titletext jr">{{ bundle.computedLabel }}</p>
+            <p class="jr-mTable-cell-textwrap jr">{{ bundle.location }}</p>
+        </div>
+    </div>
+    <div class="jr-mTable-cell jr-uWidth-15pc jr">
+        <div class="jr-mTable-cell-wrapper jr">
+            <div class="jr-mTable-cell-actionbuttons jr">
+                <button @click="onDownloadBundle" v-bind:data-name="downloadBundleButton" class="jr-mButton jr-mButtonAction jr" aria-label="">
+                    <div class="jr-mButtonAction-icon jr-mIcon jr-download jr"></div>
+                </button>
+                <button @click="onDeleteBundle" v-bind:data-name="deleteBundleButton" class="jr-mButton jr-mButtonAction jr" aria-label="">
+                    <div class="jr-mButtonAction-icon jr-mIcon jr-delete jr"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

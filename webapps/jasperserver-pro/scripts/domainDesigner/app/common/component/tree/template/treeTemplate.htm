@@ -1,0 +1,17 @@
+<ul v-bind:data-name="tree" class="jr-mTree jr" role="tree" aria-label="">
+    <treeItem v-for="node in nodes"
+              :id="node.id"
+              :label="node.label"
+              :icon="node.icon"
+              :invalid="node.invalid"
+              :properties="node.properties"
+              :open="node.open"
+              :isSelectable="node.isSelectable"
+              :selected="Boolean(selection[node.properties.uri])"
+              :level="node.level"
+              :visible="node.visible"
+              :tooltip="node.tooltip"
+              @select="select"
+              @toggle="toggle">
+    </treeItem>
+</ul>

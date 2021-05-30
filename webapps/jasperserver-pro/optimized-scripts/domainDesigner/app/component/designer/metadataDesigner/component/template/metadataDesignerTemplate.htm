@@ -1,0 +1,54 @@
+<div class="jr-mDomain-mode-wrapper jr-uOverflow-scroll jr">
+
+    <div class="jr-mDomain-mode-title jr">
+        <span class="jr-mDomain-mode-title-text jr">{{ resourceInfo.manageResource }}</span>
+        <span class="jr-mDomain-mode-title-object jr">{{ resourceInfo.dataObjectName }}</span>
+    </div>
+
+    <div class="jr-mDomain-shuttle jr jr-jDomainShuttle">
+
+        <div class="jr-mShuttle jr">
+            <div v-popover="{
+                        title: popoverTitle,
+                        text: popoverText,
+                        placement: popoverPlacement,
+                        type: popoverType,
+                        offset: popoverOffset
+                    }"
+                    class="jr-mShuttle-listbox jr jr-jDomainShuttleSource" @popoverClose="onPopoverClose">
+                <div class="jr-mListbox jr">
+                    <div class="jr-mListbox-label jr">{{ resourceInfo.availableResourcesTitle }}</div>
+                    <div class="jr-mListbox-search jr">
+                        <availableResourcesSearch></availableResourcesSearch>
+                    </div>
+                    <sourceList @drop="onSourceListDrop"
+                                :class="{'jr-isInvalid': isSourceTreeInvalid}"></sourceList>
+                </div>
+            </div>
+            <swapButtons></swapButtons>
+            <div class="jr-mShuttle-listbox jr">
+                <div class="jr-mListbox jr">
+                    <div class="jr-mListbox-label jr">{{ resourceInfo.selectedResourcesTitle }}</div>
+                    <div v-if="!isInstructionsShouldBeVisible" class="jr-mListbox-search jr">
+                        <selectedResourcesSearch></selectedResourcesSearch>
+                    </div>
+                    <resultList v-show="!isInstructionsShouldBeVisible" @drop="onResultListDrop"></resultList>
+
+                    <template v-if="isInstructionsShouldBeVisible">
+                        <div class="jr-mListbox-search jr">
+                            <selectedResourcesSearch></selectedResourcesSearch>
+                        </div>
+                        <resultListInstructions
+                                @drop="onResultListDrop"
+                                :instructionTitle="resourceInfo.instructionTitle"
+                                :instructionText="resourceInfo.instructionText">
+                        </resultListInstructions>
+                    </template>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <schemaAttribute :schemaAttributeInput="schemaAttributeInput"></schemaAttribute>
+
+</div>

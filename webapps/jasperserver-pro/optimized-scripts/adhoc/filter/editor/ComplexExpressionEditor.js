@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","backbone","underscore","bundle!AdHocFiltersBundle","text!./template/complexExpressionTemplate.htm"],function(e,t,i){var o=e("backbone"),n=e("underscore"),s=e("bundle!AdHocFiltersBundle"),l=e("text!./template/complexExpressionTemplate.htm");i.exports=o.View.extend({events:{"change input":"onExpressionChange","click .header .button.disclosure":"onToggleFilter"},template:n.template(l),initialize:function(e){this.listenTo(this.model,"change:complexExpression",this.updateComplexExpression),this.listenTo(this.model,"change:filterPodMinimized",this.drawToggleFilter)},onToggleFilter:function(){this.model.set("filterPodMinimized",!this.model.get("filterPodMinimized")),this.model.trigger("toggle",this.model)},drawToggleFilter:function(){this.$(".expression.panel")[this.model.get("filterPodMinimized")?"addClass":"removeClass"]("minimized")},render:function(){this.$el.empty();var e=this.model.toJSON();return e.i18n=s,this.$el.html(this.template(e)),this},onExpressionChange:function(){this.model.set("complexExpression",this.$("input").val())},updateComplexExpression:function(){this.$("input").val(this.model.get("complexExpression"))}})});

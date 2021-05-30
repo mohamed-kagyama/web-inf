@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","bundle!AdHocBundle","../formatters/dateFormatter","../formatters/timeFormatter","../formatters/timestampFormatter","../formatters/numberFormatter"],function(t,a,e){var r=t("bundle!AdHocBundle"),m=t("../formatters/dateFormatter"),o=t("../formatters/timeFormatter"),n=t("../formatters/timestampFormatter"),l=t("../formatters/numberFormatter"),i={format:function(t,a,e){return null===t||""===t?"":(r["node.other.node"],t)}},s={"java.math.BigDecimal":l,"java.lang.Byte":l,"java.lang.Short":l,"java.lang.Integer":l,"java.math.BigInteger":l,"java.lang.Long":l,"java.lang.Float":l,"java.lang.Double":l,"java.lang.Decimal":l,"java.util.Date":m,"java.sql.Date":m,"java.sql.Time":o,"java.sql.Timestamp":n,bigDecimal:l,byte:l,short:l,integer:l,bigInteger:l,long:l,float:l,double:l,decimal:l,date:m,time:o,timestamp:n};e.exports=function(t){return s[t]||i}});

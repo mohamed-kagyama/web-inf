@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../component/designer/presentationDesigner/store/PresentationDesignerStore","../../../component/layout/sidebarView/component/store/SidebarLayoutStore","../../../common/component/search/store/SearchStore","../../../model/enum/canvasViewDesignersEnum"],function(e,n,r){var t=e("underscore"),o=e("../../../component/designer/presentationDesigner/store/PresentationDesignerStore"),i=e("../../../component/layout/sidebarView/component/store/SidebarLayoutStore"),s=e("../../../common/component/search/store/SearchStore"),a=e("../../../model/enum/canvasViewDesignersEnum");r.exports=function(e,n){var r={ownDesigner:a.PRESENTATION_DESIGNER};e.register("presentationDesignerSidebarSearchStore",new s(r)),e.register("presentationDesignerStore",new o(t.extend({canvasHeight:n.presentationDesigner.height.canvas,resizer:n.presentationDesigner.resizer,column0Width:n.presentationDesigner.columnDefaultWidths.column0Width,column1Width:n.presentationDesigner.columnDefaultWidths.column1Width},r,n.presentationDesigner.cellsWidth))),e.register("presentationDesignerSidebarStore",new i(r))}});

@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../model/enum/defaultSchemaNameEnum","../enum/errorParametersKeysEnum","../util/extractPropertyByKeyUtil"],function(i,e,t){var a=i("underscore"),n=i("../../../../model/enum/defaultSchemaNameEnum"),r=i("../enum/errorParametersKeysEnum"),o=i("../util/extractPropertyByKeyUtil"),c=function(i){this.initialize(i)};a.extend(c.prototype,{initialize:function(i){this.defaultSchemaExistsAndNotEmptySpecification=i.defaultSchemaExistsAndNotEmptySpecification,this.domainSchemaNameMismatchErrorOnDomainSchemaValidationSpecification=i.domainSchemaNameMismatchErrorOnDomainSchemaValidationSpecification,this.profileAttributeBasedSchemaSpecification=i.profileAttributeBasedSchemaSpecification},isSatisfiedBy:function(i){var e=this;return i=a.isArray(i)?i:[i],Boolean(a.find(i,function(i){var t,a;if(e.domainSchemaNameMismatchErrorOnDomainSchemaValidationSpecification.isSatisfiedBy(i))return a=o.extract(i.parameters,r.DOMAIN_SCHEMA_NAME),t=a&&a.value,t===n.DEFAULT_SCHEMA?e.defaultSchemaExistsAndNotEmptySpecification.isSatisfied():!e.profileAttributeBasedSchemaSpecification.isSatisfiedBy(t)}))}}),t.exports=c});

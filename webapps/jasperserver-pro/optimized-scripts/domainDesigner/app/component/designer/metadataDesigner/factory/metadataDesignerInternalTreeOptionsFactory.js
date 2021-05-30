@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","text!../template/availableSchemasTreeItemsTemplate.htm","runtime_dependencies/js-sdk/src/components/scalableList/model/trait/addToSelectionModelTrait","runtime_dependencies/js-sdk/src/components/scalableList/model/ListWithSelectionModel","../../../layout/sidebarView/tree/plugin/TooltipPlugin"],function(e,t,i){function l(e){var t=e.ListModel||d,i=e.metadataDesignerMetadataResourcesTooltipOptionsFactory;return{itemsTemplate:e.template||s,listItemHeight:e.listItemHeight,lazy:!0,selection:{multiple:!0,allowed:!0},model:new t({bufferSize:e.bufferSize,getData:e.getData}),plugins:[{constr:n,options:{getTooltipOptions:i.create}}]}}var s=e("text!../template/availableSchemasTreeItemsTemplate.htm"),o=e("runtime_dependencies/js-sdk/src/components/scalableList/model/trait/addToSelectionModelTrait"),a=e("runtime_dependencies/js-sdk/src/components/scalableList/model/ListWithSelectionModel"),n=e("../../../layout/sidebarView/tree/plugin/TooltipPlugin"),d=a.extend(o);i.exports={getTreeOptions:l}});

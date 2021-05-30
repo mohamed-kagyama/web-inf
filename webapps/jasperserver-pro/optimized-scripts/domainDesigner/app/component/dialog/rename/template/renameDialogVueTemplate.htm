@@ -1,0 +1,32 @@
+<div v-bind:data-name="dialogName" :class="{ 'jr-isHidden': isHidden }" class="jr-mDialog jr-uWidth-450px jr">
+    <div class="jr-mDialog-header jr-jDialogDraggable jr">
+        <h1 class="jr-mDialog-header-title jr">{{ title }}</h1>
+    </div>
+
+    <div class="jr-mDialog-body jr">
+        <div class="jr-mDialog-body-wrapper jr">
+            <div class="jr-mInput jr">
+                <label class="jr-mInput-label jr" v-if="isInputLabelExists">{{ inputLabel }}</label>
+                <input v-bind:data-name="input" ref="input" @keyup.enter="onEnterConfirm" @input="onInput" :value="value" class="jr-mInput-text jr" type="text">
+
+                <inputErrorMessage :message="validationMessage"
+                                   :type="validationType"></inputErrorMessage>
+            </div>
+        </div>
+    </div>
+
+    <div class="jr-mDialog-footer jr">
+        <actionButton
+                :disabled="isDisabled"
+                @click="triggerOkAction"
+                :label="i18n2['button.ok']"
+                class="jr-mButtonPrimary"></actionButton>
+
+        <actionButton
+                @click="onSecondaryButtonClick"
+                :label="i18n2['button.cancel']"
+                class="jr-mButtonSecondary"></actionButton>
+
+        <div class="jr-mDialog-footer-sizer jr-jDialogResizer jr"></div>
+    </div>
+</div>

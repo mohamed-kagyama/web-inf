@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","../../../../../common/component/popover/directive/popoverDirective","text!../template/metadataDesignerTemplate.htm"],function(e,t,r){var o=e("../../../../../common/component/popover/directive/popoverDirective"),s=e("text!../template/metadataDesignerTemplate.htm");r.exports={create:function(e){var t=e.metadataDesignerEventBus,r=e.sourceList,i=e.resultList,n=e.resultListInstructions,c=e.schemaAttribute,u=e.availableResourcesSearch,a=e.selectedResourcesSearch,p=e.swapButtons;return{template:s,directives:{popover:o},data:function(){return e.data},computed:{isInstructionsShouldBeVisible:function(){return Boolean(this.resourceInfo.instructionTitle&&this.resourceInfo.instructionText)}},components:{sourceList:r,resultList:i,resultListInstructions:n,schemaAttribute:c,availableResourcesSearch:u,selectedResourcesSearch:a,swapButtons:p},methods:{onPopoverClose:function(){t.trigger("errorPopover:close")},onSourceListDrop:function(e){t.trigger("sourceList:drop",e)},onResultListDrop:function(e){t.trigger("resultList:drop",e)}}}}}});

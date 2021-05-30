@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","react","runtime_dependencies/js-sdk/src/common/component/colorPicker/react/ColorSelector"],function(o,e,r){var n=o("react"),l=o("runtime_dependencies/js-sdk/src/common/component/colorPicker/react/ColorSelector"),t=l.ColorSelector,c=function(o){return function(e){var r="",l="",t=void 0===e.showTransparentPreset||e.showTransparentPreset;return(void 0===e.isControl||e.isControl)&&(r="control"),(void 0===e.isInlineControl||e.isInlineControl)&&(l="jr-mControlInline"),n.createElement("div",{className:"".concat(r," jr-mControl jr-mControlColor ").concat(l," jr")},n.createElement("label",{className:"jr-mControl-label jr"},e.label),n.createElement(o,{label:e.colorLabel?e.colorLabel:e.color,color:e.color,showTransparentPreset:t,onColorChange:e.onColorChange}),e.children)}},a=c(t);e.createColorControl=c,e.ColorControl=a});

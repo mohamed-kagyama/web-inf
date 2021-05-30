@@ -1,0 +1,7 @@
+<div class="jr-mInput jr" v-dateAndTimePicker="dateAndTimePickerOptions">
+    <input @input="onInput" v-bind:data-name="dateTimeInput" class="jr-mInput-date jr jr-jDateTimeInput" type="text" :value="operand.value">
+    <button v-bind:data-name="dateTimePickerButton" class="jr-mInput-datetrigger jr jr-jDateTimePickerTrigger">
+        <span class="jr-mInput-datetrigger-icon jr-mIcon jr-calendar jr"></span>
+    </button>
+    <errorMessage :message="errorMessage" type="error"></errorMessage>
+</div>

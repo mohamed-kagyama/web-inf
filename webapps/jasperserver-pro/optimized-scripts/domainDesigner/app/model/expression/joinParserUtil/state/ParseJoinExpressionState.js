@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../util/joinVariableParser","../enum/joinParserStateNamesEnum","../mixin/addJoinExpressionMixin"],function(t,i,e){var n=t("underscore"),r=t("../util/joinVariableParser"),o=t("../enum/joinParserStateNamesEnum"),s=t("../mixin/addJoinExpressionMixin"),a=function(t){this.initialize(t)};n.extend(a.prototype,{initialize:function(t){this.factory=t.factory,this.context=t.context},operands:function(){return this.factory.create(o.PARSE_JOIN_EXPRESSION_STATE,this.context)},variable:function(){return this.factory.create(o.PARSE_JOIN_EXPRESSION_STATE,this.context)},name:function(t){var i=r.parse(t);return this.context.currentJoinExpression.leftAlias&&this.context.currentJoinExpression.leftField?(this.context.currentJoinExpression.rightAlias=i.alias,this.context.currentJoinExpression.rightField=i.field,this._addJoinExpression(),this.factory.create(o.PARSE_JOIN_EXPRESSION_OPERATOR_STATE,this.context)):(this.context.currentJoinExpression.leftAlias=i.alias,this.context.currentJoinExpression.leftField=i.field,this.factory.create(o.PARSE_JOIN_EXPRESSION_STATE,this.context))}},s),e.exports=a});

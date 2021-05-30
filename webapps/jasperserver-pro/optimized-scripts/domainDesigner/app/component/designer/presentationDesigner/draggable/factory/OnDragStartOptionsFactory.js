@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../common/util/selectionRulesUtil"],function(e,i,t){var n=e("underscore"),o=e("../../../../../common/util/selectionRulesUtil"),l=function(e){this.initialize(e)};n.extend(l.prototype,{initialize:function(e){this.selectionService=e.selectionService},getOptions:function(e){var i,t,l,r=e.event,c=e.item,s=this.selectionService.isSelectionEmpty(),S=o.isSingleSelection(r),u=o.isMultipleSelection(r),d=o.isRangeSelection(r);return s||(i=S&&this.selectionService.isSingleSelectionShouldBePerformedOnDrag(c),t=u&&this.selectionService.isMultiSelectionShouldBePerformedOnDrag(c),l=d&&this.selectionService.isRangeSelectionShouldBePerformedOnDrag(c)),e={item:c},s&&(i=!0),n.extend(e,{isSingleSelectShouldBePerformed:i,isMultipleSelectShouldBePerformed:t,isRangeSelectionShouldBePerformed:l}),e}}),t.exports=l});

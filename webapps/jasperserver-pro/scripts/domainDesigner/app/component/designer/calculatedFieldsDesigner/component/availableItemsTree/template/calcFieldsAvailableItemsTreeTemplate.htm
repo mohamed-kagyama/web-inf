@@ -1,0 +1,21 @@
+<ul data-name="calculatedFieldsDesignerAvailableItemsTree" class="jr-mTree jr" role="tree" style="top: {{- top}}px; position: relative;">
+    <js-templateNonce></js-templateNonce>
+    {{_.each(items, function(item) { }}
+    <li class="{{- item.node ? 'jr-mTree-node jr-mTree-node-' : 'jr-mTree-leaf jr-mTree-leaf-'}}{{- item.levelNesting}} jr {{- item.expanded ? 'jr-isOpen' : 'jr-isClosed' }} {{- item.selected ? 'jr-isSelected' : ''}}"
+        data-id="{{- item.id }}"
+        data-resource-id="{{- item.resource.resourceId }}"
+        data-expanded="{{- item.expanded }}"
+        data-resource-type="{{- item.type }}"
+        tabindex="-1"
+        data-index="{{- item.index }}"
+        role="treeitem">
+        <div class="jr-mTree-iconContainer jr">
+            {{ if (item.node) { }}
+                <span class="jr-mTree-expander jr jr-jTreeCollapser"></span>
+            {{ } }}
+            <span class="jr-mTree-icon {{- item.iconName }} jr jr-jTreeCollapser"></span>
+        </div>
+        <p class="jr-mTree-label jr {{- item.labelClass}}" data-tooltip="{{- item.label}}">{{- item.label }}</p>
+    </li>
+    {{ }); }}
+</ul>

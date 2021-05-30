@@ -1,0 +1,34 @@
+<div v-if="isEmptyDataStructure"
+     class="jr-mInstructor jr-mInstructorFull jr-mInstructorInnershade jr-mInstructorInnerborder jr">
+    <div class="jr-mInstructor-wrapper jr">
+        <span class="jr-mInstructor-icon jr-mIcon jr-mIconXLarge jr-warningRound jr"></span>
+        <p class="jr-mInstructor-title jr-mInstructor-titleMedium jr">{{
+            i18n['domain.designer.emptyDataStructure.canvas.title'] }}</p>
+        <p class="jr-mInstructor-text jr-mInstructor-textMedium jr-uTop-single jr">{{
+            i18n['domain.designer.presentationDesigner.emptyDataStructure.canvas.text'] }}</p>
+    </div>
+</div>
+<div v-else class="jr">
+    <div class="jr-mTable-row jr-uHeight-100pc jr">
+        <div class="jr-mTable-cell jr-mTable-cellDropstarter jr" :style="column0WidthStyle">
+            <div class="jr-mTable-cell-wrapper jr">
+                <div class="jr-mTable-cell-dropzone jr">
+                    <div
+                        v-droppable="droppableConfig"
+                        :class="{'jr-isOver': dropZone.isOver, 'jr-isActive': dropZone.isActive}"
+                        class="jr-mDropzone jr-mDropzoneFull jr"
+                    >
+                        <div class="jr-mInstructor jr-mInstructorPlain jr-uWidth-100pc jr-uHeight-100pc jr">
+                            <div class="jr-mInstructor-wrapper jr">
+                                <span class="jr-mInstructor-icon jr-mIcon jr-mIconXLarge jr-message jr"></span>
+                                <p class="jr-mInstructor-title jr-mInstructor-titleSmall jr">{{ i18n['domain.designer.presentationDesigner.empty.canvas.title'] }}</p>
+                                <p class="jr-mInstructor-text jr-mInstructor-textSmall jr-uTop-single jr">{{ i18n['domain.designer.presentationDesigner.empty.canvas.text'] }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="jr-mTable-cell jr-mTable-cellResizer jr" v-resizer="resizerConfig" :style="{left: column0WidthStyle.width}"></div>
+    </div>
+</div>

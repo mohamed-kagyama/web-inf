@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","bundle!DomainDesignerBundle","runtime_dependencies/js-sdk/src/common/util/i18nMessage","../../../../../../../model/schema/util/entityUtil","../../../../../../dispatcher/enum/applicationStateEventsEnum","../enum/menuOptionsEventsEnum"],function(e,n,t){var i=e("bundle!DomainDesignerBundle"),s=e("runtime_dependencies/js-sdk/src/common/util/i18nMessage"),r=e("../../../../../../../model/schema/util/entityUtil"),u=e("../../../../../../dispatcher/enum/applicationStateEventsEnum"),a=e("../enum/menuOptionsEventsEnum"),c=s.create(i);t.exports={create:function(e){var n=e.isItemJoinAliasOrTableReference;return function(e){return{label:c("domain.designer.calcFields.contextMenu.createCalcField"),action:a.CREATE_CALC_FIELD.event,value:!1,triggerEvent:u.CALCULATED_FIELDS_DESIGNER_SHOW,test:function(){var t=e.resource.type,i=r.isJoinTree(t);return n(e)||i}}}}}});

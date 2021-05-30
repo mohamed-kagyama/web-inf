@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+  ~ Licensed pursuant to commercial TIBCO End User License Agreement.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd">
+    <!-- security for pro flows -->
+    <bean class="com.jaspersoft.jasperserver.api.common.util.spring.GenericBeanUpdater">
+        <property name="definition" ref="addFlowDefinitionSources"/>
+        <property name="value">
+            <value>
+                adminHomeFlow=ROLE_ADMINISTRATOR
+                mondrianPropertiesFlow=ROLE_SUPERUSER
+                awsSettingsFlow=ROLE_SUPERUSER
+                designerOptionsFlow=ROLE_SUPERUSER
+                designerCacheFlow=ROLE_SUPERUSER
+            </value>
+        </property>
+        <property name="valueType" value="string"/>
+    </bean>
+   <!-- set up ad hoc pages -->
+    <bean class="com.jaspersoft.jasperserver.api.common.util.spring.GenericBeanUpdater">
+        <property name="definition" ref="setRolesForURL"/>
+        <property name="securityMetadataSourceDefinition" value="filterInvocationInterceptorPROExtention"/>
+        <property name="valueType" value="securityMetadataSource"/>
+    </bean>
+    <security:filter-security-metadata-source id="filterInvocationInterceptorPROExtention" request-matcher="ant" use-expressions="false">
+        <security:intercept-url pattern="/adhoc/cacheadmin.html" access="ROLE_SUPERUSER" />
+        <security:intercept-url pattern="/adhoc/cachedetail.html" access="ROLE_SUPERUSER" />
+        <security:intercept-url pattern="/adhoc/querygovernorsettings.html" access="ROLE_SUPERUSER" />
+        <security:intercept-url pattern="/log_settings.html" access="ROLE_SUPERUSER" />
+        <security:intercept-url pattern="/customAttributes.html" access="ROLE_SUPERUSER" />
+        <security:intercept-url pattern="/adminExport.html" access="ROLE_SUPERUSER" />
+        <security:intercept-url pattern="/adminImport.html" access="ROLE_SUPERUSER" />
+        <security:intercept-url pattern="/dataviewconverter.html" access="ROLE_USER,ROLE_ADMINISTRATOR" />
+        <security:intercept-url pattern="/dashboard/designer.html" access="ROLE_USER,ROLE_ADMINISTRATOR" />
+        <security:intercept-url pattern="/dashboard/viewer.html" access="ROLE_USER,ROLE_ADMINISTRATOR" />
+        <security:intercept-url pattern="/dashboard/exporter.html" access="ROLE_USER,ROLE_ADMINISTRATOR,ROLE_ANONYMOUS" />
+        <security:intercept-url pattern="/domaindesigner.html" access="ROLE_ADMINISTRATOR" />
+        <security:intercept-url pattern="/rest_v2/reportGenerators/**" access="ROLE_USER,ROLE_ADMINISTRATOR" />
+        <security:intercept-url pattern="/rest_v2/domains/**" access="ROLE_USER,ROLE_ADMINISTRATOR" />
+        <security:intercept-url pattern="/rest_v2/queryExecutions/**" access="ROLE_USER,ROLE_ADMINISTRATOR" />
+        <security:intercept-url pattern="/rest_v2/export/**" access="ROLE_SUPERUSER,ROLE_ADMINISTRATOR" />
+        <security:intercept-url pattern="/rest_v2/import/**" access="ROLE_SUPERUSER,ROLE_ADMINISTRATOR" />
+        <security:intercept-url pattern="/rest_v2/hypermedia/**" access="ROLE_USER,ROLE_ADMINISTRATOR" />
+        <security:intercept-url pattern="/rest_v2/metadata/**" access="ROLE_USER,ROLE_ADMINISTRATOR" />
+        <security:intercept-url pattern="/rest_v2/dashboardExecutions/**" access="ROLE_USER,ROLE_ADMINISTRATOR" />
+        <security:intercept-url pattern="/rest_v2/diagnostic/**" access="ROLE_SUPERUSER" />
+        <security:intercept-url pattern="/rest_v2/keys/**" access="ROLE_ADMINISTRATOR,ROLE_SUPERUSER" />
+    </security:filter-security-metadata-source>
+
+    <bean name="corsFilter" class="org.springframework.web.filter.CorsFilter">
+        <constructor-arg>
+            <bean id="urlCors" class="org.springframework.web.cors.UrlBasedCorsConfigurationSource">
+                <property name="corsConfigurations">
+                    <map>
+                        <entry key= "/**">
+                            <bean id="corsConfig" class="com.jaspersoft.jasperserver.api.security.csrf.JSCorsConfiguration">
+                                <property name="whitelistProvider">
+                                    <description>
+                                        Provides cross-domain communication white list regex based on the logged-in user/principal.
+                                        Server level attribs, if allowed, can be overwritten at tenant and user levels.
+                                    </description>
+                                    <bean class="com.jaspersoft.jasperserver.api.security.csrf.DomainWhitelistProviderImpl">
+                                        <description>
+                                            Default implementation, which could be extended to provide external white lists.
+                                        </description>
+                                        <property name="profileAttributeService" ref="profileAttributeServiceTarget"/>
+                                        <property name="additionalWhitelistAttributes">
+                                            <description>
+                                                This property allows an unlimited number of white list attributes at server, organization, and
+                                                user levels in addition to the default 'domainWhitelist' attribute.
+                                                All these attribute values are combined into a regular expression, so be wary of creating too
+                                                many white lists for the server or for any one org/user.  It's best to have a list at the server
+                                                level to be overwritten by that at the org/user levels.
+                                            </description>
+                                            <list>
+						<value>http://localhost:4200</value>
+                                                <value>domainWhitelist1</value>
+                                                <value>domainWhitelist2</value>
+                                            </list>
+                                        </property>
+                                    </bean>
+                                </property>
+
+                                <property name="allowedMethods">
+                                    <list>
+                                        <value>GET</value>
+                                        <value>POST</value>
+                                        <value>HEAD</value>
+                                        <value>PUT</value>
+                                        <value>DELETE</value>
+                                        <value>PATCH</value>
+                                    </list>
+                                </property>
+                                <property name="allowedHeaders">
+                                    <list>
+                                        <value>Cache-Control</value>
+                                        <value>X-Suppress-Basic</value>
+                                        <value>Origin</value>
+                                        <value>Accept</value>
+                                        <value>X-Requested-With</value>
+                                        <value>Content-Type</value>
+                                        <value>Pragma</value>
+                                        <value>accept-timezone</value>
+                                        <value>withCredentials</value>
+                                        <value>X-Remote-Domain</value>
+                                        <value>X-Is-Visualize</value>
+                                        <value>x-jrs-base-url</value>
+                                        <value>Content-Disposition</value>
+                                        <value>Content-Description</value>
+                                    </list>
+                                </property>
+                                <property name="exposedHeaders">
+                                    <list>
+					<value>output-final</value>
+					<value>output-lastPartialPage</value>
+					<value>output-timestamp</value>
+					<value>output-zoom</value>
+					<value>report-pages</value>
+					<value>report-snapshotSaveStatus</value>
+                                    </list>
+                                </property>
+                                <property name="allowCredentials" value="true"></property>
+                                <property name="maxAge" value="300"></property>
+                            </bean>
+                        </entry>
+                    </map>
+                </property>
+            </bean>
+        </constructor-arg>
+        <property name="corsProcessor" ref="corsProcessor"></property>
+    </bean>
+
+</beans>

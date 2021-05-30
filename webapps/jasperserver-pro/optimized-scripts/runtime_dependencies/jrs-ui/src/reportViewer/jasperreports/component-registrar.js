@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","jquery","runtime_dependencies/js-sdk/src/common/logging/logger"],function(e,r,n){var o=e("jquery"),t=e("runtime_dependencies/js-sdk/src/common/logging/logger"),i=function(e){this.loader=e},p=t.register("component-registrar");i.prototype={registerComponents:function(r,n,t){var i=this,s=[],d=new o.Deferred,u={};return o.each(r,function(r,d){if(d.parentId)u[d.parentId]?u[d.parentId].then(function(e){e.registerPart(d)}):p.error("Could not find promise for component with id: "+d.parentId);else if(d.module){var c=new o.Deferred;u[d.id]=c,s.push(c),e([d.module],function(e){var r=new e(d);r.parent=n,r.loader=i.loader,t[d.type]=t[d.type]||[],t[d.type].push(r),r.rdy?r.rdy.then(function(){c.resolve(r)}):c.resolve(r)})}else{var a={config:d};t[d.type]=t[d.type]||[],t[d.type].push(a)}}),o.when.apply(o,s).then(function(){d.resolve()}),d}},n.exports=i});

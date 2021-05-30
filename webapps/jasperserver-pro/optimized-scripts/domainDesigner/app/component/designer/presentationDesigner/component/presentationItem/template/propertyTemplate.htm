@@ -1,0 +1,15 @@
+<cell>
+    <div  class="jr-mTable-cell-texteditable jr">
+        <readOnlyProperty
+                v-if="readonly"
+                :item="item"
+                :propertyName="propertyName">
+        </readOnlyProperty>
+        <propertyEditor
+                v-else
+                :editProperty="editProperty"
+                :item="item"
+                :propertyName="propertyName">
+        </propertyEditor>
+    </div>
+</cell>

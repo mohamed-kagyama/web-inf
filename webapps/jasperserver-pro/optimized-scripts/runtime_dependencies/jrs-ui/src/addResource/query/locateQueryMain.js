@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","requirejs-domready","underscore","runtime_dependencies/js-sdk/src/jrs.configs","../../resource/resource.base","../../resource/resource.query.locate","jquery","../../util/utils.common"],function(e,r,o){var s=e("requirejs-domready"),u=e("underscore"),c=e("runtime_dependencies/js-sdk/src/jrs.configs"),n=e("../../resource/resource.base"),i=e("../../resource/resource.query.locate"),t=e("jquery"),d=e("../../util/utils.common"),a=d.isIPad;s(function(){u.extend(i.messages,c.addJasperReport.resourceQueryLocate.messages),i.initialize(),a()&&n.initSwipeScroll(),t("#steps1_2").on("click",function(){return i.jumpTo("reportNaming")}),t("#step3").on("click",function(){return i.jumpTo("resources")}),t("#step4").on("click",function(){return i.jumpTo("dataSource")}),t("#step5").on("click",function(){return i.jumpTo("query")}),t("#step6").on("click",function(){return i.jumpTo("customization")})})});

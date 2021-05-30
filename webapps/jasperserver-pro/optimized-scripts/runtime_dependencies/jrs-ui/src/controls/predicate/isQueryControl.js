@@ -1,0 +1,1 @@
+define(["require","exports","module","../enum/inputControlTypeEnum"],function(n,e,E){var u=n("../enum/inputControlTypeEnum"),t=[u.SINGLE_SELECT,u.MULTI_SELECT,u.SINGLE_SELECT_RADIO,u.MULTI_SELECT_CHECKBOX];E.exports=function(n){return t.indexOf(n.type)>-1}});

@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","requirejs-domready","jquery","runtime_dependencies/js-sdk/src/jrs.configs","runtime_dependencies/bi-repository/src/bi/repository/model/RepositoryResourceModel","runtime_dependencies/bi-repository/src/bi/repository/enum/repositoryResourceTypes","./DataSourceController"],function(e,r,o){var i=e("requirejs-domready"),s=e("jquery"),n=e("runtime_dependencies/js-sdk/src/jrs.configs"),t=e("runtime_dependencies/bi-repository/src/bi/repository/model/RepositoryResourceModel"),d=e("runtime_dependencies/bi-repository/src/bi/repository/enum/repositoryResourceTypes"),c=e("./DataSourceController");i(function(){var e=n.addDataSource.initOptions,r=/ParentFolderUri=([^&]+)/.exec(location.href),o=s.Deferred().done(function(){var r=new c(e);s("#display").append(r.$el),r.render()});if(r&&r[1]){var i=decodeURIComponent(r[1]);if("/"===i)e.parentFolderUri=i,o.resolve();else{var p=new t({uri:i},{contextPath:n.contextPath});p.fetch().always(function(){p.type&&d.FOLDER.toLowerCase()===p.type.toLowerCase()&&(e.parentFolderUri=i),o.resolve()})}}else o.resolve()})});

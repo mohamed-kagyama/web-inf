@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../enum/draftStateTypesEnum","../enum/canvasViewDesignersEnum"],function(e,t,i){var r=e("underscore"),n=e("../enum/draftStateTypesEnum"),o=e("../enum/canvasViewDesignersEnum"),u=o.FILTERS_DESIGNER,s=function(e){this.initialize(e)};r.extend(s.prototype,{initialize:function(e){r.bindAll(this,"isSidebarItemSelected"),this.viewStateModel=e.viewStateModel},isSidebarItemSelected:function(e){return this.viewStateModel.getCurrentResource(u).id===e.id},getSidebarSelectionPath:function(){return this.viewStateModel.getCurrentResource(u).id},getSidebarCurrentResource:function(){return this.viewStateModel.getCurrentResource(u)},getSidebarSearchKeyword:function(){return this.viewStateModel.getSidebarSearchKeyword(u)},getDraftFilterState:function(){return this.viewStateModel.getDraftState()[n.DRAFT_FILTER]},getFiltersPositions:function(){return this.viewStateModel.getDesignerSpecificProperty(u,"filtersPositions")}}),i.exports=s});

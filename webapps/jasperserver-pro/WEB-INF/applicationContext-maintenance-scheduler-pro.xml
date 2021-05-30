@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+  ~ Licensed pursuant to commercial TIBCO End User License Agreement.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+    <bean id="proMaintenanceSchedulerTriggers" class="java.util.ArrayList" parent="maintenanceSchedulerTriggers">
+        <constructor-arg index="0" type="java.util.Collection">
+            <list merge="true">
+                <ref bean="auditEventPurgerTrigger"/>
+                <ref bean="auditEventArchiverTrigger"/>
+                <ref bean="stagingTrigger"/>
+            </list>
+        </constructor-arg>
+    </bean>
+    <bean id="proMaintenanceSchedulerJobDetail" class="java.util.ArrayList" parent="maintenanceSchedulerJobDetails">
+        <constructor-arg index="0" type="java.util.Collection">
+            <list merge="true">
+                <ref bean="auditEventPurgerJob"/>
+                <ref bean="auditEventArchiverJob"/>
+                <ref bean="stagingJob"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+
+</beans>

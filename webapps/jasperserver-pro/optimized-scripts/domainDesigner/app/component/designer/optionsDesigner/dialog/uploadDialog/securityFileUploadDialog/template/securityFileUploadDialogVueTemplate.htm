@@ -1,0 +1,71 @@
+<div v-bind:data-name="fileUploadDialog" class="jr-mDialog jr-uWidth-400px jr-uHeight-500px jr-isHidden jr">
+    <div class="jr-mDialog-header jr jr-jDialogDraggable">
+        <h1 class="jr-mDialog-header-title jr">{{ title }}</h1>
+    </div>
+
+    <div class="jr-mDialog-tabs jr">
+        <div class="jr-mDialog-tabs-wrapper jr">
+            <tabs
+                    :currentTab="currentTab"
+
+                    @repositoryTabClick="onRepositoryTabClick"
+                    @localFileTabClick="onLocalFileTabClick"
+            ></tabs>
+        </div>
+    </div>
+
+    <div class="jr-mDialog-body jr">
+        <repositoryResourceChooser
+                v-show="isRepositoryTab"
+                class="jr-mDialog-body-wrapper jr-mDialog-body-wrapperFit jr"
+
+                @listSelect="selectListItem"
+                @treeSelect="selectTreeNode"
+                @toggle="toggleRepositoryTree"
+                @repositoryTreeDoubleClick="onDoubleClick"
+                @resourcesListDoubleClick="onDoubleClick"
+                @submitSearchKeyword="submitSearchKeyword"
+                @toggleSearchResultMode="toggleSearchResultMode"
+                @resetSearchKeyword="resetSearchKeyword"
+
+                :repositoryTree="repositoryResourceChooser.repositoryTree"
+                :resourcesList="repositoryResourceChooser.resourcesList"
+                :searchKeyword="repositoryResourceChooser.searchKeyword"
+                :searchResultMode="repositoryResourceChooser.searchResultMode"
+                :popover="repositoryResourceChooser.popover"
+        ></repositoryResourceChooser>
+
+        <div class="jr-mDialog-body-wrapper jr-mDialog-body-wrapperFit jr"
+             v-show="isLocalFileTab"
+        >
+            <singleFileUpload
+                    @selectFile="selectFile"
+
+                    :file="singleFileUpload.file"
+                    :fileInputLabel="fileInputLabel"
+                    :fileInputPlaceholder="singleFileUpload.fileInputPlaceholder"
+                    :actionButtonLabel="singleFileUpload.actionButtonLabel"
+                    :accept="singleFileUpload.accept"
+                    :errorMessage="singleFileUpload.errorMessage"
+            ></singleFileUpload>
+        </div>
+    </div>
+
+    <div class="jr-mDialog-footer jr">
+        <actionButton
+                :class="'jr-mButtonPrimary'"
+                :label="primaryButtonLabel"
+                :disabled="isPrimaryButtonDisabled"
+                :data-name="primaryButton"
+                @click="onPrimaryButtonClick">
+        </actionButton>
+
+        <actionButton
+                :label="secondaryButtonLabel"
+                :class="'jr-mButtonSecondary'"
+                :data-name="secondaryButton"
+                @click="onSecondaryButtonClick">
+        </actionButton>
+        <div class="jr-mDialog-footer-sizer jr jr-jDialogResizer"></div>
+    </div>
+</div>

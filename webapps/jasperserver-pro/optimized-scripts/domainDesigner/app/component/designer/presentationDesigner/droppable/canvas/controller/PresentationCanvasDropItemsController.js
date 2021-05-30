@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","backbone"],function(e,t,n){var i=e("underscore"),s=e("backbone"),r=function(e){this.initialize(e)};i.extend(r.prototype,s.Events,{initialize:function(e){this.store=e.store,this.presentationDesignerEventBus=e.presentationDesignerEventBus,this.presentationDesignerDropStrategyFactory=e.presentationDesignerDropStrategyFactory,this._initEvents()},_initEvents:function(){this.listenTo(this.presentationDesignerEventBus,"dropZone:drop",this._executeDropStrategy),this.listenTo(this.presentationDesignerEventBus,"sidebar:dragStop",this._hideDropZones),this.listenTo(this.presentationDesignerEventBus,"canvas:dragStop",this._hideDropZones)},_executeDropStrategy:function(e,t){var n;n=this.presentationDesignerDropStrategyFactory.create({dropZoneModel:t,items:this._sortItemsByIndex(e)}),n.execute()},_hideDropZones:function(){this.store.get("models").forEach(function(e){e.isDropZone&&(e.isVisible=!1)})},_sortItemsByIndex:function(e){return i.sortBy(e,function(e){return e.index})}}),n.exports=r});

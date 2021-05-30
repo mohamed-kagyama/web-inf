@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../model/enum/genericTypeToExpressionLiteralTypeEnum","../../../../../model/schema/enum/fieldTypesToGenericTypesEnum"],function(e,i,r){var n=e("underscore"),o=e("../../../../model/enum/genericTypeToExpressionLiteralTypeEnum"),t=e("../../../../../model/schema/enum/fieldTypesToGenericTypesEnum"),p=function(e){this.initialize(e)};n.extend(p.prototype,{initialize:function(e){this.filterExpressionFactoryByLiteralTypeMap=e.filterExpressionFactoryByLiteralTypeMap},create:function(e){var i=e.fieldName,r=e.fieldType,p=e.searchKeyword,s={};if(p){var a,l=t[r],y=o[l],c=this.filterExpressionFactoryByLiteralTypeMap[y];a=c.create({criteria:p,fieldName:i,expressionLiteralType:y}),s={where:{filterExpression:a}}}return n.extend({groupBy:[{group:{field:i}}]},s)}}),r.exports=p});

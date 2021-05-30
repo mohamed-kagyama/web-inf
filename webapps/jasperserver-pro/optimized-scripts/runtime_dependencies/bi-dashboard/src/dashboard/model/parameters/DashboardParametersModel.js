@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","backbone"],function(t,e,s){var i=t("underscore"),h=t("backbone");s.exports=h.Model.extend({initialize:function(){this._states=[],this._current=-1,this.on("change",function(){this._changed=!0},this)},clear:function(t){this._default?(h.Model.prototype.clear.call(this,{silent:!0}),this.set(this._default,t)):h.Model.prototype.clear.call(this,t),this._current=-1},pushState:function(){this._current<this._states.length-1&&(this._states=this._states.slice(0,this._current+1)),this._states.push(this._changed?i.cloneDeep(this.attributes):this._states[this._states.length-1]||this._default),this._current=this._states.length-1,this._changed=!1},popState:function(t){this.canPopState(t)&&(this._current+=t,-1===this._current?this.clear():this.set(this._states[this._current]))},setDefault:function(t){i.keys(t||this.attributes).length&&(this._default=i.cloneDeep(t||this.attributes))},canPopState:function(t){return this._current+t>=-1&&this._current+t<this._states.length}})});

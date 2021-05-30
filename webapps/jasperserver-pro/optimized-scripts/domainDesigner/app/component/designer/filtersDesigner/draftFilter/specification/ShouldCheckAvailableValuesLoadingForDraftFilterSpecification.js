@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","./list/dataTypesForAvailableValuesCheck","../../util/filterOperandTypeUtil"],function(i,e,t){function r(i){var e=i.currentFilter,t=i.newFilterOptions,r=o.isLiteral(t.rightOperandType),a=n.isUndefined(t.isRawValueEditor)?e.isRawValueEditor:t.isRawValueEditor;return r&&!a}function a(i){var e=i.newFilterOptions;return o.isList(e.rightOperandType)}var n=i("underscore"),l=i("./list/dataTypesForAvailableValuesCheck"),o=i("../../util/filterOperandTypeUtil"),s=function(i){this.initialize(i)};n.extend(s.prototype,{initialize:function(i){this.isSwitchFromStringSingleSelectToOperatorsWithEmptyDefaultValueSpecification=i.isSwitchFromStringSingleSelectToOperatorsWithEmptyDefaultValueSpecification},isSatisfiedBy:function(i){var e=i.currentFilter,t=e.dataType;return n.indexOf(l,t)>=0&&(r(i)||a(i))||this.isSwitchFromStringSingleSelectToOperatorsWithEmptyDefaultValueSpecification.isSatisfiedBy(i)}}),t.exports=s});

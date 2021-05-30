@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module"],function(t,i,e){function n(t,i,e,n,s,a,h,p,g){var m=new o(n,s,g),d=new o(h,p,a),u=[];u[c]=m,u[r]=d,f[t]=new l(i,e,u)}function s(t,i){f[t].toggle(i)}function l(t,i,e){this.imgPrefix=t,this.linkPrefix=i,this.states=e,this.items={},this.toggle=a,this.collapseAll=h,this.applyState=p}function o(t,i,e){this.imgSrc=t,this.tooltip=i,this.call=e}function a(t){var i,e=this.items[t];i="boolean"==typeof e?!e:r,i==r&&this.collapseAll(),this.applyState(t,i)}function h(){for(var t in this.items)this.items[t]==r&&this.applyState(t,c)}function p(t,i){this.items[t]=i;var e=this.states[i];document.getElementById(this.linkPrefix+t).title=e.tooltip;var n=document.getElementById(this.imgPrefix+t);n.src=e.imgSrc,n.alt=e.tooltip,e.call(t)}var c=!1,r=!0,f=[];window.expandTypeInit=n,window.expandToggle=s,i.expandTypeInit=n,i.expandToggle=s});

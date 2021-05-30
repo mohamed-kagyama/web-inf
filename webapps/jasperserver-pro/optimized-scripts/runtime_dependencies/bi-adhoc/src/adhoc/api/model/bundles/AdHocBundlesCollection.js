@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","backbone","jquery","underscore","runtime_dependencies/js-sdk/src/jrs.configs","./AdHocBundleModel"],function(e,n,t){var o=e("backbone"),r=e("jquery"),s=e("underscore"),c=e("runtime_dependencies/js-sdk/src/jrs.configs"),d=e("./AdHocBundleModel");t.exports=o.Collection.extend({model:d,initialize:function(e,n){n&&n.contextPath&&(this.CONTEXT_PATH=n.contextPath)},getByLocale:function(e){var n=this.get(e);return n||(n=this.get(e.split("_")[0])),n||(n=this.get("")),n},getCurrent:function(){return this.getByLocale(c.userLocale)},bundle:function(e){var n,t;return s.isUndefined(e)&&(e=c.userLocale||""),this.models.length?(n=this.getByLocale(e))?n._contentDfd?t=n._contentDfd:(t=n._contentDfd=new r.Deferred,n.resource.contentJSON?t.resolve(n.resource.contentJSON):n.resource.fetchContent().done(function(){t.resolve(n.resource.contentJSON)})):t=(new r.Deferred).reject({errorCode:"bundle.not.found",message:"The bundle for locale is not found",properties:[e]}):t=(new r.Deferred).resolve({}),t.promise()}})});

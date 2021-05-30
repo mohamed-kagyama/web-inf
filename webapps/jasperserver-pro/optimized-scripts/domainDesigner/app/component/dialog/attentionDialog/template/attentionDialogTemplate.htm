@@ -1,0 +1,16 @@
+<genericNotificationDialog
+        :data-name="dialogName"
+        :class="'jr-mDialogAttention'"
+        :title="i18n['dialog.attention.title']"
+        :headerClass="'jr-mValidation-alertAttention'"
+        :headerIconClass="'jr-warningRound'"
+        :header="validationMessage"
+        :confirmButtonLabel="i18n['button.close']"
+        :confirmButtonDataNameAttribute="closeButtonName"
+        :confirmButtonClass="'jr-mButtonAttention'"
+        @confirm="close">
+
+    <p class="jr-mText jr-mTextMedium jr-uTop-single jr">
+        <span class="jr-mText-wrapper jr">{{ validationMessageDetails }}</span>
+    </p>
+</genericNotificationDialog>

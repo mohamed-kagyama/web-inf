@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","runtime_dependencies/js-sdk/src/common/component/dialog/Dialog","underscore","bundle!CommonBundle","text!../../template/overlayDialogTemplate.htm","../../dashboardSettings"],function(e,t,o){var i=e("runtime_dependencies/js-sdk/src/common/component/dialog/Dialog"),n=e("underscore"),s=e("bundle!CommonBundle"),a=e("text!../../template/overlayDialogTemplate.htm"),l=e("../../dashboardSettings");o.exports=i.extend({defaultTemplate:a,constructor:function(e){n.defaults(e,{contentContainer:".body > .message",title:s["dialog.overlay.title"],modal:!0}),i.call(this,e)},open:function(){var e=this,t=arguments;this.dimmer.css({opacity:0}).show(),this._timeout=setTimeout(function(){e.dimmer.css({opacity:.6}),i.prototype.open.apply(e,t)},l.DASHBOARD_OVERLAY_TIMEOUT)},close:function(){clearTimeout(this._timeout),i.prototype.close.call(this),this.dimmer.css({opacity:.6}).hide()}})});

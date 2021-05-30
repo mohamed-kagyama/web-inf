@@ -1,0 +1,21 @@
+<div class="jr-mDomain-mode-wrapper jr">
+    <div class="jr-mDomain-mode-controls jr">
+        <div class="jr-mDomain-mode-controls-search jr">
+            <div class="jr-mInput jr-uWidth-300px jr">
+                <joinsDesignerSearch :searchKeyword="searchKeyword"></joinsDesignerSearch>
+            </div>
+        </div>
+    </div>
+
+    <virtualData v-if="isVisible && isAnyModelsPresent" class="jr-mDomain-mode-joinlist jr" v-bind:data-name="table" :scrollPos="scrollPos" :top="top" :height="height">
+        <template v-for="model in models">
+            <joinTreePlaceholder v-if="isJoinTreePlaceholder(model)" :joinTreePlaceholder="model"></joinTreePlaceholder>
+            <joinTree v-else-if="isJoinTree(model.modelType)" :joinTree="model"></joinTree>
+            <draftJoinTree v-else-if="isDraftJoinTree(model)" :joinTree="model"></draftJoinTree>
+        </template>
+    </virtualData>
+
+    <div v-if="isVisible && !isAnyModelsPresent" class="jr-mDomain-mode-joinlist jr">
+        <initialDropZone :isEmptyDataStructure="isEmptyDataStructure" :isActive="isInitialDroppableZoneActive"></initialDropZone>
+    </div>
+</div>

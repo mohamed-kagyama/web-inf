@@ -1,0 +1,41 @@
+<div class="jr-mDialog jr-mDialogModal jr-isHidden jr-uWidth-500px jr">
+
+    <div class="jr-mDialog-header jr jr-jDialogDraggable">
+        <h1 class="jr-mDialog-header-title jr">{{ title }}</h1>
+    </div>
+
+    <div class="jr-mDialog-body jr-mDialog-bodyPadded jr-uMaxheight-500px jr">
+        <div class="jr-mValidation jr">
+            <div v-if="header"
+                 class="jr-mValidation-alert jr"
+                 :class="headerClass">
+                <span class="jr-mValidation-alert-icon jr-mIcon jr-mIconSmall jr"
+                      :class="headerIconClass"></span>
+                <span class="jr-mValidation-alert-text jr">
+                    {{ header }}
+                </span>
+            </div>
+        </div>
+
+        <slot></slot>
+    </div>
+
+    <div class="jr-mDialog-footer jr">
+        <actionButton
+                v-if="confirmButtonLabel"
+                :class="'jr-mButtonPrimary ' + confirmButtonClass"
+                :label="confirmButtonLabel"
+                :data-name="confirmButtonDataNameAttribute"
+                @click="onConfirm">
+        </actionButton>
+
+        <actionButton
+                v-if="rejectButtonLabel"
+                :label="rejectButtonLabel"
+                :class="'jr-mButtonSecondary'"
+                :data-name="rejectButtonDataNameAttribute"
+                @click="onReject">
+        </actionButton>
+        <div class="jr-mDialog-footer-sizer jr-jDialogResizer jr"></div>
+    </div>
+</div>

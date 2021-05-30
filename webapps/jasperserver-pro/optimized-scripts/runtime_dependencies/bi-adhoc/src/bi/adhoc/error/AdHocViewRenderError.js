@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","runtime_dependencies/js-sdk/src/common/bi/error/BiComponentError","runtime_dependencies/js-sdk/src/common/bi/error/enum/biComponentErrorCodes","runtime_dependencies/js-sdk/src/common/bi/error/enum/biComponentErrorMessages"],function(r,e,n){var o=r("underscore"),s=r("runtime_dependencies/js-sdk/src/common/bi/error/BiComponentError"),i=r("runtime_dependencies/js-sdk/src/common/bi/error/enum/biComponentErrorCodes"),m=r("runtime_dependencies/js-sdk/src/common/bi/error/enum/biComponentErrorMessages");n.exports=s.extend({constructor:function(r){o.isString(r)&&(r={parameters:[r]});var e=i.AD_HOC_VIEW_RENDER_ERROR,n=m[e];"highchartsInternalError"===r.type&&(e=i.REPORT_RENDER_HIGHCHARTS_ERROR,n=r.data.error+" "+r.data.message),s.prototype.constructor.call(this,e,n,r.parameters||[])}})});

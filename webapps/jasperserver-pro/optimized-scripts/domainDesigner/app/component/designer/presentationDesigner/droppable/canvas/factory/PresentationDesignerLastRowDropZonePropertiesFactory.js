@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../enum/dropZonesAcceptTypesEnum"],function(e,n,a){var s=e("underscore"),t=e("../enum/dropZonesAcceptTypesEnum"),r=function(e){this.initialize(e)};s.extend(r.prototype,{initialize:function(e){this.presentationCanvasDroppableItemsService=e.presentationCanvasDroppableItemsService},create:function(e){var n=e.items,a=e.lastRow,s={},r={index:a.lastDataIslandIndex,accepts:t.SIDEBAR_RESOURCES_AND_DATA_ISLANDS},i=a.isOwnerDataIsland?0:a.lastItemIndex,p={index:i,ownerId:a.ownerId,parentId:a.parentId,dataIslandId:a.dataIslandId,accepts:t.SIDEBAR_RESOURCES_SETS_AND_ITEMS};if(this.presentationCanvasDroppableItemsService.isItemsBeingDroppedFromCanvas(n))s=this.presentationCanvasDroppableItemsService.isDataIslandsBeingDropped(n)?r:p;else{var o=this.presentationCanvasDroppableItemsService.areResourcesReferencedByDataIsland(n),d=this.presentationCanvasDroppableItemsService.isConstantGroupCalcFieldsAreDropped(n);s=(a.isOwnerExpanded||a.isOwnerLeaf)&&(o||d)?p:r}return s}}),a.exports=r});

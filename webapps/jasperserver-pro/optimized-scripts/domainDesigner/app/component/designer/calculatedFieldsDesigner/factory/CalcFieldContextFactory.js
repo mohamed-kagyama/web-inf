@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../model/schema/enum/schemaEntitiesEnum","../../../../../model/schema/util/entityUtil"],function(e,i,c){var r=e("underscore"),o=e("../../../../../model/schema/enum/schemaEntitiesEnum"),s=e("../../../../../model/schema/util/entityUtil"),t=function(e){this.initialize(e)};r.extend(t.prototype,{initialize:function(e){this.clientDomainSchemaCalcFieldsService=e.clientDomainSchemaCalcFieldsService},create:function(e){var i=e.type,c={};return s.isJoinTree(i)?(c.sourceId=e.resourceId,c.sourceType=o.JOIN_TREE):s.isJoinAlias(i)?(c.sourceId=e.tableReferenceId,c.sourceType=o.TABLE_REFERENCE):s.isTableReference(i)?(c.sourceId=e.resourceId,c.sourceType=o.TABLE_REFERENCE):c=s.isCalcField(i)?{sourceId:e.calcFieldSourceId,sourceType:e.calcFieldSourceType,calcFieldId:e.resourceId}:{sourceName:this.clientDomainSchemaCalcFieldsService.getDefaultConstantGroupName(),sourceType:o.CONSTANT_GROUP},c}}),c.exports=t});

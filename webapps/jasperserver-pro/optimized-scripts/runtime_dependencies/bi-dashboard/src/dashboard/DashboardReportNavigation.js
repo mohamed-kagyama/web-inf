@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","jquery","underscore","request","runtime_dependencies/bi-report/src/bi/report/model/ReportModel","runtime_dependencies/bi-report/src/bi/report/model/ReportExecutionModel","./factory/reportModelMixinFactory"],function(e,r,o){var t=e("jquery"),n=e("underscore"),d=e("request"),p=e("runtime_dependencies/bi-report/src/bi/report/model/ReportModel"),i=e("runtime_dependencies/bi-report/src/bi/report/model/ReportExecutionModel"),c=e("./factory/reportModelMixinFactory"),u={dashboardReportsId:[],addDashboardReport:function(e){this.dashboardReportsId.push(e)},confirmAndLeave:function(){return function(e){var r=[];n.each(u.dashboardReportsId,function(e){r.push(d({url:e,type:"DELETE"}))}),t.when.apply(t,r).done(function(){"function"==typeof e&&(u.dashboardReportsId=[],e())})}}},s=p.prototype.execute,a=c(s,u),b={remove:function(){}};n.extend(p.prototype,a),n.extend(i.prototype,b),o.exports=u});

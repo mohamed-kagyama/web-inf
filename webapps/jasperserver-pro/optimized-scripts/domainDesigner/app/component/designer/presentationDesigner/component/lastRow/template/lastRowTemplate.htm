@@ -1,0 +1,15 @@
+<div class="jr-mTable-row jr-mTable-rowLast jr" v-droppable="droppableConfig" :style="{height: heightInPx}">
+    <div class="jr-mTable-cell jr-mTable-cellSetitem jr" :style="column0WidthStyle" style="height: 0">
+        <div class="jr-mTable-row jr-mTable-rowDropzone jr"
+             :class="{'jr-isHovered': isHovered}"
+             :style="visibility">
+        </div>
+    </div>
+    <div class="jr-mTable-cell jr-mTable-cellProperties jr" :style="column1WidthStyle">
+        <div class="jr-mTable-cell jr-mTable-cellResizer jr" v-resizer="resizerConfig"></div>
+        <div class="jr-mTable-row jr-mTable-rowDropzone jr"
+             :class="{'jr-isHovered': isHovered}"
+             :style="visibility">
+        </div>
+    </div>
+</div>

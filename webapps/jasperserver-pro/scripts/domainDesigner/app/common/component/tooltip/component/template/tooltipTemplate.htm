@@ -1,0 +1,9 @@
+<div class="jr-mTooltip jr" aria-hidden="true" role="tooltip"
+     :class="[typeClass, placementClass]"
+     :style="tooltipStyle"
+>
+    <template v-for="contentItem in contentAsArray">
+        <p class="jr-mTooltip-label jr">{{ contentItem.label }}</p>
+        <p class="jr-mTooltip-text jr">{{ contentItem.text }}</p>
+    </template>
+</div>

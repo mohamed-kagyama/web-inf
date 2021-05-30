@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","bundle!jasperserver_config","runtime_dependencies/js-sdk/src/common/util/parse/NumberUtils"],function(e,r,n){function i(e){return e.replace(s,d)}function t(e){return e.replace(p,"")}function u(e){var r=e.match(f);return r?r[1]:e}function o(e){var r=e.split("."),n=r[0],i=r[1];return n.length>3&&(n=n.replace(g,l)),i?[n,i].join(s):n}var a=e("underscore"),c=e("bundle!jasperserver_config"),m=e("runtime_dependencies/js-sdk/src/common/util/parse/NumberUtils"),s=c["client.delimiters.decimal"],l=c["client.delimiters.thousands"],d=".",p=new RegExp("\\"+l,"g"),f=new RegExp("(\\d+)\\"+s+"[0]+$"),g=/\B(?=(?:\d{3})+(?!\d))/g,b=/^-/,D=new m({decimalSeparator:s,groupingSeparator:l});n.exports={isInteger:function(e){return e=t(e),D.isInt(e)},isDecimal:function(e){return e=t(e),D.isDecimal(e)},parseNumber:function(e){var r=t(e),n=Boolean(e.match(b)),i=D.parseNumber(r);return a.isBoolean(i)&&!i?n?-1/0:1/0:i},formatNumber:function(e){return D.formatNumber(e)},replaceLocalizedDecimalDelimiterWithNumberDecimalDelimiter:i,removeZerosAfterDecimalDelimiter:u,removeThousandsDelimiter:t,formatStringNumber:o}});

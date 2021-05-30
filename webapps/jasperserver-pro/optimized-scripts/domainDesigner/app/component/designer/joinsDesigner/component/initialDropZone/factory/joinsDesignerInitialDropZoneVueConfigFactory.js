@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../../common/vue/directive/lazyDroppableDirective","text!../template/joinsDesignerInitialDropZoneVueTemplate.htm","../../../../../../common/vue/computed/i18nComputed"],function(e,t,i){var o=e("underscore"),r=e("../../../../../../common/vue/directive/lazyDroppableDirective"),n=e("text!../template/joinsDesignerInitialDropZoneVueTemplate.htm"),s=e("../../../../../../common/vue/computed/i18nComputed");i.exports={create:function(e){var t=e.joinsDesignerEventBus;return{template:n,data:function(){return{isOver:!1}},props:["isActive","isEmptyDataStructure"],directives:{droppable:r},computed:o.extend({isDropZoneActive:function(){return this.isActive&&!this.isOver},droppableConfig:function(){return{drop:this.drop,over:this.over,out:this.out,tolerance:"pointer",test:this.shouldBeDroppable}}},s),methods:{drop:function(e,i){this.isOver=!1,t.trigger("initialDropZone:drop",i)},over:function(){this.isOver=!0},out:function(){this.isOver=!1},shouldBeDroppable:function(e){return this.isActive&&!o.isEmpty(e)}}}}}});

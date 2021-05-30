@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../model/enum/canvasViewDesignersEnum"],function(e,r,n){function t(e){return e.viewState.getSearchKeyword(g).canvas}function i(e){return e.viewState.getCurrentResource(g)}function o(e){return e.viewState.getDesignerSpecificProperty(g,"joinTrees")}function s(e,r){return r.viewState.getDesignerSpecificProperty(g,"joins")[e].isExpanded}function a(e,r){return r.viewState.getDesignerSpecificProperty(g,"joins")[e].originalWeight}function u(e){var r=e.viewState.getDesignerSpecificProperty(g,"dataIslands");return c.find(r,function(e){var r=e.joinsConstructor;return r&&r.leftDroppableArea.fieldId})}var c=e("underscore"),d=e("../../../../model/enum/canvasViewDesignersEnum"),g=d.JOINS_DESIGNER;n.exports={isJoinExpanded:s,getJoinOriginalWeight:a,getSearchKeyword:t,getCurrentSidebarResource:i,isAtLeastOneResourceAlreadyDropped:u,getJoinTrees:o}});

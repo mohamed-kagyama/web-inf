@@ -1,0 +1,31 @@
+<div class="jr-mDomain jr-mDomainDesigner jr" v-show="isVisible">
+    <div class="jr-mDomain-header jr">
+        <div class="jr-mDomain-header-title jr">
+            <div class="jr-mDomain-header-title-icon jr ">
+                <span class="icon"></span>
+            </div>
+            <h1 class="jr-mDomain-header-title-text jr jr-jDomain-label">
+                {{ domainLabel }}
+            </h1>
+        </div>
+        <div class="jr-mDomain-header-tabs jr jr-jDomainTabs">
+            <tabs></tabs>
+        </div>
+    </div>
+
+    <div class="jr-mDomain-content jr">
+
+        <div class="jr-mDomain-content-datapanel jr jr-jDomainSidebar" v-show="isSidebarVisible">
+            <div class="jr-mSizer jr-mSizerHorizontal ui-resizable-handle ui-resizable-e jr jr-jSidebarResizer"></div>
+            <sidebar></sidebar>
+        </div>
+        <div :style="contentLeftStyle" class="jr-mDomain-content-main jr jr-jDomainContent jr-jDomainCanvas">
+            <div class="jr-mToolbar jr jr-jDomainToolbar">
+                <domainDesignerMenu></domainDesignerMenu>
+            </div>
+            <domainDesignerCanvas></domainDesignerCanvas>
+        </div>
+
+    </div>
+
+</div>

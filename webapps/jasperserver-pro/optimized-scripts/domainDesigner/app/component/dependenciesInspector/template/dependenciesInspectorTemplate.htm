@@ -1,0 +1,45 @@
+<div v-bind:data-name="dialog" class="jr-mDialog jr-mDialogWarning jr-isHidden jr-uWidth-800px jr-uHeight-400px jr" >
+    <div class="jr-mDialog-header jr jr-jDialogDraggable">
+        <h1 class="jr-mDialog-header-title jr">{{ i18n['domain.designer.dialog.title.warning'] }}</h1>
+    </div>
+
+    <div class="jr-mDialog-body jr">
+        <div class="jr-mDialog-body-wrapper jr-mDialog-body-wrapperFit jr">
+            <div class="jr-mDialog-body-instructions jr">
+                <p class="jr-mDialog-body-instructions-text jr">{{ i18n['domain.designer.dependenciesInspector.dialog.instruction'] }}.</p>
+            </div>
+
+            <div class="jr-uFlexfit-row jr">
+                <div class="jr-uFlexfit-row-item jr">
+
+                    <leftTreeVirtualData
+                            v-if="isAllDependenciesExceptDataIslandsVisible"
+                            :alignment="allDependenciesExceptDataIslandsAlignment"
+                            :label="i18n['domain.designer.dependenciesInspector.dialog.leftColumnLabel']" />
+
+                    <rightTreeVirtualData
+                             v-if="isDataIslandsVisible"
+                            :alignment="dataIslandsAlignment"
+                            :label="i18n['domain.designer.dependenciesInspector.dialog.rightColumnLabel']" />
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="jr-mDialog-footer jr">
+        <button @click="onConfirm"
+                v-bind:data-name="confirmButton"
+                class="jr-mButton jr-mButtonText jr-mButtonWarning jr">
+            <span class="jr-mButton-label jr">{{ i18n['domain.designer.dependenciesInspector.dialog.deleteItems'] }}</span>
+        </button>
+        <button @click="onReject"
+                v-bind:data-name="rejectButton"
+                class="jr-mButton jr-mButtonText jr-mButtonSecondary jr">
+            <span class="jr-mButton-label jr">{{ i18n['domain.designer.dialog.cancel'] }}</span>
+        </button>
+        <div class="jr-mDialog-footer-sizer jr jr-jDialogResizer"></div>
+    </div>
+</div>

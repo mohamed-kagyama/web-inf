@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","bundle!DomainDesignerBundle","runtime_dependencies/js-sdk/src/common/util/i18nMessage","../../../../../../../model/schema/util/entityUtil","../../../../../../dispatcher/enum/applicationStateEventsEnum","../enum/menuOptionsEventsEnum"],function(e,n,t){var i=e("bundle!DomainDesignerBundle"),u=e("runtime_dependencies/js-sdk/src/common/util/i18nMessage"),s=e("../../../../../../../model/schema/util/entityUtil"),r=e("../../../../../../dispatcher/enum/applicationStateEventsEnum"),c=e("../enum/menuOptionsEventsEnum"),m=u.create(i);t.exports={create:function(){return function(e){return{label:m("domain.designer.calcFields.contextMenu.removeCalcField"),action:c.REMOVE_CALC_FIELD.event,value:!1,triggerEvent:r.CALCULATED_FIELDS_DESIGNER_REMOVE_CALCULATED_FIELD,test:function(){return s.isCalcField(e.resource.type)}}}}}});

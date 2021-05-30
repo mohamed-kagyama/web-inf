@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../model/schema/util/entityUtil","../../../../common/mixin/selection/selectionMixin"],function(e,i,t){var l=e("underscore"),s=e("../../../../../model/schema/util/entityUtil"),n=e("../../../../common/mixin/selection/selectionMixin"),c=function(e){this.initialize(e)};l.extend(c.prototype,{selection:{event:"click dblclick",selector:"li",attrs:["id"],onSelection:"selectItem",shouldBeSelectable:"shouldBeSelectable"},initialize:function(e){this.$el=e.tree.$el,this.tree=e.tree,this.nestedTreeModel=e.nestedTreeModel,this.calculatedFieldsDesignerEventBus=e.calculatedFieldsDesignerEventBus,this._initializeSelectable&&this._initializeSelectable()},selectItem:function(e,i){var t=this.nestedTreeModel.getNode(e.id),l=t.resource;s.isField(l.type)&&(this.tree.setValue([e.id]),"dblclick"===i.type&&this.calculatedFieldsDesignerEventBus.trigger("designer:addVariableNameToExpression",l.variableName))}},n),t.exports=c});

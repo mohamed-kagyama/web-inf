@@ -1,0 +1,127 @@
+<div v-bind:data-name="dialog" class="jr-mDialog jr-uWidth-700px jr-uHeight-525px jr" v-bind:class="{'jr-isHidden': !isVisible}">
+    <div class="jr-mDialog-header jr jr-jDialogDraggable">
+        <h1 v-if="editMode" class="jr-mDialog-header-title jr">{{ i18n['domain.designer.calcFields.editCalcField.title'] }}</h1>
+        <h1 v-else class="jr-mDialog-header-title jr">{{ i18n['domain.designer.calcFields.newCalcField.title'] }}</h1>
+    </div>
+
+    <div class="jr-mDialog-body jr">
+        <div class="jr-mColumns jr">
+            <div class="jr-mColumn jr-mColumnPadded jr-uWidth-46pc jr">
+                <div class="jr-mListbox jr">
+                    <div class="jr-mListbox-label jr">{{ i18n['domain.designer.calcFields.availableFields'] }}:</div>
+                    <div class="jr-mListbox-search jr">
+                        <div class="jr-mInput jr">
+                            <search :searchKeyword="searchKeyword"></search>
+                        </div>
+                    </div>
+                    <itemsTree v-bind:data-name="itemsList" class="jr-mListbox-list jr"></itemsTree>
+                </div>
+            </div>
+            <div class="jr-mColumn jr-mColumnPadded jr-uWidth-54pc jr">
+                <div class="jr-mInputgroup jr">
+                    <div class="jr-mInput jr">
+                        <label class="jr-mInput-label jr">{{ i18n['domain.designer.calcFields.field.name'] }}:</label>
+                        <input v-on:input="onNameEdit($event.target.value)"
+                               v-bind:data-name="nameEditInput"
+                               v-bind:value="name"
+                               :disabled="disableInput"
+                               class="jr-mInput-text jr j-jrCalcFieldName"
+                               type="text">
+                        <inputErrorMessage :message="errors.name" :type="validationMessageTypes.ERROR"></inputErrorMessage>
+                    </div>
+
+                    <div class="jr-mInput jr">
+                        <label class="jr-mInput-label jr">{{ i18n['domain.designer.calcFields.field.type'] }}:</label>
+                        <select :disabled="disableInput" v-on:change="onTypeEdit($event.target.value)" class="jr-mInput-select jr-mInput-selectWide jr">
+                            <option v-bind:selected="fieldType.value === type" v-for="fieldType in calcFieldTypes" v-bind:value="fieldType.value">
+                                {{ fieldType.label }}
+                            </option>
+                        </select>
+                        <!-- no validation on selects -->
+                    </div>
+
+                    <div class="jr-mInput jr">
+                        <label class="jr-mInput-label jr">{{ i18n['domain.designer.calcFields.formula'] }}:</label>
+                        <expressionEditor
+                                :disabled="disableInput"
+                                v-on:change="onExpressionEdit"
+                                v-bind:value="formulaValue"
+                                v-bind:selection-range="formulaSelectionRange"
+                                class="jr-mInput-textarea jr">
+                        </expressionEditor>
+                    </div>
+                </div> <!-- END jr-mInputgroup -->
+                <operators v-on:selectOperator="selectOperator" :disableButtons="disableInput"></operators>
+
+                <!--validation button on right-->
+                <div class="jr-mForm-validation jr" >
+                    <div class="jr-mForm-validation-message jr">
+                        <validation :message="errors.expression.message || expressionValidationSuccessMessage"
+                                    :type="validationMessageType"></validation>
+                    </div>
+                    <template v-if="expressionValidationInProgress" >
+                        <div class="jr-mForm-validation-button jr">
+                            <div class="jr-mButton jr-mButtonCombo jr-mButtonMedium jr">
+                                <span class="jr-mButton-icon jr-mIcon jr-mIconMedium jr-loading jr"></span>
+                                <span class="jr-mButton-label jr-mButton-labelTheme jr">{{ i18n['domain.designer.dialog.validating'] }}</span>
+                            </div>
+                        </div>
+                        <actionButton @click="onValidationCancelButtonClick"
+                                      :data-name="cancelValidationButton"
+                                      :label="i18n['domain.designer.dialog.cancel.validation']"
+                                      class="jr-mButtonSecondary jr-mButtonMedium">
+                        </actionButton>
+                    </template>
+                    <div class="jr-mForm-validation-button jr" v-else>
+                        <actionButton @click="onValidationButtonClick"
+                                      :disabled="isValidationButtonDisabled"
+                                      :data-name="validationButton"
+                                      :label="i18n['domain.designer.calcFields.formula.validate']"
+                                      class="jr-mButtonPrimary jr-mButtonMedium">
+                        </actionButton>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="jr-mDialog-footer jr">
+        <template v-if="calcFieldValidationInProgress">
+            <button class="jr-mButton jr-mButtonCombo jr-mButtonMedium jr">
+                <span class="jr-mButton-icon jr-mIcon jr-mIconMedium jr-loading jr"></span>
+                <span class="jr-mButton-label jr-mButton-labelTheme jr">{{ calcFieldValidationLabel }}</span>
+            </button>
+
+            <actionButton
+                    :data-name="cancelButton"
+                    @click="onValidationCancelButtonClick"
+                    class="jr-mButtonSecondary"
+                    :label="cancelCalcFieldValidationLabel">
+            </actionButton>
+        </template>
+        <template v-else>
+            <actionButton
+                    v-if="editMode"
+                    :disabled="isCreateOrUpdateDisabled"
+                    :data-name="updateButton"
+                    @click="onUpdateButtonClick"
+                    class="jr-mButtonPrimary"
+                    :label="i18n['domain.designer.calcFields.updateCalcField']">
+            </actionButton>
+            <actionButton v-else
+                          :disabled="isCreateOrUpdateDisabled"
+                          :data-name="createButton"
+                          @click="onCreateButtonClick"
+                          class="jr-mButtonPrimary"
+                          :label="i18n['domain.designer.calcFields.createCalcField']">
+            </actionButton>
+            <actionButton
+                    @click="onCancelButtonClick"
+                    :data-name="cancelButton"
+                    class="jr-mButtonSecondary"
+                    :label="i18n['domain.designer.calcFields.cancelCreateOrEdit']">
+            </actionButton>
+        </template>
+        <div class="jr-mDialog-footer-sizer jr jr-jDialogResizer"></div>
+    </div>
+</div>

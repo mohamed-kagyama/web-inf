@@ -1,0 +1,11 @@
+<div class="jr-mJointree-expression jr" v-show="join.isExpanded">
+    <div class="jr-mJointree-expression-field jr-mJointree-expression-fieldComplex jr">
+        {{ join.expression }}
+    </div>
+
+    <div class="jr-mJointree-expression-action jr">
+        <button class="jr-mButton jr-mButtonAction jr" @click="removeJoin" v-bind:data-name="removeButton" aria-label="">
+            <span class="jr-mButton-icon jr-mIcon jr-delete jr"></span>
+        </button>
+    </div>
+</div>

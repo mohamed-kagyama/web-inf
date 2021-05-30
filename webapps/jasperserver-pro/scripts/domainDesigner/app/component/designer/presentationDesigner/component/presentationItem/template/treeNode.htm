@@ -1,0 +1,52 @@
+<div @click="selectItem(itemSelectionProperties, $event)"
+     @click.ctrl="toggleItemSelection(itemSelectionProperties)"
+     @click.meta="toggleItemSelection(itemSelectionProperties)"
+     @click.shift="addToRangeSelection(itemSelectionProperties)"
+     @contextmenu="showContextMenu(itemSelectionProperties, $event)"
+     @dblclick="onToggle"
+     v-bind:data-name="singleItemTree"
+     class="jr-mTable-cell jr-mTable-cellSetitem jr"
+>
+
+    <template v-if="item.dropZoneActivators.top">
+        <dropZoneActivator
+            :index="item.dropZoneActivators.top.index"
+            :which="item.dropZoneActivators.top.which"
+            :ownerId="item.dropZoneActivators.ownerId"
+            :accepts="item.dropZoneActivators.top.accepts"
+            :parentId="item.dropZoneActivators.top.parentId"
+            :dataIslandId="item.dropZoneActivators.dataIslandId"
+        >
+        </dropZoneActivator>
+    </template>
+
+    <div class="jr-mTable-cell-wrapper jr-jDroppable jr-jMiddleDropZone jr">
+        <div class="jr-mTable-cell-treeitem jr">
+            <ul v-bind:data-name="itemsTree" class="jr-mTree jr-mTreeLoose jr">
+                <li :class="[nestingLevelClass, treeNodeClass, treeNodeKindClass, toggleNodeClass, {'jr-isSelected': item.isSelected}]"
+                    class="jr">
+
+                    <div @click="onToggle" class="jr-mTree-iconContainer jr">
+                        <span class="jr-mTree-expander jr"></span>
+                        <span :class="[treeIconClass]" class="jr-mTree-icon jr" ></span>
+                    </div>
+                    <p class="jr-mTree-label jr">
+                        {{labelOrName}}
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <template v-if="item.dropZoneActivators.bottom">
+        <dropZoneActivator
+                :index="item.dropZoneActivators.bottom.index"
+                :which="item.dropZoneActivators.bottom.which"
+                :ownerId="item.dropZoneActivators.ownerId"
+                :accepts="item.dropZoneActivators.bottom.accepts"
+                :parentId="item.dropZoneActivators.bottom.parentId"
+                :dataIslandId="item.dropZoneActivators.dataIslandId"
+        >
+        </dropZoneActivator>
+    </template>
+</div>

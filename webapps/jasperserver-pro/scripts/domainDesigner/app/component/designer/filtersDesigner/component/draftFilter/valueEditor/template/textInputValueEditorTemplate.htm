@@ -1,0 +1,4 @@
+<div class="jr-mInput jr">
+    <input @input="onInput" :disabled="isDisabled" v-bind:data-name="valueEditorInput" class="jr-mInput-text jr" type="text" :value="operand.value">
+    <errorMessage :message="errorMessage" type="error"></errorMessage>
+</div>

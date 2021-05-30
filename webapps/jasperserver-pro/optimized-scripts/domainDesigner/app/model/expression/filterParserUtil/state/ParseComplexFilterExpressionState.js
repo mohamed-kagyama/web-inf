@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../enum/clientExpressionsEnum","../../../../../model/schema/enum/schemaEntitiesEnum","../enum/filterParserStateNamesEnum","./mixin/addFilterExpressionMixin"],function(e,t,n){var i=e("underscore"),s=e("../../../enum/clientExpressionsEnum"),r=e("../../../../../model/schema/enum/schemaEntitiesEnum"),o=e("../enum/filterParserStateNamesEnum"),a=e("./mixin/addFilterExpressionMixin"),m=s.operators,c=function(e){this.initialize(e)};i.extend(c.prototype,{initialize:function(e){this.context=e.context,this.factory=e.factory},parseComplexFilter:function(e,t,n){var i={},s={};return i[t]=e,this.context.isNot?(s[m.not.name]={},s[m.not.name][m.operands.name]=[i]):s=i,this.context.currentFilterExpression={type:r.COMPLEX_FILTER,expression:{object:s,string:n||""}},this._addFilterExpression(),this.factory.create(o.SET_FILTER_EXPRESSION_OPERATOR_STATE,this.context)}},a),n.exports=c});

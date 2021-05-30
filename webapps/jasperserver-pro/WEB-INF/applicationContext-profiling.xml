@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+  ~ Licensed pursuant to commercial TIBCO End User License Agreement.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+  <bean id="profilingSessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+    <property name="dataSource" ref="dataSource"/>
+    <property name="mappingResources">
+      <list>
+	<value>
+	  /com/jaspersoft/ji/util/profiling/domain/repo/ProfilingRecord.hbm.xml
+	</value>
+      </list>
+    </property>
+    <property name="hibernateProperties">
+      <props>
+	<prop key="hibernate.dialect">${metadata.hibernate.dialect}</prop>
+	<prop key="hibernate.show_sql">false</prop>
+	<prop key="hibernate.generate_statistics">true</prop>
+      </props>
+    </property>
+
+  </bean>
+  
+  <bean id="profilingRecorder"
+	class="com.jaspersoft.ji.util.profiling.service.ProfilingRecorder">
+    <property name="sessionFactory" ref="profilingSessionFactory"/>
+  </bean>
+
+  <!--
+  <bean id="profilingService"
+	class="com.jaspersoft.ji.util.profiling.service.ProfilingServiceImpl">
+    <property name="profilingRecorder" ref="profilingRecorder"/>
+  </bean>
+  -->
+
+  <bean id="globalProfilingState"
+	class="com.jaspersoft.ji.util.profiling.service.GlobalProfilingStateImpl">
+    <property name="profilingRecorder" ref="profilingRecorder"/>
+    <property name="transactionManager" ref="transactionManager"/>
+  </bean>
+
+</beans>

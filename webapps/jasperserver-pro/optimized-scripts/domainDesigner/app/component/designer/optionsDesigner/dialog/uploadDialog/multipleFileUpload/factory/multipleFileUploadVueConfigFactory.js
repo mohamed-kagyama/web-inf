@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","text!../template/multipleFileUploadTemplate.htm","../../../../../../../common/component/popover/directive/popoverDirective"],function(e,t,o){var r=e("underscore"),i=e("text!../template/multipleFileUploadTemplate.htm"),l=e("../../../../../../../common/component/popover/directive/popoverDirective");o.exports={create:function(){return{template:i,computed:{isFilesEmpty:function(){return!Boolean(this.files.length)}},directives:{popover:l},props:{files:Array,infoLabel:String,infoButtonLabel:String,actionButtonLabel:String,isActionButtonDisabled:{type:Boolean,default:!1},accept:{type:String,default:""},multiple:{type:Boolean,default:!1},popover:{type:Object,default:{errorMessage:"",errorTitle:"",placement:"",type:""}}},methods:{addFiles:function(e){var t=this.$el.querySelector(".jr-jFileUploadInput"),o=r.map(e.target.files,function(e){return e});this.$emit("addFiles",o),t&&(t.value="")},removeFile:function(e,t){t.stopPropagation(),this.$emit("removeFile",e)},closeErrorPopover:function(){this.$emit("closeErrorPopover")}}}}}});

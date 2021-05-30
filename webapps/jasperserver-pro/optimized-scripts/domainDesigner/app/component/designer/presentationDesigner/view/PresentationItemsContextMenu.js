@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","runtime_dependencies/js-sdk/src/common/component/menu/ContextMenu"],function(n,t,e){var i=n("underscore"),s=n("runtime_dependencies/js-sdk/src/common/component/menu/ContextMenu");e.exports=s.extend({constructor:function(n){this.presentationDesignerEventBus=n.presentationDesignerEventBus,this.menuOptionsFactory=n.menuOptionsFactory,this.menuOptions=this.menuOptionsFactory.create(),s.call(this,this.menuOptions,{collection:n.collection})},show:function(n,t){this._stopListeningForMenuOptionsEvents(),this._resetOptionsCollection(t),this._initMenuOptionsEvents(t),this._signOffTryHide(),s.prototype.show.call(this,n)},_resetOptionsCollection:function(n){this.menuOptions=this.menuOptionsFactory.create(n),this.collection.reset(this.menuOptions)},_initMenuOptionsEvents:function(n){i.each(this.menuOptions,function(t){this.listenTo(this,"option:"+t.action,i.partial(this._onMenuAction,t.triggerEvent,n))},this)},_stopListeningForMenuOptionsEvents:function(){i.each(this.menuOptions,function(n){this.stopListening(this,"option:"+n.action)},this)},_onMenuAction:function(n,t){this.presentationDesignerEventBus.trigger(n,t)}})});

@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../../../model/schema/enum/genericTypesEnum","../../../../../../../model/schema/enum/fieldTypesToGenericTypesEnum"],function(e,i,n){var t=e("underscore"),s=e("../../../../../../../model/schema/enum/genericTypesEnum"),r=e("../../../../../../../model/schema/enum/fieldTypesToGenericTypesEnum"),c=function(e){this.initialize(e)};t.extend(c.prototype,{initialize:function(e){this.clientDomainSchemaService=e.clientDomainSchemaService},isSatisfiedBy:function(e){var i=e.filter,n=i.dataType,t=e.sidebarCurrentResource,s=this.clientDomainSchemaService.getFieldById(t.resourceId),c=r[s.type];return this._isDateTimestampRelatedTypes(n,c)||this._isIntegerDecimalRelatedTypes(n,c)},_isDateTimestampRelatedTypes:function(e,i){return e===s.DATE&&i===s.TIMESTAMP||e===s.TIMESTAMP&&i===s.DATE},_isIntegerDecimalRelatedTypes:function(e,i){return e===s.INTEGER&&i===s.DECIMAL||e===s.DECIMAL&&i===s.INTEGER}}),n.exports=c});

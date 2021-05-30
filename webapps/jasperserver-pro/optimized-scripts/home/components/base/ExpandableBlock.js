@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","react"],function(e,t,n){var r=e("react"),c=function(e){var t=e.children,n=e.title,c=e.isExpanded,o=e.onClick,i={display:c?"block":"none"};return r.createElement("div",{className:"resourceBlock"},r.createElement("div",{className:"resourceBlock-header",onClick:function(e){function t(){return e.apply(this,arguments)}return t.toString=function(){return e.toString()},t}(function(){return o(c)})},r.createElement("button",{type:"button",onClick:function(e){function t(){return e.apply(this,arguments)}return t.toString=function(){return e.toString()},t}(function(){return o(c)}),className:"buttonIconToggle ".concat(c?"isOpen":"isClosed")}),r.createElement("div",{className:"resourceBlock-title"},n)),r.createElement("ul",{className:"resourceBlock-list","js-navtype":"list",style:i,tabIndex:0},t))};t.ExpandableBlock=c});

@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../../common/mixin/draggable/lazyDraggableMixin"],function(t,a,e){var r=t("underscore"),n=t("../../../../../../common/mixin/draggable/lazyDraggableMixin");e.exports={create:function(t){var a=t.presentationDesignerEventBus,e=t.presentationItemsDraggableLabelFactory,i=t.presentationItemsDraggableDataFactory,g=t.presentationItemsOnDragStartOptionsFactory;return{created:function(){this.draggable={selector:":el",containment:"body",scroll:!1,onDragStart:"dragStart",onDrag:"drag",onDragStop:"dragStop"}},mounted:function(){this._initializeDraggable()},methods:r.extend({dragStart:function(t,r){var n={id:this.item.id,type:this.item.modelType,parentId:this.item.parentId,name:this.item.name,index:this.item.index,dataIslandId:this.item.dataIslandId};t=g.getOptions({item:n,event:r});var o=e.getDraggableLabel(t),d=i.getDraggableData(t);return a.trigger("canvas:dragStart",t),{label:o,data:d}},drag:function(t,e,r){a.trigger("canvas:drag",r)},dragStop:function(){a.trigger("canvas:dragStop"),this._destroyDraggable()}},n)}}}});

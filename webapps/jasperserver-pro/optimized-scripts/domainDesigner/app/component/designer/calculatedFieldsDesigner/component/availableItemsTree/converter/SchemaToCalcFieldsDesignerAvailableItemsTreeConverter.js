@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../../../../../../common/util/byIdReducer"],function(e,i,t){var c=e("underscore"),l=e("../../../../../../common/util/byIdReducer"),n=function(e){this.initialize(e)};c.extend(n.prototype,{initialize:function(e){this.clientDomainSchemaCalcFieldsService=e.clientDomainSchemaCalcFieldsService,this.calculatedFieldsDesignerViewStateModelService=e.calculatedFieldsDesignerViewStateModelService,this.converter=e.converter},convert:function(e){var i=e.schema,t=this.clientDomainSchemaCalcFieldsService.getCalcFieldsUsedInOtherCalcFields(),n=this.calculatedFieldsDesignerViewStateModelService.getContext(),r=this.clientDomainSchemaCalcFieldsService.getCalcFieldValidationContext(n),a=c.extend({},n,{availableVariables:this._groupVariablesBySourceIdAndFieldId(r.allowed)}),d=i.tables.reduce(l,{});return this.converter.convert(c.extend({},e,{tableReferenceToTableMap:i.tableReferences.reduce(function(e,i){return e[i.id]=d[i.tableId],e},{}),calcFieldsUsedInOtherCalcFields:t,calcFieldsContext:a}))},_groupVariablesBySourceIdAndFieldId:function(e){return c.groupBy(e,function(e){return e.sourceId+":"+e.fieldId})}}),t.exports=n});

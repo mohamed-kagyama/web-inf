@@ -1,0 +1,62 @@
+<div class="jr-mJointree jr" v-draggable="draggableConfig" v-droppable="droppableConfig" :class="{
+        'jr-isExpanded': joinTree.isExpanded,
+        'jr-isCollapsed': !joinTree.isExpanded,
+        'jr-isHovered': isHovered
+    }">
+    <div v-if="!joinTree.isHeadLessJoinTree" class="jr-mJointree-header jr">
+
+        <div class="jr-mJointree-header-mover jr-jJoinTreeDraggableHandle jr">
+            <span class="jr-mJointree-header-mover-icon jr-mIcon jr-dragHandleVertical jr"></span>
+        </div>
+
+        <span class="jr-mJointree-header-validation jr"
+              v-tooltip="tooltipOptions"
+              :class="{'jr-isInvalid': !joinTree.isValid}">
+            <div class="jr-mBadge jr-mBadgeRound jr-mBadgeError jr">
+                <span class="jr-mBadge-icon jr-mIcon jr-warning jr"></span>
+            </div>
+        </span>
+
+        <div class="jr-mJointree-header-title jr">
+            <div class="jr-mJointree-header-title-wrapper jr" @click="toggleJoinTree">
+                <span class="jr-mJointree-header-title-toggle jr"></span>
+                <p class="jr-mJointree-header-title-text jr">{{ joinTree.name }}</p>
+            </div>
+        </div>
+
+        <div class="jr-mJointree-header-type jr">
+            <span class="jr">{{ i18n["domain.designer.joinsDesigner.joinTypeColumn"] }}</span>
+        </div>
+
+        <div class="jr-mJointree-header-weight jr">
+            <span class="jr">{{ i18n["domain.designer.joinsDesigner.joinWeightColumn"] }}</span>
+        </div>
+
+        <div class="jr-mJointree-header-action jr"
+             v-clickMenu="joinTreeMenuOptions"
+             v-bind:data-name="menuOptionsButton"
+        >
+            <button class="jr-mButton jr-mButtonAction jr" aria-label="">
+                <span class="jr-mButton-icon jr-mIcon jr-kebab jr"></span>
+            </button>
+        </div>
+
+        <div class="jr-mJointree-header-action jr">
+            <button @click="removeJoinTree" v-bind:data-name="removeJoinTreeButton" class="jr-mButton jr-mButtonAction jr" aria-label="">
+                <span class="jr-mButton-icon jr-mIcon jr-delete jr"></span>
+            </button>
+        </div>
+    </div>
+
+    <template v-for="model in models">
+        <join v-if="isJoin(model.modelType)" :join="model"></join>
+        <joinExpression v-else-if="isJoinExpression(model.modelType)" :joinExpression="model"></joinExpression>
+        <constantJoinExpression v-else-if="isConstantJoinExpression(model.modelType)" :constantJoinExpression="model"></constantJoinExpression>
+        <template v-else-if="isComplexJoin(model.modelType)">
+            <complexJoinHeader :join="model"></complexJoinHeader>
+            <complexJoinExpression :join="model"></complexJoinExpression>
+        </template>
+        <joinAlias v-else-if="isJoinAlias(model.modelType)" :joinAlias="model"></joinAlias>
+        <joinConstructor v-else-if="isJoinConstructor(model)" :joinConstructor="model"></joinConstructor>
+    </template>
+</div>

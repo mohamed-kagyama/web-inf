@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","../../../../util/designer/collectionComponentsVisibilityUtil","../../../../model/enum/presentationFieldsMeasureOrDimensionEnum"],function(e,i,n){function s(e,i){return u([i.name||"",i.label||"",i.labelId||"",i.description||"",i.descriptionId||""],e)}function t(e,i){return s(e,i)||c(i.nodes)}function o(e,i){return u([i.name||"",i.label||"",i.labelId||"",i.description||"",i.descriptionId||""],e)}function r(e,i){return o(e,i)||c(i.nodes)}function l(e,i){var n=a[i.kind];return u([i.name||"",i.label||"",i.labelId||"",i.description||"",i.descriptionId||"",i.mask||"",n||"",i.aggregation||""],e)}var d=e("../../../../util/designer/collectionComponentsVisibilityUtil"),a=e("../../../../model/enum/presentationFieldsMeasureOrDimensionEnum"),u=d.matchSearchKeyword,c=d.isOneOfTheNodesVisible;n.exports={isDataIslandVisible:s,isDataIslandOrOneOfItsNodesVisible:t,isPresentationSetVisible:o,isPresentationSetVisibleOrOneOfItsNodesVisible:r,isPresentationFieldVisible:l}});

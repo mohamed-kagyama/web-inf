@@ -1,0 +1,12 @@
+<div class="jr-mTable-cell jr-mTable-cellActions jr">
+    <div class="jr-mTable-cell-wrapper jr">
+        <div class="jr-mTable-cell-actionbuttons jr">
+            <button @click="onEdit" v-if="canEdit" aria-label="preview" v-bind:data-name="editButton" class="jr-mButton jr-mButtonAction jr">
+                <span class="jr-mButton-icon jr-mIcon jr-edit jr"></span>
+            </button>
+            <button @click="onDelete" aria-label="preview" v-bind:data-name="deleteButton" class="jr-mButton jr-mButtonAction jr">
+                <span class="jr-mButton-icon jr-mIcon jr-delete jr"></span>
+            </button>
+        </div>
+    </div>
+</div>

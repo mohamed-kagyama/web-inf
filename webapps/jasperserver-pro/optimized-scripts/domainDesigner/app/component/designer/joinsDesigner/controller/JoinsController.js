@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","backbone","../../../../dispatcher/enum/applicationStateEventsEnum"],function(e,i,n){var t=e("underscore"),o=e("backbone"),s=e("../../../../dispatcher/enum/applicationStateEventsEnum"),r=function(e){this.applicationDispatcherEventBus=e.applicationDispatcherEventBus,this.joinsDesignerEventBus=e.joinsDesignerEventBus,this._initEvents()};t.extend(r.prototype,o.Events,{_initEvents:function(){this.listenTo(this.joinsDesignerEventBus,"toggle:join",this._onBeforeToggleJoin),this.listenTo(this.joinsDesignerEventBus,"remove:join",this._onBeforeRemoveJoin),this.listenTo(this.joinsDesignerEventBus,"update:join",this._onBeforeUpdateJoin)},_onBeforeToggleJoin:function(e){this.applicationDispatcherEventBus.trigger(s.JOINS_DESIGNER_TOGGLE_JOIN,{joinTreeId:e.joinTreeId,joinId:e.id,isExpanded:!e.isExpanded})},_onBeforeRemoveJoin:function(e){var i=e.id,n=e.joinTreeId;this.applicationDispatcherEventBus.trigger(s.JOINS_DESIGNER_REMOVE_JOIN,{id:i,joinTreeId:n})},_onBeforeUpdateJoin:function(e,i){var n=e.id,t=e.joinTreeId;this.applicationDispatcherEventBus.trigger(s.JOINS_DESIGNER_UPDATE_JOIN,{joinId:n,joinTreeId:t,options:i})}}),n.exports=r});

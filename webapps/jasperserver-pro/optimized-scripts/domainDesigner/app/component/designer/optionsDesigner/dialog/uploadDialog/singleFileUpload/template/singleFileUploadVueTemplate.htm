@@ -1,0 +1,27 @@
+<div class="jr-mInput jr">
+    <label class="jr-mInput-label jr">{{ fileInputLabel }}</label>
+    <div class="jr-mInput-file jr" :class="{'jr-isEmpty': isFileAbsent}">
+        <input v-bind:data-name="fileUploadInput" class="jr-mInput-file-input jr-jFileUploadInput jr"
+               type="file"
+
+               :accept="accept"
+
+               @change="selectFile($event)"
+        >
+        <div class="jr-mInput-file-name jr">
+            <span class="jr-mInput-file-name-placeholder jr">{{ fileInputPlaceholder }}</span>
+            <span class="jr-mInput-file-name-label jr">{{ fileName }}</span>
+        </div>
+        <label class="jr-mInput-file-trigger jr">
+            <button v-bind:data-name="fileUploadButton" class="jr-mButton jr-mButtonText jr-mButtonDefault jr-mButtonMedium jr">
+                <span class="jr-mButton-label jr">{{ actionButtonLabel }}</span>
+            </button>
+        </label>
+    </div>
+    <div class="jr-mInput-validation jr" :class="{'jr-isInvisible': !errorMessage}">
+        <div class="jr-mValidation jr-mValidationError jr">
+            <span class="jr-mValidation-icon jr-mIcon jr-mIconSmall jr-cancelRound jr"></span>
+            <span class="jr-mValidation-text jr">{{ errorMessage }}</span>
+        </div>
+    </div>
+</div>

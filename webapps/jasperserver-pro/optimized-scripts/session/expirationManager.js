@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","jquery","settings!request","request","runtime_dependencies/js-sdk/src/common/util/parse/time","bundle!CommonBundle"],function(e,n,t){var r=e("jquery"),s=e("settings!request"),o=e("request"),u=e("runtime_dependencies/js-sdk/src/common/util/parse/time"),i=e("bundle!CommonBundle"),m=s.maxInactiveInterval;m=m<=0?0:1e3*m,t.exports=function(e){function n(){a&&clearTimeout(a),a=setTimeout(function(){t()&&o({url:s.contextPath+"/rest_v2/resources/"})},l)}function t(){var e=new Date((new Date).getTime()+g),n=u.timeToIso8061Time(e.getHours(),e.getMinutes(),e.getSeconds());return confirm(i["session.expiration.warning"]+" "+n)}var c;e&&(c=1e3*e.timeoutWarningDelay||12e4);var a,d,l=m>c?m-c:m/2,g=m>c?c:m/2;return m&&(d=r(window.document),d.on("request:before",n),d.on("request:success",n)),{handle:n,showWarning:t}}});

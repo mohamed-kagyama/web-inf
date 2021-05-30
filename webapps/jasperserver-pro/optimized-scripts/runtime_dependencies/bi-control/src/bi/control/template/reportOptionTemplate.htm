@@ -1,0 +1,11 @@
+<div>
+    <js-templateNonce></js-templateNonce>
+    <label class="control select" for="reportOptionsSelect" title="{{-title}}">
+        <span class="wrap">{{-label}}</span>
+        <select id="reportOptionsSelect">
+            {{if (data) { }}
+            <option value="{{-id}}" {{ if (selected) { }}selected="selected"{{ } }}>{{-label}}</option>
+            {{ } }}
+        </select>
+    </label>
+</div>

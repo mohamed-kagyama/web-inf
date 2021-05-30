@@ -1,0 +1,14 @@
+<div class="jr-mJointree-dropzones jr">
+
+    <leftDroppableArea
+            @remove="onLeftDroppableAreaRemove"
+            :state="joinConstructor.leftSide"
+    ></leftDroppableArea>
+
+    <div class="jr-mJointree-dropzones-joiner jr-mIcon jr-mIconMedium jr-join jr"></div>
+
+    <rightDroppableArea
+            @drop="onRightDroppableAreaDrop"
+            :state="joinConstructor.rightSide"
+    ></rightDroppableArea>
+</div>

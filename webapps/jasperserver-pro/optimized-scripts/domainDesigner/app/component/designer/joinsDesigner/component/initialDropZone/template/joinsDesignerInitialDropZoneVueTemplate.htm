@@ -1,0 +1,21 @@
+<div v-if="!isEmptyDataStructure"
+     class="jr-mInstructor jr-mInstructorFull jr-mInstructorInnershade jr-mInstructorInnerborder jr">
+    <div class="jr-mInstructor-wrapper jr">
+        <span class="jr-mInstructor-icon jr-mIcon jr-mIconXLarge jr-warningRound jr"></span>
+        <p class="jr-mInstructor-title jr-mInstructor-titleMedium jr">{{
+            i18n['domain.designer.emptyDataStructure.canvas.title'] }}</p>
+        <p class="jr-mInstructor-text jr-mInstructor-textMedium jr-uTop-single jr">{{
+            i18n['domain.designer.joinsDesigner.emptyDataStructure.canvas.text'] }}</p>
+    </div>
+</div>
+<div v-else class="jr-mDropzone jr-mDropzoneFull jr" v-droppable="droppableConfig"
+     :class="{'jr-isOver': isOver, 'jr-isActive': isDropZoneActive}"
+>
+    <div class="jr-mInstructor jr-uWidth-100pc jr-uHeight-100pc jr">
+        <div class="jr-mInstructor-wrapper jr">
+            <span class="jr-mInstructor-icon jr-mIcon jr-mIconXLarge jr-message jr"></span>
+            <p class="jr-mInstructor-title jr-mInstructor-titleMedium jr">{{ i18n['domain.designer.joinsDesigner.initialDropZone.title'] }}</p>
+            <p class="jr-mInstructor-text jr-mInstructor-textSmall jr-uTop-single jr">{{ i18n['domain.designer.joinsDesigner.initialDropZone.text'] }}</p>
+        </div>
+    </div>
+</div>

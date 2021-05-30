@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","text!./template/tooltipTemplate.htm","../enum/typeToTypeClassEnum","../enum/placementToPlacementClassEnum"],function(t,e,n){var s=t("underscore"),i=t("text!./template/tooltipTemplate.htm"),o=t("../enum/typeToTypeClassEnum"),l=t("../enum/placementToPlacementClassEnum");n.exports={template:i,props:{type:"",placement:"",content:{},target:"",isVisible:!0,styleObj:{}},computed:{typeClass:function(){return o[this.type]},placementClass:function(){return l[this.placement]},contentAsArray:function(){return this.content.items?this.content.items:[this.content]},isTooltipVisible:function(){var t=this.contentAsArray.some(function(t){return t.text});return this.isVisible&&t},tooltipStyle:function(){var t=s.extend({},this.styleObj);return this.isTooltipVisible||(t.display="none"),t}}}});

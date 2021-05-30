@@ -1,0 +1,69 @@
+<div class="jr-mTable-head jr jr-jPresentationHead">
+    <div class="jr-mTable-row jr-mTable-rowHeader jr jr-jResizable-mainElement" :style="{'margin-right': fullWidthCorrection}">
+        <textCell class="jr-mTable-cellSetitem" :style="column0WidthStyle">
+            {{i18n['domain.designer.presentationDesigner.columnSet.tree']}}
+        </textCell>
+        <div class="jr-mTable-cell jr-mTable-cellProperties jr" :style="column1WidthStyle">
+            <div v-resizer="resizerConfig" class="jr-mTable-cell jr-mTable-cellResizer jr"></div>
+
+            <textCell class="jr-mTable-cellToggle"></textCell>
+
+            <template v-if="isDefault(columnSet)">
+                <textCell class="jr-mTable-cellLabel">
+                    {{i18n['domain.designer.presentationDesigner.columnSet.label']}}
+                </textCell>
+                <textCell class="jr-mTable-cellFieldtype">
+                    {{i18n['domain.designer.presentationDesigner.columnSet.fieldType']}}
+                </textCell>
+                <textCell class="jr-mTable-cellCalculation">
+                    {{i18n['domain.designer.presentationDesigner.columnSet.summaryCalculation']}}
+                </textCell>
+                <textCell class="jr-mTable-cellDescription">
+                    {{i18n['domain.designer.presentationDesigner.columnSet.description']}}
+                </textCell>
+            </template>
+            <template v-else-if="isIdentification(columnSet)">
+                <textCell class="jr-mTable-cellLabel">
+                    {{i18n['domain.designer.presentationDesigner.columnSet.label']}}
+                </textCell>
+                <textCell class="jr-mTable-cellId">
+                    {{i18n['domain.designer.presentationDesigner.columnSet.id']}}
+                </textCell>
+                <textCell class="jr-mTable-cellDescription">
+                    {{i18n['domain.designer.presentationDesigner.columnSet.description']}}
+                </textCell>
+            </template>
+            <template v-else-if="isBundleKeys(columnSet)">
+                <textCell class="jr-mTable-cellLabelkey">
+                    {{i18n['domain.designer.presentationDesigner.columnSet.labelKey']}}
+                </textCell>
+                <textCell class="jr-mTable-cellDescriptionkey">
+                    {{i18n['domain.designer.presentationDesigner.columnSet.descriptionKey']}}
+                </textCell>
+            </template>
+            <template v-else-if="isData(columnSet)">
+                <textCell class="jr-mTable-cellSource">
+                    {{i18n['domain.designer.presentationDesigner.columnSet.source']}}
+                </textCell>
+                <textCell class="jr-mTable-cellFieldtype">
+                    {{i18n['domain.designer.presentationDesigner.columnSet.fieldType']}}
+                </textCell>
+                <textCell class="jr-mTable-cellCalculation">
+                    {{i18n['domain.designer.presentationDesigner.columnSet.summaryCalculation']}}
+                </textCell>
+                <textCell class="jr-mTable-cellDataformat">
+                    {{i18n['domain.designer.presentationDesigner.columnSet.dataFormat']}}
+                </textCell>
+            </template>
+
+
+            <cell class="jr-mTable-cellActions">
+                <div class="jr-mTable-cell-actionbutton jr">
+                    <button v-clickMenu="canvasMenuOptions" aria-label="" v-bind:data-name="menuOptionsButton" class="jr-mButton jr-mButtonAction jr-jPresentationDesignerCanvasMenu jr">
+                        <span class="jr-mButton-icon jr-mIcon jr-kebab jr"></span>
+                    </button>
+                </div>
+            </cell>
+        </div>
+    </div>
+</div>

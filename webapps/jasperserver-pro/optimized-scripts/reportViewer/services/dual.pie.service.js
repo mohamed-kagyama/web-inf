@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","highcharts-more"],function(e,t,a){var n=e("highcharts-more"),r={perform:function(e,t){this.setupDualPie(e)},setupDualPie:function(e){if(2==e.series.length){var t=e.series[0];t.showInLegend=!1,t.center=["50%","50%"],t.size="60%",t.dataLabels=t.dataLabels||{},t.dataLabels.color="#FFFFFF",t.dataLabels.distance=-30;var a=e.series[1];a.point=a.point||{},a.point.events=a.point.events||{},a.point.events.legendItemClick=a.point.events.legendItemClick||function(e){e.preventDefault()},a.center=["50%","50%"],a.innerSize="60%",a.size="90%";for(var r=n.getOptions().colors,o=0,i=0,s=0;s<t.data.length;++s){var l=t.data[s].color;l||(l=r[o],o=(o+1)%r.length,t.data[s].color=l);var d=t.data[s]._jrChildCount;if(d)for(var c=0;c<d;++c,++i)if(i<a.data.length&&!a.data[i].color){var h=.2-c/d/5;a.data[i].color=n.Color(l).brighten(h).get()}}}}};a.exports=r});

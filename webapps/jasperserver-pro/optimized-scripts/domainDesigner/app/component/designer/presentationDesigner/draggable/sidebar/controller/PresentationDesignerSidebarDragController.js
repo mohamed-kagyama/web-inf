@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","backbone","../../../../../../dispatcher/enum/applicationStateEventsEnum"],function(t,e,n){var i=t("underscore"),a=t("backbone"),r=t("../../../../../../dispatcher/enum/applicationStateEventsEnum"),s=function(t){this.initialize(t)};i.extend(s.prototype,{initialize:function(t){this.presentationDesignerEventBus=t.presentationDesignerEventBus,this.applicationDispatcherEventBus=t.applicationDispatcherEventBus,this.presentationSidebarOnDragStartSelectionFactory=t.presentationSidebarOnDragStartSelectionFactory,this._initEvents()},_initEvents:function(){this.listenTo(this.presentationDesignerEventBus,"sidebar:dragStart",this.onDragStart)},onDragStart:function(t,e){this._setSelectionOnDragStart(e)},_setSelectionOnDragStart:function(t){var e=this.presentationSidebarOnDragStartSelectionFactory.getSelection(t);e&&this.applicationDispatcherEventBus.trigger(r.PRESENTATION_DESIGNER_SET_SIDEBAR_SELECTION,{selection:e})}},a.Events),n.exports=s});

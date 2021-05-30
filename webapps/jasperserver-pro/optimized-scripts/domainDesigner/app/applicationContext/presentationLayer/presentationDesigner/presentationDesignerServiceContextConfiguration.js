@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","../../../model/factory/presentationDesignerSelectionFactory","../../../model/service/PresentationDesignerViewStateModelService","../../../component/designer/presentationDesigner/droppable/canvas/service/PresentationCanvasDroppableItemsService"],function(e,t,n){var i=e("../../../model/factory/presentationDesignerSelectionFactory"),r=e("../../../model/service/PresentationDesignerViewStateModelService"),a=e("../../../component/designer/presentationDesigner/droppable/canvas/service/PresentationCanvasDroppableItemsService");n.exports=function(e,t){e.register("presentationDesignerViewStateModelService",new r({presentationItemsSelectionFactory:i,presentationSidebarSelectionFactory:i,viewStateModel:e.get("viewStateModelReadOnlyFacade"),clientDomainSchemaService:e.get("clientDomainSchemaService")})),e.register("presentationCanvasDroppableItemsService",new a({presentationDesignerViewStateModelService:e.get("presentationDesignerViewStateModelService"),clientDomainSchemaService:e.get("clientDomainSchemaService")}))}});

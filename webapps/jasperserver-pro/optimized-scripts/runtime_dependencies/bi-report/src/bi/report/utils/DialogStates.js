@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module"],function(t,e,n){function i(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function s(t,e){for(var n=0;n<e.length;n++){var i=e[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(t,i.key,i)}}function u(t,e,n){return e&&s(t.prototype,e),n&&s(t,n),t}var a=function(){function t(e){i(this,t),this.state=e}return u(t,[{key:"get",value:function(){return this.state}},{key:"set",value:function(t){this.state=t}},{key:"updateKey",value:function(t,e){this.state[t]=e}}]),t}(),r=function(){function t(){i(this,t),this.states={}}return u(t,[{key:"register",value:function(t,e){return this.states[t]||(this.states[t]=new a(e)),this.getState(t)}},{key:"getState",value:function(t){return this.states[t]||null}},{key:"setState",value:function(t,e){this.states[t].set(e)}}]),t}();n.exports=r});

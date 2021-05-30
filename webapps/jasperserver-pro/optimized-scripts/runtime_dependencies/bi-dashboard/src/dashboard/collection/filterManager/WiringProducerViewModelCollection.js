@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","backbone","underscore","../../model/filterManager/WiringProducerViewModel"],function(e,r,o){var t=e("backbone"),i=e("underscore"),n=e("../../model/filterManager/WiringProducerViewModel"),a=t.Collection.extend({model:n,comparator:function(e,r){return e.get("group").toLowerCase()<r.get("group").toLowerCase()?-1:e.get("group").toLowerCase()>r.get("group").toLowerCase()?1:i.isUndefined(e.get("label"))&&!i.isUndefined(r.get("label"))?-1:!i.isUndefined(e.get("label"))&&i.isUndefined(r.get("label"))?1:i.isUndefined(e.get("label"))&&i.isUndefined(r.get("label"))?0:e.get("label").toLowerCase()<r.get("label").toLowerCase()?-1:e.get("label").toLowerCase()>r.get("label").toLowerCase()?1:0},isValid:function(e){return i.every(this.invoke("isValid",e),i.identity)},initialize:function(){this.on("sort remove add reset",i.partial(this.invoke,"setGroupRelatedProperties"))}},{createFromDashboardWiringCollection:function(e,r){var o=e.filter(function(e){return e.component.isValueProducer()}),t=i.map(o,function(e){return n.createFromDashboardWiringModel(e,r)});return new a(t)}});o.exports=a});

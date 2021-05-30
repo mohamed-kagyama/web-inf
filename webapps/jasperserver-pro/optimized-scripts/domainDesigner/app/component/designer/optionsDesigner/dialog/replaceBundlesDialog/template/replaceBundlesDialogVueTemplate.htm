@@ -1,0 +1,30 @@
+<div v-bind:data-name="replaceBundleDialog" class="jr-mDialog jr-mDialogWarning jr-mDialogModal jr-uWidth-625px jr-isHidden jr">
+    <div class="jr-mDialog-header jr-jDialogDraggable jr">
+        <h1 class="jr-mDialog-header-title jr">{{ i18n2['warning.title'] }}</h1>
+    </div>
+
+    <div class="jr-mDialog-body jr-mDialog-bodyPadded jr">
+        <div class="jr-mValidation jr">
+            <div class="jr-mValidation-alert jr-mValidation-alertWarning jr">
+                <span class="jr-mValidation-alert-icon jr-mIcon jr-mIconSmall jr-warningRound jr"></span>
+                <span class="jr-mValidation-alert-text jr">{{ i18n['domain.designer.advanced.options.replaceBundlesDialog.warning.text'] }}</span>
+            </div>
+        </div>
+        <p class="jr-mText jr-mTextMedium jr-uTop-single jr">
+            <span class="jr-mText-wrapper jr">{{ i18n['domain.designer.advanced.options.replaceBundlesDialog.actions.text'] }}</span>
+        </p>
+    </div>
+
+    <div class="jr-mDialog-footer jr">
+        <button v-bind:data-name="replaceButton" class="jr-mButton jr-mButtonText jr-mButtonWarning jr" @click="onReplaceBundlesButtonClick">
+            <span class="jr-mButton-label jr">{{ i18n['domain.designer.advanced.options.replaceBundlesDialog.actions.replaceFiles'] }}</span>
+        </button>
+        <button v-bind:data-name="selectNewFilesButton" class="jr-mButton jr-mButtonText jr-mButtonSecondary jr" @click="onSelectNewFilesButtonClick">
+            <span class="jr-mButton-label jr">{{ i18n['domain.designer.advanced.options.replaceBundlesDialog.actions.selectNewFiles'] }}</span>
+        </button>
+        <button v-bind:data-name="cancelButton" class="jr-mButton jr-mButtonText jr-mButtonSecondary jr" @click="onCancelButtonClick">
+            <span class="jr-mButton-label jr">{{ i18n2['button.cancel'] }}</span>
+        </button>
+        <div class="jr-mDialog-footer-sizer jr-jDialogResizer jr"></div>
+    </div>
+</div>

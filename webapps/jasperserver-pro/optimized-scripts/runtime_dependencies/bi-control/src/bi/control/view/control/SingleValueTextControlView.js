@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","../BaseInputControlView","../../enum/substitutionConstants","text!../../template/singleTextInputTemplate.htm"],function(t,e,n){var i=t("underscore"),s=t("../BaseInputControlView"),a=t("../../enum/substitutionConstants"),o=t("text!../../template/singleTextInputTemplate.htm");n.exports=s.extend({template:o,updateValue:function(t){var e=t==a.NULL_SUBSTITUTION_VALUE?a.NULL_SUBSTITUTION_LABEL:t;this.$el.find("input").val(e),this.model.state.get("error")&&this.updateWarningMessage()},bindCustomEventListeners:function(){this.$el.on("change keyup","input",i.bind(function(t){var e=t.target.value,n=e==a.NULL_SUBSTITUTION_LABEL?a.NULL_SUBSTITUTION_VALUE:e;this.model.changeState(n)},this)),this.model.state.on("change:value",function(t,e){this.updateValue(e)},this)},remove:function(){this.$el.off("change","input"),this.model.state.off("change:value",void 0,this),s.prototype.remove.call(this)}})});

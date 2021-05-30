@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","./mixin/profileAttributeOperandMixin","../enum/filterParserStateNamesEnum","./mixin/profileAttributeStateMixin","./mixin/addRangeFilterExpressionMixin"],function(t,i,e){var r=t("underscore"),n=t("./mixin/profileAttributeOperandMixin"),a=t("../enum/filterParserStateNamesEnum"),o=t("./mixin/profileAttributeStateMixin"),s=t("./mixin/addRangeFilterExpressionMixin"),u=function(t){this.initialize(t)};r.extend(u.prototype,{initialize:function(t){this.factory=t.factory,this.context=t.context},value:function(t){this._addProfileAttributeFnOperand(t);var i=this._getProfileAttributeString();return i?this._addRangeFilterExpression(i):this.factory.create(a.SET_FILTER_EXPRESSION_RANGE_PROFILE_ATTRIBUTE_RIGHT_OPERAND_STATE,this.context)},_parseProfileAttribute:function(){return this.factory.create(a.SET_FILTER_EXPRESSION_RANGE_PROFILE_ATTRIBUTE_RIGHT_OPERAND_STATE,this.context)}},s,n,o),e.exports=u});

@@ -1,0 +1,16 @@
+<div class="jr-mDomain-mode-resourcetable jr-uBottom-triple jr-uWidth-75pc jr"> <!-- START Upload locale bundles -->
+
+    <div v-bind:data-name="table" class="jr-mTable jr-mTableGrid jr-mTablePlain jr">
+        <div class="jr-mTable-body jr">
+            <bundleItem v-for="(bundle, index) in bundles" :bundle="bundle" :index="index"></bundleItem>
+        </div>
+    </div>
+
+    <button @click="onDownloadBundleTemplate" v-bind:data-name="downloadBundleButton" class="jr-mButton jr-mButtonSmall jr-mButtonLink jr-uTop-half jr">
+        <span class="jr-mButton-label jr">{{i18n['domain.designer.advanced.options.download.bundles.template']}}</span>
+    </button>
+
+    <button @click="onAddLocaleBundle" v-bind:data-name="addLocaleBundleButton" class="jr-mButton jr-mButtonText jr-mButtonSmall jr-mButtonPrimary jr-uTop-half jr-uRight jr">
+        <span class="jr-mButton-label jr">{{i18n['domain.designer.advanced.options.add.locale.bundle']}}</span>
+    </button>
+</div>

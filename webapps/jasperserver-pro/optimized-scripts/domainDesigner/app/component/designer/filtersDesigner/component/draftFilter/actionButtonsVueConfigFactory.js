@@ -1,0 +1,6 @@
+/*
+ * Copyright (C) 2005 - 2020 TIBCO Software Inc. All rights reserved. Confidentiality & Proprietary.
+ * Licensed pursuant to commercial TIBCO End User License Agreement.
+ */
+
+define(["require","exports","module","underscore","text!./template/actionButtonsTemplate.htm","../../../../../common/vue/computed/i18nComputed","../../util/filterTypeUtil"],function(e,t,i){var r=e("underscore"),n=e("text!./template/actionButtonsTemplate.htm"),l=e("../../../../../common/vue/computed/i18nComputed"),o=e("../../util/filterTypeUtil");i.exports={create:function(e){return{template:n,props:["filter"],components:{},computed:r.extend({isOkEnabled:function(){var e=this.filter.leftOperand.type,t=this.filter.rightOperand.type;return o.isFieldToFieldFilter(e,t)?this.filter.leftOperand.fieldId&&this.filter.rightOperand.fieldId:this.filter.leftOperand.fieldId}},l),methods:{onCancelClick:function(){e.filtersDesignerEventBus.trigger("draftFilter:cancel")},onOkClick:function(){e.filtersDesignerEventBus.trigger("draftFilter:edit")}}}}}});

@@ -1,0 +1,15 @@
+<operand :operand="filter.rightOperand" class="jr-mTable-cellValue">
+    <div class="jr-mTable-cell-selectlist jr">
+        <fieldValueEditor v-if="isVariable" :filter="filter" :operand="filter.rightOperand"></fieldValueEditor>
+        <textInputValueEditor v-if="isText" :filter="filter" :operand="filter.rightOperand"></textInputValueEditor>
+        <dateTimeInputValueEditor v-if="isDateTime" :filter="filter" :operand="filter.rightOperand"></dateTimeInputValueEditor>
+        <dateTimeRangeValueEditor v-if="isDateTimeRange" :filter="filter" :operand="filter.rightOperand"></dateTimeRangeValueEditor>
+        <multiSelectValueEditor v-if="isList" :filter="filter" :operand="filter.rightOperand"></multiSelectValueEditor>
+        <rangeValueEditor v-if="isRange" :filter="filter" :operand="filter.rightOperand"></rangeValueEditor>
+        <singleSelectValueEditor v-if="isSingleSelect" :filter="filter" :operand="filter.rightOperand"></singleSelectValueEditor>
+
+        <actionButtons :filter="filter"
+                       class="jr-uTop-single">
+        </actionButtons>
+    </div>
+</operand>
